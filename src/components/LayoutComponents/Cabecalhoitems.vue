@@ -1,21 +1,35 @@
 <script setup>
-
 </script>
 
 <template lang = "pug">
 q-toolbar.cabecalho
-  div.logo
-  div.searchinput
-    q-input.searchbox(
-      v-model="search"
-      debounce="500"
-      filled
-      placeholder="O que você está procurando?"
-      )
+  q-img(
+    src="../../assets/images/logo.png"
+    alt=""
+    style="width: 195px; height: 87px;"
+    )
+  q-input(
+    v-model="Text"
+    debounce="500"
+    filled
+    placeholder="O que você está procurando?"
+    bg-color="white"
+    color="black"
+    style="width: 575px;"
+    )
+    template(v-slot:append)
+      q-icon(name="search")
   div.minhaconta
-    a minha conta
+    q-icon
+      img(src="../../assets/svg/usericon.svg" style="width: 23px; height: 23px;")
+    a Minha conta
   div.meuspedidos
-    a meus pedidos
+    q-icon
+      img(src="../../assets/svg/tagicon.svg" style="width: 23px; height: 23px;")
+    a Meus pedidos
+  div.sacola
+    q-icon
+      img(src="../../assets/svg/bagicon.svg" style="width: 28px; height: 22px;")
 </template>
 
 <style scoped>
@@ -30,21 +44,16 @@ q-toolbar.cabecalho
   flex-shrink: 0;
   height: 134px;
 }
-.minhaconta{
+a {
   color: #000;
   font-family: Outfit;
   font-size: 14px;
   font-weight: bold;
+}
+.minhaconta{
+  justify-content: space-between;
 }
 .meuspedidos{
-  color: #000;
-  font-family: Outfit;
-  font-size: 14px;
-  font-weight: bold;
-}
-.searchbox{
-  width: 576px;
-  background-color: white;
-  border-radius: 10px
+  justify-content: space-between;
 }
 </style>

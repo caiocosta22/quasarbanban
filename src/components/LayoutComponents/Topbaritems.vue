@@ -1,8 +1,8 @@
 <script setup>
 import { ref } from "vue";
 const fretes = [
-  "Frete grátis para Fortaleza, Maracanaú e Caucaia a partir R$100,00",
-  "Frete grátis para outros estados a partir de R$200,00"
+  "Frete grátis para Fortaleza, Maracanaú e Caucaia a partir de R$100,00",
+  "Frete grátis para todo o Brasil a partir de R$200,00"
 ];
 const padrao = ref(fretes[0]);
 let contador = 0;
@@ -22,12 +22,12 @@ setInterval(() => {
 </script>
 
 <template lang = "pug">
-div.textofrete
+q-toolbar.textofrete
   a {{ padrao }}
 </template>
 
 <style scoped>
-header .textofrete {
+.textofrete {
   color: #fbea2b;
   text-align: center;
   font-family: 'Outfit', sans-serif;
@@ -35,6 +35,15 @@ header .textofrete {
   font-style: normal;
   font-weight: 400;
   line-height: normal;
+  width: 100%;
+  height: 48.836px;
+  flex-shrink: 0;
+  background-color: #000;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  flex-direction: row;
+  margin: auto
 }
 
 </style>

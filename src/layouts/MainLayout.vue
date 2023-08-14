@@ -1,26 +1,16 @@
 <template lang="pug">
-q-layout
+q-layout(view="lHh Lpr lFf")
   q-header(elevated)
-    q-toolbar.topbar
-      Topbar
+    Topbar
     Cabecalho
+    Navbar
+  q-page-container
+    router-view
 </template>
 
 <script setup>
-import Topbar from "../components/LayoutComponents/TopbarItems.vue";
+import Topbar from "../components/LayoutComponents/Topbaritems.vue";
 import Cabecalho from "../components/LayoutComponents/Cabecalhoitems.vue";
+import Navbar from "../components/LayoutComponents/Navitems.vue";
+// import BannerPrincipal from "../components/PageComponents/Banneritems.vue";
 </script>
-
-<style scoped>
-.topbar{
-  width: 100%;
-  height: 48.836px;
-  flex-shrink: 0;
-  background-color: #000;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: row;
-  margin: auto
-}
-</style>
