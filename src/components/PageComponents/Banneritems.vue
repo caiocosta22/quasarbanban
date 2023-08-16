@@ -26,6 +26,6 @@ q-carousel.carrosel(
   height:504px;
   width:100%;
   flex-shrink: 0;
-  position:absolute
+  cursor:pointer;
 }
 </style>

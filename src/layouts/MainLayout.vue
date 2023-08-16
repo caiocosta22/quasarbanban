@@ -4,8 +4,7 @@ q-layout(view="lHh Lpr lFf")
     Topbar
     Cabecalho
     Navbar
-  q-page-container
-    router-view
+  router-view
 </template>
 
 <script setup>
