@@ -11,6 +11,7 @@ div(class="q-pa-md" style="padding:20px")
     arrows
     swipeable
     animated
+    padding
     height="77px"
     control-color="black"
     controler-text-color="white"

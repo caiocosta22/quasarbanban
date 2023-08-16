@@ -1,0 +1,71 @@
+<script setup>
+import { Carousel, Navigation, Slide } from "vue3-carousel";
+
+import "vue3-carousel/dist/carousel.css";
+const settings = { itemsToShow: 1, snapAlign: "center" };
+const breakpoints = {
+  700: {
+    itemsToShow: 3.5,
+    snapAlign: "center"
+  },
+  1024: {
+    itemsToShow: 5,
+    snapAlign: "start"
+  }
+};
+import { defineComponent } from "vue";
+defineComponent({
+  name: "Breakpoints",
+  components: {
+    Carousel,
+    Slide,
+    Navigation
+  }
+});
+</script>
+
+<template lang="pug">
+div.q-pa-md(style="padding:20px")
+  Carousel(v-bind="settings", :breakpoints="breakpoints")
+    Slide(v-for="slide in 10", :key="slide")
+      div.carousel__item {{ slide }}
+    template#addons
+      Navigation
+</template>
+
+
+
+<template lang="pug">
+div(class="q-pa-md")
+  q-carousel(
+    infinite
+    v-model="slide"
+    swipeable
+    navigation
+    padding
+    arrows
+    height="300px"
+    class="bg-grey-9 shadow-2 rounded-borders"
+  )
+    q-carousel-slide(v-for="(image,index) in images" :key="index" class="column no-wrap")
+      div(class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap")
+        q-img(:src="image" alt="Image")
+    q-carousel-slide(:name="2" class="column no-wrap")
+      div(class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap")
+        q-img(class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/parallax2.jpg")
+        q-img(class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/quasar.jpg")
+    q-carousel-slide(:name="3" class="column no-wrap")
+      div(class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap")
+        q-img(class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/cat.jpg")
+        q-img(class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/linux-avatar.png")
+    q-carousel-slide(:name="4" class="column no-wrap")
+      div(class="row fit justify-start items-center q-gutter-xs q-col-gutter no-wrap")
+        q-img(class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/material.png")
+        q-img(class="rounded-borders col-6 full-height" src="https://cdn.quasar.dev/img/linux-avatar.png")
+</template>
+
+<script setup>
+import { ref } from "vue";
+const slide = ref(1);
+const images = ref(["https://cdn.quasar.dev/img/linux-avatar.png", "https://cdn.quasar.dev/img/linux-avatar.png"]);
+</script>
