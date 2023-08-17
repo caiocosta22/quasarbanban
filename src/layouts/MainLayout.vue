@@ -11,5 +11,4 @@ q-layout(view="lHh Lpr lFf")
 import Topbar from "../components/LayoutComponents/Topbaritems.vue";
 import Cabecalho from "../components/LayoutComponents/Cabecalhoitems.vue";
 import Navbar from "../components/LayoutComponents/Navitems.vue";
-// import BannerPrincipal from "../components/PageComponents/Banneritems.vue";
 </script>

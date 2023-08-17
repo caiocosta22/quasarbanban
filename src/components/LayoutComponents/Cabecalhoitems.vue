@@ -25,11 +25,11 @@ q-toolbar.cabecalho
     div.minhaconta
       q-icon
         img(src="../../assets/svg/usericon.svg" style="width: 23px; height: 23px; padding-right: 10px;")
-      a Minha conta
+      a(href="#") Minha conta
     div.meuspedidos
       q-icon
         img(src="../../assets/svg/tagicon.svg" style="width: 23px; height: 23px; padding-right: 10px;")
-      a Meus pedidos
+      a(href="#") Meus pedidos
     div.sacola
       q-icon
         img(src="../../assets/svg/bagicon.svg" style="width: 28px; height: 23px; padding: 0 10px 5px 0;")
@@ -53,6 +53,7 @@ a {
   font-family: Outfit;
   font-size: 14px;
   font-weight: bold;
+  text-decoration: none;
 }
 .menu{
   display: flex;
