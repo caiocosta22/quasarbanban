@@ -72,9 +72,9 @@ const moveCarousel = (direction) => {
       .card-carousel-cards(:style="{ transform: 'translateX' + '(' + currentOffset + 'px' + ')'}")
         .card-carousel--card(v-for="item in items" :key="item")
           img(:src="item.image")
-          .card-carousel--card--footer
+          .card-carousel--card--footer.text-center.q-pa-sm.text-center.text-black
             p {{ item.name }}
-            p.tag(v-for="(tag,index) in item.tag" :key="index" :class="index > 0 ? 'secondary' : ''") {{ tag }}
+            p.tag.text-bold(v-for="(tag,index) in item.tag" :key="index" :class="index > 0 ? 'secondary' : ''") {{ tag }}
   q-icon.cursor-pointer.q-mr-md(
     name="chevron_right"
     size="3.5em"

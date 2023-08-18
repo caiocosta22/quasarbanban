@@ -8,7 +8,7 @@ const items = ref([
   {
     name: "Tênis Esporte Feminino Olympikus Decola",
     image: "https://s3-alpha-sig.figma.com/img/79b0/64d3/0717f2337fb152ae124454008b0bf796?Expires=1693180800&Signature=pRvNBx4Y1~6XgdzAyc-V3FVLfp61pNQhOIDa6wJkuw42BqkpU8cCA-yL7StNdEup2tI7JjMS4s19hgLvFEc1JaoudelWE9AbrAWgfvPNt7hX~G0EOJooSNAsZkKSFG5-2RP4HC9yakmIQlIUIuInRhwrQ7Y7~qn3nFkFXFZIwQVI3vMPufLGEwTb6~ENs-8hwFidBPcSlTiEfRoxz03nLjVnJnv5pQTE--obT8qHTIooTROnc~pQu6NHtOPkrf66SsRqWKiAOAtRmbjmPWKhdY8y38FrCWS1izfYiMZ3xYB2OYpwSQxGZmJb2FJ0IUgpuQi2hcksi3mZE5VSI9C-kg__&Key-Pair-Id=APKAQ4GOSFWCVNEHN3O4",
-    tag: ["299,90", "6x de 49,83 sem juros"]
+    tag: ["R$ 299,90", "6x de 49,83 sem juros"]
   },
   {
     name: "Tênis Esporte Masculino Olympikus Decola",
@@ -72,9 +72,9 @@ const moveCarousel = (direction) => {
       .card-carousel-cards(:style="{ transform: 'translateX' + '(' + currentOffset + 'px' + ')'}")
         .card-carousel--card(v-for="item in items" :key="item")
           img(:src="item.image")
-          .card-carousel--card--footer
+          .card-carousel--card--footer.text-center.q-pa-sm.text-center.text-black
             p {{ item.name }}
-            p.tag(v-for="(tag,index) in item.tag" :key="index" :class="index > 0 ? 'secondary' : ''") {{ tag }}
+            p.tag.text-bold(v-for="(tag,index) in item.tag" :key="index" :class="index > 0 ? 'secondary' : ''") {{ tag }}
   q-icon.cursor-pointer.q-mr-md(
     name="chevron_right"
     size="3.5em"

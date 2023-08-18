@@ -6,6 +6,12 @@ $vue-teal: #42b883;
 $vue-teal-light: #42b983;
 $gray: #666a73;
 $light-gray: #f8f8f8;
+
+*{
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+}
 //PRODUTOS: LINHA 11, CATEGORIAS: LINHA 190
 
  // ESTILIZAÇÃO DOS PRODUTOS
@@ -152,7 +158,7 @@ $light-gray: #f8f8f8;
 .card-carousel2 {
   display: flex;
   justify-content: center;
-  width: 1080px;
+  width: 1060px;
   
   &--overflow-container {
     overflow: hidden;

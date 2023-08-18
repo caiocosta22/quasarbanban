@@ -1,7 +1,7 @@
 <template lang="pug">
 q-page-container
   BannerPrincipal
-  Carrosel
+  FormasPag
   div
     p.titulo Mais vendidos
   Produtos
@@ -26,15 +26,15 @@ q-page-container
 </template>
 
 <script setup>
-import BannerPrincipal from "../components/PageComponents/Banneritems.vue";
-import Carrosel from "../components/PageComponents/Carroselitems.vue";
-import Produtos from "../components/PageComponents/IndexProdutos.vue";
-import Categorias from "../components/PageComponents/IndexCategorias.vue";
-import Novidades from "../components/PageComponents/IndexNovidades.vue";
-import Promocoes from "../components/PageComponents/IndexPromocoes.vue";
-import Acessados from "../components/PageComponents/IndexAcessados.vue";
-import Marcas from "../components/PageComponents/IndexMarcas.vue";
-import Chinelaria from "../components/PageComponents/IndexChinelaria.vue";
+import BannerPrincipal from "../components/HomePageComponents/Banneritems.vue";
+import FormasPag from "../components/HomePageComponents/FormasPag.vue";
+import Produtos from "../components/HomePageComponents/Produtos.vue";
+import Categorias from "../components/HomePageComponents/Categorias.vue";
+import Novidades from "../components/HomePageComponents/Novidades.vue";
+import Promocoes from "../components/HomePageComponents/Promocoes.vue";
+import Acessados from "../components/HomePageComponents/Acessados.vue";
+import Marcas from "../components/HomePageComponents/Marcas.vue";
+import Chinelaria from "../components/HomePageComponents/Chinelaria.vue";
 </script>
 
 <style scoped>

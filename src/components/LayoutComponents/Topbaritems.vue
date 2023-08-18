@@ -22,28 +22,16 @@ setInterval(() => {
 </script>
 
 <template lang = "pug">
-q-toolbar.textofrete
-  a {{ padrao }}
+q-toolbar.justify-center(style="background-color: #000;")
+  a.text-center {{ padrao }}
 </template>
 
 <style scoped>
-.textofrete {
-  color: #fbea2b;
-  text-align: center;
-  font-family: 'Outfit', sans-serif;
+a{
+  font-family: 'Outfit';
   font-size: 14px;
   font-style: normal;
   font-weight: 400;
-  line-height: normal;
-  width: 100%;
-  height: 48.836px;
-  flex-shrink: 0;
-  background-color: #000;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-  flex-direction: row;
-  margin: auto
+  color: #fbea2b
 }
-
 </style>

@@ -16,9 +16,9 @@ q-carousel.carrosel(
   transition-next="slide-left"
   @mouseenter="autoplay = false"
   @mouseleave="autoplay = true")
-    q-carousel-slide(:name="1" img-src="../../assets/images/Banner1.png")
-    q-carousel-slide(:name="2" img-src="../../assets/images/Banner1.png")
-    q-carousel-slide(:name="3" img-src="../../assets/images/Banner1.png")
+    q-carousel-slide(:name="1" img-src="../../assets/images/Banner.jpeg")
+    q-carousel-slide(:name="2" img-src="../../assets/images/Banner.jpeg")
+    q-carousel-slide(:name="3" img-src="../../assets/images/Banner.jpeg")
 </template>
 
 <style scoped>
