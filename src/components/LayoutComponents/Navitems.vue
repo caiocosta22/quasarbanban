@@ -10,6 +10,19 @@ const links = ref([
   "Esportivo",
   "Acessórios",
   "Marcas"
+  /* span(v-if="link.menu")
+      q-btn(color="primary" label="Scale Menu")
+        q-menu(
+          transition-show="scale"
+          transition-hide="scale")
+          q-list(style="min-width: 100px")
+            q-item(clickable)
+              q-item-section(Having fun)
+            q-item(clickable)
+              q-item-section(Crazy for transitions)
+            q-separator
+            q-item(clickable)
+              q-item-section(Mind blown) */
 ]);
 </script>
 
@@ -19,6 +32,20 @@ q-toolbar.menu
     v-for="link in links"
     :key="link"
   ) {{ link }}
+   span(v-if=" link === '+ Todas as categorias' ")
+    q-btn(color="black" label="Scale Menu")
+      q-menu(
+          transition-show="scale"
+          transition-hide="scale"
+          )
+        q-list(style="min-width: 100px")
+          q-item(clickable)
+            q-item-section(Teste1)
+          q-item(clickable)
+            q-item-section(Teste2)
+          q-separator
+          q-item(clickable)
+            q-item-section(Teste3)
 </template>
 
 <style scoped>
