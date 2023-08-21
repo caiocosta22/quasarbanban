@@ -60,7 +60,7 @@ const moveCarousel = (direction) => {
 </script>
 
 <template lang="pug">
-.card-carousel-wrapper
+.card-carousel-wrapper.justify-center
   q-icon.cursor-pointer.q-mr-md(
     name="chevron_left"
     size="3.5em"

@@ -22,6 +22,11 @@ q-page-container
   div
     p.titulo Chinelaria
   Chinelaria
+  CadastroEmail
+  div
+    p.titulo Siga-nos no Instagram
+    p.arroba @banbancalcados
+  Instagram
 
 </template>
 
@@ -35,6 +40,8 @@ import Promocoes from "../components/HomePageComponents/Promocoes.vue";
 import Acessados from "../components/HomePageComponents/Acessados.vue";
 import Marcas from "../components/HomePageComponents/Marcas.vue";
 import Chinelaria from "../components/HomePageComponents/Chinelaria.vue";
+import CadastroEmail from "../components/HomePageComponents/CadastroEmail.vue";
+import Instagram from "../components/HomePageComponents/Instagram.vue";
 </script>
 
 <style scoped>
@@ -51,5 +58,14 @@ q-page-container{
   font-weight: 600;
   line-height: normal;
   padding: 20px 40px 20px 40px;
+}
+.arroba{
+  color: var(--cor-11, #DA7C00);
+  text-align: center;
+  font-family: Outfit;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 </style>
