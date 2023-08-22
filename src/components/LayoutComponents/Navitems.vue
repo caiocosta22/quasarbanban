@@ -1,24 +1,32 @@
 <script setup>
 import { ref } from "vue";
 const links = ref([
-  "+ Todas as categorias",
-  "Feminino",
-  "Masculino",
-  "Infantil",
-  "Colegial",
-  "Chinelaria",
-  "Esportivo",
-  "Acessórios",
-  "Marcas"
+  "+ TODAS AS CATEGORIAS",
+  "FEMININO",
+  "MASCULINO",
+  "INFANTIL",
+  "COLEGIAL",
+  "CHINELARIA",
+  "ESPORTIVO",
+  "ACESSÓRIOS",
+  "MARCAS"
 ]);
+const mostrarModal = ref(false);
 </script>
 
 <template lang="pug">
-q-toolbar.menu
-  a(
-    v-for="link in links"
-    :key="link"
-  ) {{ link }}
+div.row
+  q-toolbar.bg-white.justify-evenly.q-pa-sm.col-12
+    a.text-black.text-bold.text-capitalize.cursor-pointer(
+      v-for="link in links"
+      :key="link"
+    )
+      div(v-if=" link === '+ Todas as categorias'" @mouseenter="mostrarModal=true" @mouseout="false") {{ link }}
+      div(v-else) {{ link }}
+  div.bg-white.col-4.q-ml-lg.absolute.q-mt-xl.text-black(v-if="true" @mouseenter="mostrarModal=true" @mouseout="false")
+    p TesteTeste
+    p TesteTeste
+    p TesteTeste
 </template>
 
 <style scoped>
@@ -34,13 +42,7 @@ q-toolbar.menu
   overflow: none;
   padding: 0 95px;
 }
-a {
-  color: #000;
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  font-weight: bold;
+ /* a {
   text-transform: uppercase;
-  cursor: pointer;
-  position: relative;
-}
+}  */
 </style>
