@@ -1,51 +1,47 @@
 <script setup>
 import { ref } from "vue";
 const links = ref([
-  "+ Todas as categorias",
-  "Feminino",
-  "Masculino",
-  "Infantil",
-  "Colegial",
-  "Chinelaria",
-  "Esportivo",
-  "Acessórios",
-  "Marcas"
-  /* span(v-if="link.menu")
-      q-btn(color="primary" label="Scale Menu")
-        q-menu(
-          transition-show="scale"
-          transition-hide="scale")
-          q-list(style="min-width: 100px")
-            q-item(clickable)
-              q-item-section(Having fun)
-            q-item(clickable)
-              q-item-section(Crazy for transitions)
-            q-separator
-            q-item(clickable)
-              q-item-section(Mind blown) */
+  "+ TODAS AS CATEGORIAS",
+  "FEMININO",
+  "MASCULINO",
+  "INFANTIL",
+  "COLEGIAL",
+  "CHINELARIA",
+  "ESPORTIVO",
+  "ACESSÓRIOS",
+  "MARCAS"
 ]);
+const linksmenu = ref([
+  "INFANTIL",
+  "COLEGIAL",
+  "CHINELARIA",
+  "ESPORTIVO",
+  "ACESSÓRIOS",
+  "FEMININO",
+  "MASCULINO",
+  "INFANTIL",
+  "COLEGIAL"
+]);
+const mostrarModal = ref(false);
 </script>
 
 <template lang="pug">
-q-toolbar.menu
-  a(
-    v-for="link in links"
-    :key="link"
-  ) {{ link }}
-   span(v-if=" link === '+ Todas as categorias' ")
-    q-btn(color="black" label="Scale Menu")
-      q-menu(
-          transition-show="scale"
-          transition-hide="scale"
-          )
-        q-list(style="min-width: 100px")
-          q-item(clickable)
-            q-item-section(Teste1)
-          q-item(clickable)
-            q-item-section(Teste2)
-          q-separator
-          q-item(clickable)
-            q-item-section(Teste3)
+div.row
+  q-toolbar.bg-white.justify-evenly.q-pa-sm.col-12
+    a.text-black.text-bold.text-capitalize.cursor-pointer(
+      v-for="link in links"
+      :key="link"
+      @mouseenter="mostrarModal = true"
+      @mouseleave="mostrarModal = false"
+    )
+      div(v-if=" link === '+ Todas as categorias'" @mouseenter="mostrarModal=true" @mouseout="false") {{ link }}
+      div(v-else) {{ link }}
+  div.bg-white.col-5.absolute.text-black.q-ma-xl.q-pa-md(v-if="false" @mouseenter="mostrarModal=true" @mouseleave="false"
+  style="flex-wrap: wrap;")
+    a.text-black.text-bold.text-capitalize.cursor-pointer.column.q-pa-sm.col(
+      v-for ="linkmenu in linksmenu"
+      :key="linkmenu"
+    ) {{ linkmenu }}
 </template>
 
 <style scoped>
@@ -61,13 +57,7 @@ q-toolbar.menu
   overflow: none;
   padding: 0 95px;
 }
-a {
-  color: #000;
-  font-family: 'Outfit', sans-serif;
-  font-size: 14px;
-  font-weight: bold;
+ /* a {
   text-transform: uppercase;
-  cursor: pointer;
-  position: relative;
-}
+}  */
 </style>

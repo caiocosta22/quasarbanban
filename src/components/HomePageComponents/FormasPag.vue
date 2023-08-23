@@ -4,19 +4,18 @@ const slide = ref("first");
 </script>
 
 <template lang="pug">
-div(class="q-pa-md" style="padding:20px")
+div.q-pa-md.justify-center.q-pb-lg
   q-carousel(
     v-model="slide"
     infinite
     arrows
     swipeable
     animated
-    padding
-    height="77px"
+    height="79px"
     control-color="black"
     controler-text-color="white"
     )
-    q-carousel-slide(name="first" img-src="../../assets/images/Carrosel1.png" style="width: 85%; display: flex; align-items: center; margin:auto;height: 77px;")
-    q-carousel-slide(name="second" img-src="../../assets/images/Carrosel1.png" style="width: 85%; display: flex; align-items: center; margin:auto;height: 77px;")
+    q-carousel-slide.q-pr-xl(name="first" img-src="../../assets/images/Carrosel1.png")
+    q-carousel-slide.q-pr-xl(name="second" img-src="../../assets/images/Carrosel1.png")
 
 </template>
