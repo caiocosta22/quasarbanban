@@ -5,7 +5,7 @@ const autoplay = ref(true);
 </script>
 
 <template lang="pug">
-q-carousel.carrosel(
+q-carousel.carrosel.cursor-pointer(
   animated
   v-model="slide"
   navigation
@@ -15,17 +15,12 @@ q-carousel.carrosel(
   transition-prev="slide-right"
   transition-next="slide-left"
   @mouseenter="autoplay = false"
-  @mouseleave="autoplay = true")
+  @mouseleave="autoplay = true"
+  )
+    template(v-slot:navigation-icon="{active, btnProps, onClick}")
+      q-btn(v-if="active" :icon="btnProps.icon" color="orange" flat round dense @click="onClick")
+      q-btn(v-else  :icon="btnProps.icon" color="white" flat round dense @click="onClick")
     q-carousel-slide(:name="1" img-src="../../assets/images/Banner.jpeg")
     q-carousel-slide(:name="2" img-src="../../assets/images/Banner.jpeg")
     q-carousel-slide(:name="3" img-src="../../assets/images/Banner.jpeg")
 </template>
-
-<style scoped>
-.carrosel{
-  height:504px;
-  width:100%;
-  flex-shrink: 0;
-  cursor:pointer;
-}
-</style>
