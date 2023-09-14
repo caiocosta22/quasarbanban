@@ -2,40 +2,44 @@
 </script>
 
 <template lang = "pug">
-q-toolbar.q-pa-sm.row.justify-between.q-gutter-xl.flex
-  div.q-pl-xl.flex
+q-toolbar.q-pa-sm.row.justify-evenly.flex.q-pb-md.q-pt-md
+  a.flex(href="#")
     q-img(
     src="../../../src/assets/images/logo.png"
     spinner-color="white"
     style="width: 195px; height: 87px;"
       )
-  q-input.q-pr-md(
+  q-input(
     v-model="Text"
     debounce="500"
     filled
     placeholder="O que você está procurando?"
     bg-color="white"
     color="black"
-    style="width: 740px;"
+    style="width: 680px; box-shadow:none;"
     ).q-pl-xl
     template(v-slot:append)
-      q-icon(name="search")
-  div.q-gutter-md.row.flex(style="flex-wrap:nowrap")
-    q-icon.q-pb-md
-      img(src="../../assets/svg/usericon.svg" style="width: 23px; height: 23px;").q-pl-sm
-    a(href="#") Minha conta
-    q-icon.q-pb-md
-      img(src="../../assets/svg/tagicon.svg" style="width: 23px; height: 23px;").q-pl-sm
-    a(href="#") Meus pedidos
-    q-icon.q-pb-lg.q-pl-sm
-      img(src="../../assets/svg/bagicon.svg" style="width: 28px; height: 23px;")
+      q-icon(name="search"
+      color="black")
+  div.q-mr-lg.q-pa-md.row.flex(style="flex-wrap:nowrap")
+    div.row.flex.q-pa-sm.cursor-pointer(style="flex-wrap:nowrap; text-align:center; align-items:center")
+      q-icon.q-pr-sm
+        img(src="../../assets/svg/usericon.svg" style="width: 23px; height: 23px;")
+      span.aba Minha conta
+    div.row.flex.q-pa-sm.cursor-pointer(style="flex-wrap:nowrap; text-align:center; align-items:center")
+      q-icon.q-pr-sm
+        img(src="../../assets/svg/tagicon.svg" style="width: 23px; height: 23px;")
+      span.aba Meus pedidos
+    div.row.flex.q-pa-sm.cursor-pointer(style="flex-wrap:nowrap; text-align:center; align-items:center")
+      q-icon.q-pb-sm
+        img(src="../../assets/svg/bagicon.svg" style="width: 28px; height: 23px;")
 </template>
 
 <style scoped>
-a {
+.aba {
   color: #000;
   font-family: Outfit;
-  font-size: 14px;
+  font-size: 16px;
   font-weight: bold;
   text-decoration: none;
 }

@@ -1,47 +1,99 @@
 <script setup>
 import { ref } from "vue";
-const links = ref([
-  "+ TODAS AS CATEGORIAS",
-  "FEMININO",
-  "MASCULINO",
-  "INFANTIL",
-  "COLEGIAL",
-  "CHINELARIA",
-  "ESPORTIVO",
-  "ACESSÓRIOS",
-  "MARCAS"
+const showMenu = ref(false);
+const showThisMenu = ref("+TODAS AS CATEGORIAS");
+const categoriesBase = ref([
+  {
+    name: "+TODAS AS CATEGORIAS",
+    children: [
+      { name: "FEMININO", children: [] },
+      { name: "MASCULINO", children: [] },
+      { name: "INFANTIL", children: [] },
+      { name: "COLEGIAL", children: [] },
+      { name: "CHINELARIA", children: [] }
+    ]
+  },
+  { name: "FEMININO", children: [] },
+  { name: "MASCULINO", children: [] },
+  { name: "INFANTIL", children: [] },
+  { name: "COLEGIAL", children: [] },
+  { name: "CHINELARIA", children: [] },
+  { name: "ESPORTIVO", children: [] },
+  { name: "ACESSÓRIOS", children: [] },
+  { name: "MARCAS", children: [] }
 ]);
-const mostrarModal = ref(false);
+function openMenu (name) {
+  showMenu.value = true;
+  showThisMenu.value = name;
+}
+function closeMenu (name) {
+  showMenu.value = false;
+  showThisMenu.value = "";
+}
+//  async function searchProducts () {
+//    try {
+//      let data = [];
+//      if (productTyped.value) {
+//        // ? Aqui é o local para implementar uma lógica de loading (para criar um loading caso queira mostrar uma tabelinha para o cliente enquanto retorna os produtos)
+//        // ? Recomendo utilizar uma ref e setar como true e no final da função setar como false (dica: utilizar o finally do try catch finally, pesquisar sobre!)
+//        data = await axios.get(`/api/servicoService/filtroBuscaV2/${productTyped.value}/-1/1/false/-1`).then(e => e.data);
+//      }
+//      if (data.content && data.content.length) productsSearched.value = data.content;
+//    } catch (e) {
+//      // ? Caso queira mostrar um erro para o usuario utilizar o quasar notify ($q.notify)
+//      // ? exemplo -> import { useQuasar } from "quasar"; const $q = useQuasar(); $q.notify() -> pesquisar sobre!
+//      console.error(e);
+//    }
+//  }
 </script>
 
 <template lang="pug">
-div.row
-  q-toolbar.bg-white.justify-evenly.q-pa-sm.col-12
-    a.text-black.text-bold.text-capitalize.cursor-pointer(
-      v-for="link in links"
-      :key="link"
+q-toolbar.q-pa-md.justify-evenly(style="background-color:white;")
+  template(
+    v-for="categorie in categoriesBase"
+    :key="categorie.name"
+  )
+    template(
+      v-if="categorie.children?.length"
     )
-      div(v-if=" link === '+ Todas as categorias'" @mouseenter="mostrarModal=true" @mouseout="false") {{ link }}
-      div(v-else) {{ link }}
-  div.bg-white.col-4.q-ml-lg.absolute.q-mt-xl.text-black(v-if="true" @mouseenter="mostrarModal=true" @mouseout="false")
-    p TesteTeste
-    p TesteTeste
-    p TesteTeste
+      p.text-bold.cursor-pointer(
+        unelevated
+        @mouseover="openMenu(categorie.name)"
+      ) {{ categorie.name }}
+        template(
+          v-if="categorie.name == showThisMenu"
+        )
+          q-menu.cursor-pointer(
+            v-model="showMenu"
+            @mouseleave="closeMenu(categorie.name)"
+            style="width:200px;"
+          )
+            q-list.text-bold.q-pa-md.text-center(style="min-width: 100px")
+              template(
+                v-for="child in categorie.children"
+                :key="child.name"
+              )
+                q-item
+                  q-item-section {{ child.name }}
+                q-separator
+    template(
+      v-else
+    )
+      p.text-bold {{ categorie.name }}
 </template>
 <style scoped>
-.menu {
-  width: 100%;
-  height: 49.971px;
-  flex-shrink: 0;
-  border: 1px solid #e9e9e9;
-  background: #fff;
-  justify-content: space-between;
-  align-items: center;
-  display: flex;
-  overflow: none;
-  padding: 0 95px;
+a{
+  cursor: pointer;
+  font-weight: bold;
+  color:black
 }
- /* a {
-  text-transform: uppercase;
-}  */
+p{
+  color:black
+}
+.menu{
+  font-weight:bolder;
+}
+.oquebusca{
+  transition: 1s;
+}
 </style>
