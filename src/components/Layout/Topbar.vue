@@ -23,15 +23,8 @@ setInterval(() => {
 
 <template lang = "pug">
 q-toolbar.justify-center(style="background-color: #000;")
-  a.text-center {{ padrao }}
+  span.text-center.text-h7(style="color:yellow") {{ padrao }}
 </template>
 
 <style scoped>
-a{
-  font-family: 'Outfit';
-  font-size: 14px;
-  font-style: normal;
-  font-weight: 400;
-  color: #fbea2b
-}
 </style>

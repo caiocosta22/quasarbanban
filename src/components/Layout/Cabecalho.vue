@@ -2,24 +2,25 @@
 </script>
 
 <template lang = "pug">
-q-toolbar.q-pa-sm.row.justify-between.q-gutter-xl
-  q-img(
+q-toolbar.q-pa-sm.row.justify-between.q-gutter-xl.flex
+  div.q-pl-xl.flex
+    q-img(
     src="../../../src/assets/images/logo.png"
-    alt=""
+    spinner-color="white"
     style="width: 195px; height: 87px;"
-      ).col-6
-  q-input(
+      )
+  q-input.q-pr-md(
     v-model="Text"
     debounce="500"
     filled
     placeholder="O que você está procurando?"
     bg-color="white"
     color="black"
-    style="width: 576px;"
-    ).col.q-pl-xl
+    style="width: 740px;"
+    ).q-pl-xl
     template(v-slot:append)
       q-icon(name="search")
-  div.col-3.q-gutter-md.q-pl-lg
+  div.q-gutter-md.row.flex(style="flex-wrap:nowrap")
     q-icon.q-pb-md
       img(src="../../assets/svg/usericon.svg" style="width: 23px; height: 23px;").q-pl-sm
     a(href="#") Minha conta

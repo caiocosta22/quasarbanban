@@ -3,7 +3,7 @@
 </script>
 
 <template lang="pug">
-div.row.q-gutter-md.justify-center.q-pa-md
+div.row.q-gutter-md.justify-center.q-pa-lg
     img(src="../../assets/images/Promocao1.jpeg").col-2
     img(src="../../assets/images/Promocao2.jpeg").col-2
     img(src="../../assets/images/Promocao3.jpeg").col-2

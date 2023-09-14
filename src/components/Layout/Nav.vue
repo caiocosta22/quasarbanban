@@ -28,7 +28,6 @@ div.row
     p TesteTeste
     p TesteTeste
 </template>
-
 <style scoped>
 .menu {
   width: 100%;
