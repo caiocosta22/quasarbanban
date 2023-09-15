@@ -1,5 +1,5 @@
 <template lang="pug">
-q-layout(view="lHh Lpr lFf")
+q-layout(view="hHh Lpr lff")
   q-header(header)
     Topbar
     Cabecalho
@@ -14,3 +14,7 @@ import Cabecalho from "../components/Layout/Cabecalho.vue";
 import Navbar from "../components/Layout/Nav.vue";
 import Rodape from "../components/Layout/Rodape.vue";
 </script>
+
+<style scoped>
+
+</style>

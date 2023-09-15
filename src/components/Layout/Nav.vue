@@ -48,7 +48,7 @@ function closeMenu (name) {
 </script>
 
 <template lang="pug">
-q-toolbar.q-pa-md.justify-evenly(style="background-color:white;")
+q-toolbar.q-pa-md.justify-evenly.nav(style="background-color:white;")
   template(
     v-for="categorie in categoriesBase"
     :key="categorie.name"
@@ -96,5 +96,10 @@ p{
 }
 .oquebusca{
   transition: 1s;
+}
+@media screen and (max-width: 1025px) {
+  .nav{
+    display: none;
+  }
 }
 </style>

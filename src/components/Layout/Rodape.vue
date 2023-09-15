@@ -2,7 +2,7 @@
 </script>
 
 <template lang="pug">
-div.row.justify-evenly.text-bold.q-pa-md(style="flex-wrap:nowrap; background-color:#F4F4F4;" )
+.rodape.row.justify-evenly.text-bold.q-pa-md(style="flex-wrap:nowrap; background-color:#F4F4F4;" )
   div.Institucional.column.cursor-pointer(style="width:264px")
     p.principal Institucional
     p.cursor-pointer.secundario(href="#") A empresa
@@ -49,11 +49,58 @@ div.row.justify-evenly.text-bold.q-pa-md(style="flex-wrap:nowrap; background-col
           size="md"
           name="fa-brands fa-whatsapp"
         )
+.rodape2
+  q-expansion-item.listas.text-bold(
+    expand-separator
+    label="Institucional"
+  )
+    q-card.listas
+      q-card-section
+        a(href="#") A empresa
+      q-card-section
+        a(href="#") Política de Entrega
+      q-card-section
+        a(href="#") Privacidade e Segurança
+      q-card-section
+        a(href="#") Trocas e Devoluções
+  q-expansion-item.listas.text-bold(
+    expand-separator
+    label="Minha Conta"
+  )
+    q-card.listas
+      q-card-section
+        a(href="#") Perfil
+      q-card-section
+        a(href="#") Meus pedidos
+      q-card-section
+        a(href="#") Meu carrinho
+  q-expansion-item.listas.text-bold(
+    expand-separator
+    label="Ajuda e suporte"
+  )
+    q-card.listas
+      q-card-section
+        a(href="#") Nosso chat
+  q-expansion-item.listas.text-bold(
+    expand-separator
+    label="Contato"
+  )
+    q-card.listas
+      q-card-section
+        p sac@banbancalcados.com.br
+      q-card-section
+        p (85)99634-3864
+      q-card-section
+        p Atendimento: <br> Segunda à sexta, de 9h as 17h.
 div.text-black.justify-center.text-center.text-bold.row(style="background-color:#F4F4F4")
   p BanBan Calçados -CNPJ: 10.947.389/0005-64 | Rua Barão do Rio Branco, 820- Fortaleza - Ceará | CEP 60025-060
 </template>
 
 <style scoped>
+a{
+  cursor: pointer;
+  text-decoration: none;
+}
 *{
   color:black
 }
@@ -62,5 +109,29 @@ div.text-black.justify-center.text-center.text-bold.row(style="background-color:
 }
 .secundario{
   font-size:20px
+}
+.listas{
+  background-color:#F4F4F4 ;
+  box-shadow:none
+}
+@media screen and (min-width: 1025px) {
+  .rodape2{
+    display:none;
+    padding: 20px;
+  }
+}
+@media screen and (max-width: 1025px) {
+  .rodape{
+    display:none;
+    flex-direction: column;
+  }
+  .secundario{
+    font-weight: bold;
+    font-size: 18px;
+  }
+  .primario{
+    font-weight: bolder;
+    font-size: 20px;
+  }
 }
 </style>

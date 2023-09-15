@@ -27,4 +27,5 @@ q-toolbar.justify-center(style="background-color: #000;")
 </template>
 
 <style scoped>
+
 </style>
