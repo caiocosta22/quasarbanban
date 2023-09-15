@@ -88,7 +88,8 @@ a{
   color:black
 }
 p{
-  color:black
+  color:black;
+  font-size: 18px;
 }
 .menu{
   font-weight:bolder;

@@ -2,7 +2,7 @@
 </script>
 
 <template lang="pug">
-div.row.justify-center.text-bold.q-pa-md(style="flex-wrap:nowrap")
+div.row.justify-evenly.text-bold.q-pa-md(style="flex-wrap:nowrap; background-color:#F4F4F4;" )
   div.Institucional.column.cursor-pointer(style="width:264px")
     p.principal Institucional
     p.cursor-pointer.secundario(href="#") A empresa
@@ -49,7 +49,7 @@ div.row.justify-center.text-bold.q-pa-md(style="flex-wrap:nowrap")
           size="md"
           name="fa-brands fa-whatsapp"
         )
-div.text-black.justify-center.text-center.text-bold.row
+div.text-black.justify-center.text-center.text-bold.row(style="background-color:#F4F4F4")
   p BanBan Calçados -CNPJ: 10.947.389/0005-64 | Rua Barão do Rio Branco, 820- Fortaleza - Ceará | CEP 60025-060
 </template>
 

@@ -2,7 +2,7 @@
 </script>
 
 <template lang = "pug">
-q-toolbar.q-pa-sm.row.justify-evenly.flex.q-pb-md.q-pt-md
+q-toolbar.row.justify-around.flex.q-pb-md.q-pt-md
   a.flex(href="#")
     q-img(
     src="../../../src/assets/images/logo.png"
@@ -17,11 +17,11 @@ q-toolbar.q-pa-sm.row.justify-evenly.flex.q-pb-md.q-pt-md
     bg-color="white"
     color="black"
     style="width: 680px; box-shadow:none;"
-    ).q-pl-xl
+    ).q-pl-sm
     template(v-slot:append)
       q-icon(name="search"
       color="black")
-  div.q-mr-lg.q-pa-md.row.flex(style="flex-wrap:nowrap")
+  div.q-pa-md.row.flex(style="flex-wrap:nowrap")
     div.row.flex.q-pa-sm.cursor-pointer(style="flex-wrap:nowrap; text-align:center; align-items:center")
       q-icon.q-pr-sm
         img(src="../../assets/svg/usericon.svg" style="width: 23px; height: 23px;")
@@ -39,7 +39,7 @@ q-toolbar.q-pa-sm.row.justify-evenly.flex.q-pb-md.q-pt-md
 .aba {
   color: #000;
   font-family: Outfit;
-  font-size: 16px;
+  font-size: 20px;
   font-weight: bold;
   text-decoration: none;
 }
