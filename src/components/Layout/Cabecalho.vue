@@ -87,11 +87,12 @@ q-toolbar.row.justify-around.flex.q-pb-md.q-pt-md.cabecalho
       )
 .multimenu
   q-drawer(
-    show-if-above
+    behavior="mobile"
     v-model="drawer"
     :width="200"
-    :breakpoint="700"
+    :breakpoint="1025"
     bordered
+    dark
   )
     q-scroll-area
       q-list
