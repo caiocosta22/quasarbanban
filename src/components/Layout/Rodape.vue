@@ -101,7 +101,7 @@
         p (85)99634-3864
       q-card-section
         p Atendimento: <br> Segunda à sexta, de 9h as 17h.
-div.text-black.justify-center.text-center.text-bold.row(style="background-color:#F4F4F4")
+div.text-black.justify-center.text-center.text-bold.row.q-pa-md(style="background-color:#F4F4F4")
   p BanBan Calçados -CNPJ: 10.947.389/0005-64 | Rua Barão do Rio Branco, 820- Fortaleza - Ceará | CEP 60025-060
 </template>
 
