@@ -3,39 +3,39 @@ import { ref } from "vue";
 
 const menuList = [
   {
-    icon: "inbox",
-    label: "Inbox",
+    icon: "search",
+    label: "Pesquisa",
     separator: true
   },
   {
     icon: "send",
-    label: "Outbox",
+    label: "Feminino",
     separator: false
   },
   {
-    icon: "delete",
-    label: "Trash",
+    icon: "send",
+    label: "Masculino",
     separator: false
   },
   {
-    icon: "error",
-    label: "Spam",
+    icon: "send",
+    label: "Esportivo",
+    separator: false
+  },
+  {
+    icon: "send",
+    label: "Casual",
     separator: true
   },
   {
-    icon: "settings",
-    label: "Settings",
-    separator: false
-  },
-  {
     icon: "feedback",
-    label: "Send Feedback",
+    label: "Sobre nós",
     separator: false
   },
   {
     icon: "help",
     iconColor: "primary",
-    label: "Help",
+    label: "Ajuda",
     separator: false
   }
 ];
@@ -93,15 +93,14 @@ q-toolbar.row.justify-around.flex.q-pb-md.q-pt-md.cabecalho
     :breakpoint="1025"
     bordered
     dark
+    side="right"
   )
-    q-scroll-area
+    q-scroll-area(class="fit")
       q-list
-        template(
-          v-for="(menuItem, index) in menuList" :key="index"
-        )
-          q-item(
+        template(v-for="(menuItem, index) in menuList" :key="index")
+          q-item.text-bold(
             clickable :active="menuItem.label === 'Outbox'" v-ripple
-            style="color:black"
+            style="color:yellow; font-size:bold"
           )
             q-item-section(avatar)
               q-icon(:name="menuItem.icon")
