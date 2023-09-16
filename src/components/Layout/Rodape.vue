@@ -2,7 +2,7 @@
 </script>
 
 <template lang="pug">
-.rodape.row.justify-evenly.text-bold.q-pa-md(style="flex-wrap:nowrap; background-color:#F4F4F4;" )
+.rodape.row.q-gutter-sm.justify-evenly.q-pa-lg(style="flex-wrap:nowrap; background-color:#F4F4F4;" )
   div.Institucional.column.cursor-pointer(style="width:264px")
     p.principal Institucional
     p.cursor-pointer.secundario(href="#") A empresa
@@ -11,6 +11,7 @@
     p.secundario Trocas e devoluções
   div.MeusDados.column.cursor-pointer(style="width:264px")
     p.principal Minha conta
+    p.secundario Perfil
     p.secundario Meus pedidos
     p.secundario Meu carrinho
   div.Suporte.column.cursor-pointer(style="width:264px")
@@ -22,9 +23,9 @@
     p.secundario sac@banbancalcados.com.br
     p.secundario SAC(85)99634-3864
     p.secundario Atendimento:<br>Segunda à sexta, de 9h as 17h.
-  div.Redes.column(style="width:264px")
+  div.Redes.column(style="width:260px;")
     p.principal Permaneça Conectado
-    div.row.cursor-pointer
+    div.row.cursor-pointer(style=" flex-wrap: nowrap;")
       a(
         target="_blank"
         href="https://www.instagram.com/banbancalcados/"
@@ -48,6 +49,14 @@
         q-icon(
           size="md"
           name="fa-brands fa-whatsapp"
+        )
+      a.q-ml-md(
+        target="_blank"
+        href="#"
+      )
+        q-icon(
+          size="md"
+          name="fa-brands fa-linkedin"
         )
 .rodape2
   q-expansion-item.listas.text-bold(
@@ -105,10 +114,11 @@ a{
   color:black
 }
 .principal{
-  font-size:22px
+  font-size:18px;
+  font-weight: bold;
 }
 .secundario{
-  font-size:20px
+  font-size:16px
 }
 .listas{
   background-color:#F4F4F4 ;
@@ -127,7 +137,7 @@ a{
   }
   .secundario{
     font-weight: bold;
-    font-size: 18px;
+    font-size: 17px;
   }
   .primario{
     font-weight: bolder;

@@ -116,6 +116,7 @@ q-toolbar.row.justify-around.flex.q-pb-md.q-pt-md.cabecalho
   font-weight: bold;
   text-decoration: none;
 }
+
 @media screen and (min-width: 1025px) {
   .multimenu{
     display:none
@@ -130,7 +131,7 @@ q-toolbar.row.justify-around.flex.q-pb-md.q-pt-md.cabecalho
     display: none;
   }
   .logo{
-    width: 115px;
+    width: 120px;
     height: 51px;
   }
 }
@@ -141,6 +142,14 @@ q-toolbar.row.justify-around.flex.q-pb-md.q-pt-md.cabecalho
   .cabecalho{
     display:flex;
     justify-content: space-between;
+  }
+}
+@media screen and (min-width: 1026px) and (max-width: 1273px) {
+  .aba{
+    font-size:15px
+  }
+  .busca{
+    max-width: 490px;
   }
 }
 </style>

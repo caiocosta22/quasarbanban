@@ -102,4 +102,9 @@ p{
     display: none;
   }
 }
+@media screen and (min-width: 1026px) and (max-width: 1273px) {
+ p{
+  font-size: 16px;
+}
+}
 </style>
