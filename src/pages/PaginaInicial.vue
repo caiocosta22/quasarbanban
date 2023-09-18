@@ -3,8 +3,7 @@ q-page-container
   BannerPrincipal
   //- FormasPag
   //- div
-  //-   p.titulo Mais vendidos
-  //- Produtos
+  Produtos
   //- div
   //-   p.titulo Escolha por categoria
   //- Categorias
@@ -33,7 +32,7 @@ q-page-container
 <script setup>
 import BannerPrincipal from "../components/PaginaInicial/Banner.vue";
 // import FormasPag from "../components/HomePageComponents/FormasPag.vue";
-// import Produtos from "../components/HomePageComponents/Produtos.vue";
+import Produtos from "../components/PaginaInicial/MaisVendidos.vue";
 // import Categorias from "../components/HomePageComponents/Categorias.vue";
 // import Novidades from "../components/HomePageComponents/Novidades.vue";
 // import Promocoes from "../components/HomePageComponents/Promocoes.vue";
