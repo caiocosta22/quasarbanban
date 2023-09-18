@@ -48,7 +48,7 @@ function closeMenu (name) {
 </script>
 
 <template lang="pug">
-q-toolbar.q-pa-md.justify-evenly.nav(style="background-color:white;")
+q-toolbar.justify-evenly.nav(style="background-color:white;")
   template(
     v-for="categorie in categoriesBase"
     :key="categorie.name"
@@ -68,7 +68,7 @@ q-toolbar.q-pa-md.justify-evenly.nav(style="background-color:white;")
             @mouseleave="closeMenu(categorie.name)"
             style="width:200px;"
           )
-            q-list.text-bold.q-pa-md.text-center(style="min-width: 100px")
+            q-list.text-bold.text-center(style="min-width: 100px")
               template(
                 v-for="child in categorie.children"
                 :key="child.name"
@@ -89,7 +89,13 @@ a{
 }
 p{
   color:black;
-  font-size: 18px;
+  font-size: 16px;
+}
+.nav{
+  display:flex;
+  padding-top: 15px;
+  min-height: 40px;
+  height: 50px;
 }
 .menu{
   font-weight:bolder;
@@ -97,12 +103,12 @@ p{
 .oquebusca{
   transition: 1s;
 }
-@media screen and (max-width: 1025px) {
+@media screen and (max-width: 1027px) {
   .nav{
     display: none;
   }
 }
-@media screen and (min-width: 1026px) and (max-width: 1273px) {
+@media screen and (min-width: 1027px) and (max-width: 1273px) {
  p{
   font-size: 16px;
 }

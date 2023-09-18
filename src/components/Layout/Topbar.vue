@@ -22,10 +22,9 @@ setInterval(() => {
 </script>
 
 <template lang = "pug">
-q-toolbar.justify-center(style="background-color: #000;")
-  span.text-center.text-h7(style="color:yellow") {{ padrao }}
+q-toolbar.justify-center.topbar(style="background-color: black; min-height: 35px; height:40px" )
+  span.text-center(style="color:yellow") {{ padrao }}
 </template>
 
 <style scoped>
-
 </style>

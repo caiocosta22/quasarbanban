@@ -1,6 +1,6 @@
 <template lang="pug">
 q-page-container
-  //- BannerPrincipal
+  BannerPrincipal
   //- FormasPag
   //- div
   //-   p.titulo Mais vendidos
@@ -31,7 +31,7 @@ q-page-container
 </template>
 
 <script setup>
-// import BannerPrincipal from "../components/HomePageComponents/Banneritems.vue";
+import BannerPrincipal from "../components/PaginaInicial/Banner.vue";
 // import FormasPag from "../components/HomePageComponents/FormasPag.vue";
 // import Produtos from "../components/HomePageComponents/Produtos.vue";
 // import Categorias from "../components/HomePageComponents/Categorias.vue";
