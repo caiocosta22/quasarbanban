@@ -9,8 +9,8 @@
 // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js
 
 const { configure } = require("quasar/wrappers");
-const path = require("path");
 const vuePugPlugin = require("vue-pug-plugin");
+require("dotenv").config();
 
 module.exports = configure(function (ctx) {
   return {
@@ -54,12 +54,18 @@ module.exports = configure(function (ctx) {
 
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#build
     build: {
+      env: {
+        BASE_URL: "elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal",
+        HOST_URL: "http://localhost:8080/#/",
+        VERCEL_URL: "https://mita.vercel.app/#/",
+        TENANT: "mitaoficial"
+      },
       target: {
         browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
         node: "node16"
       },
 
-      vueRouterMode: "history", // available values: 'hash', 'history'
+      vueRouterMode: "hash", // available values: 'hash', 'history'
       uglifyOptions: {
         compress: { drop_console: true }
       },
@@ -68,7 +74,8 @@ module.exports = configure(function (ctx) {
       // vueOptionsAPI: false,
 
       // rebuildCache: true, // rebuilds Vite/linter/etc cache on startup
-
+      // publicPath: ctx.mode.spa ? "/" : "/app/",
+      publicPath: "/",
       // analyze: true,
       // env: {},
       // rawDefine: {}
@@ -88,13 +95,6 @@ module.exports = configure(function (ctx) {
       // viteVuePluginOptions: {},
 
       vitePlugins: [
-        ["@intlify/vite-plugin-vue-i18n", {
-          // if you want to use Vue I18n Legacy API, you need to set `compositionOnly: false`
-          // compositionOnly: false,
-
-          // you need to set i18n resource including paths !
-          include: path.resolve(__dirname, "./src/i18n/**")
-        }],
         vuePugPlugin
       ]
     },
@@ -102,7 +102,13 @@ module.exports = configure(function (ctx) {
     // Full list of options: https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#devServer
     devServer: {
       port: 8080,
-      // https: true
+      // proxy: {
+      //   "/projeto": {
+      //     target: "https://mitaoficial.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal",
+      //     changeOrigin: true,
+      //     // rewrite: (path) => path.replace(/^\https://mitaoficial.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/, "")
+      //   }
+      // },
       open: false
     },
 
@@ -115,7 +121,6 @@ module.exports = configure(function (ctx) {
           actions: [{ icon: "close", color: "white" }]
         }
       },
-
       // iconSet: 'material-icons', // Quasar icon set
       lang: "pt-BR", // Quasar language pack
 

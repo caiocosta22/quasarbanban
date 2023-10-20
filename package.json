@@ -1,6 +1,7 @@
 {
-  "name": "rodapfv",
+  "name": "banban-project",
   "version": "1.0.5",
+  "productName": "Banban Calçados",
   "private": true,
   "scripts": {
     "dev": "quasar dev",
@@ -15,8 +16,11 @@
     "@fortawesome/free-solid-svg-icons": "^6.4.2",
     "@fortawesome/vue-fontawesome": "^3.0.3",
     "@quasar/extras": "^1.0.0",
-    "axios": "^1.1.2",
+    "@splidejs/vue-splide": "^0.6.12",
+    "@websitebeaver/vue-magnifier": "^1.1.0",
+    "axios": "^1.5.0",
     "date-fns": "^2.29.3",
+    "dotenv": "^16.3.1",
     "highcharts": "^10.2.1",
     "highcharts-vue": "^1.4.0",
     "mixpanel-browser": "^2.45.0",
@@ -29,7 +33,9 @@
     "v-money": "^0.8.1",
     "vue": "^3.0.0",
     "vue-i18n": "^9.0.0",
+    "vue-inner-image-zoom": "^2.0.0",
     "vue-router": "^4.1.5",
+    "vue-slick-carousel": "^1.0.6",
     "vue-the-mask": "^0.11.1",
     "vue3-carousel": "^0.3.1"
   },
