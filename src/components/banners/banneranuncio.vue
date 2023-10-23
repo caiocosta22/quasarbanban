@@ -1,6 +1,6 @@
 <script setup>
 import { ref, onBeforeMount } from "vue";
-// import axios from "axios";
+import axios from "axios";
 
 const slide = ref(0);
 const itsLoading = ref(true);
@@ -29,19 +29,19 @@ const bannersAnuncio = ref([
   }
 ]);
 
-//  async function searchTopBanners () {
-//    try {
-//      const banners = await axios.get("https://sualoja.//  elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover///  portal/bannerService/allEcommerce").then(e => e.data);
-//      if (banners.length) bannersAnuncio.value = banners.filter//  (banner => banner.posicionamento === "anuncio");
-//    } catch (e) {
-//      console.error(e);
-//    }
-//  }
+async function searchTopBanners () {
+  try {
+    const banners = await axios.get("https://sualoja.//  elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover///  portal/bannerService/allEcommerce").then(e => e.data);
+    if (banners.length) bannersAnuncio.value = banners.filter(banner => banner.posicionamento === "anuncio");
+  } catch (e) {
+    console.error(e);
+  }
+}
 
 onBeforeMount(async () => {
   itsLoading.value = true;
-  // await searchTopBanners();
-  // itsLoading.value = false;
+  await searchTopBanners();
+  itsLoading.value = false;
 });
 </script>
 
