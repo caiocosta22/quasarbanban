@@ -78,7 +78,8 @@ q-toolbar(
     q-btn(
       color="white"
       label="+TODAS AS CATEGORIAS"
-      style="box-shadow:none"
+      label-color="black"
+      style="box-shadow:none; color:black"
     )
       q-menu.itemmenu.cursor-pointer(
         label="Scale"

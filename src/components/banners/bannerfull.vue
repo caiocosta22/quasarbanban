@@ -1,11 +1,10 @@
 <script setup>
 import { ref, onBeforeMount } from "vue";
-// import axios from "axios";
+import axios from "axios";
 
 const slide = ref(0);
 const itsLoading = ref(true);
 const autoplay = ref(true);
-const icon = ref("/icons/icon_banban");
 
 const bannersCarousel = ref([
   {
@@ -31,18 +30,18 @@ const bannersCarousel = ref([
   }
 ]);
 
-// async function searchTopBanners () {
-//   try {
-//     const banners = await axios.get("https://sualoja.// elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/// portal/bannerService/allEcommerce").then(e => e.data);
-//     if (banners.length) bannersCarousel.value = banners.filter// (banner => banner.posicionamento === "topo");
-//   } catch (e) {
-//     console.error(e);
-//   }
-// }
+async function searchTopBanners () {
+  try {
+    const banners = await axios.get("https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/bannerService/allEcommerce").then(e => e.data);
+    if (banners.length) bannersCarousel.value = banners.filter(banner => banner.posicionamento === "topo");
+  } catch (e) {
+    console.error(e);
+  }
+}
 
 onBeforeMount(async () => {
   itsLoading.value = true;
-  // await searchTopBanners();
+  await searchTopBanners();
   itsLoading.value = false;
 });
 
@@ -65,7 +64,6 @@ div.banner
       infinite
       swipeable
       navigation
-      arrows
       :autoplay="autoplay"
       transition-prev="slide-right"
       transition-next="slide-left"

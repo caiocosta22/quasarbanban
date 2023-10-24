@@ -54,7 +54,7 @@ const itsLoading = ref(true);
 
 async function searchCategories () {
   try {
-    const categorias = await axios.get("https://sualoja.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/categoriaAutoRelacionada/getAllCategorias").then(e => e.data);
+    const categorias = await axios.get("https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/categoriaAutoRelacionada/getAllCategorias").then(e => e.data);
     const categoriascomFoto = categorias.filter(categoria => categoria.fotoUrl);
     if (categorias.length) categoriasCarousel.value = categoriascomFoto;
   } catch (e) {
@@ -79,8 +79,8 @@ onBeforeMount(async () => {
 
 <template lang="pug">
 div.row.col.justify-center.q-py-lg
-  div.col-10.row.justify-start
-    .sessao.justify-start.text-black Escolha por Categoria
+  div.col-10.row.justify-center
+    .sessao.justify-center.text-black Escolha por Categoria
 .container.row.col.q-pt-sm.q-mb-md
   Carousel.col-10.q-ml-sm(
       v-bind="settings"
@@ -120,12 +120,12 @@ div.row.col.justify-center.q-py-lg
   margin-bottom:20px
 }
 .sessao{
-  color: #000;
+  color: var(--Cor-2, #000);
   text-align: center;
-  font-family: Catamaran;
-  font-size: 35px;
+  font-family: Outfit;
+  font-size: 30px;
   font-style: normal;
-  font-weight: 100;
+  font-weight: 600;
   line-height: normal;
 }
 </style>
