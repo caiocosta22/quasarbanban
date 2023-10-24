@@ -7,21 +7,21 @@ const itsLoading = ref(true);
 
 const bannersAnuncio = ref([
   {
-    fotoWebp: "https://cs210033fff90d2f7ac.blob.core.windows.net/mitaoficial/banner/2023-10-04T15:44:04.670_110.webp",
+    fotoWebp: "https://cs210033fff90d2f7ac.blob.core.windows.net/banbancalcados/banner/2023-10-04T15:44:04.670_110.webp",
     id: 0,
     image: "",
     ordem: 0,
     posicionamento: "anuncio"
   },
   {
-    fotoWebp: "https://cs210033fff90d2f7ac.blob.core.windows.net/mitaoficial/banner/2023-10-04T15:44:04.670_110.webp",
+    fotoWebp: "https://cs210033fff90d2f7ac.blob.core.windows.net/banbancalcados/banner/2023-10-04T15:44:04.670_110.webp",
     id: 0,
     image: "",
     ordem: 0,
     posicionamento: "anuncio"
   },
   {
-    fotoWebp: "https://cs210033fff90d2f7ac.blob.core.windows.net/mitaoficial/banner/2023-10-04T15:44:04.670_110.webp",
+    fotoWebp: "https://cs210033fff90d2f7ac.blob.core.windows.net/banbancalcados/banner/2023-10-04T15:44:04.670_110.webp",
     id: 0,
     image: "",
     ordem: 0,

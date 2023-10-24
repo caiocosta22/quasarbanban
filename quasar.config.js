@@ -58,7 +58,7 @@ module.exports = configure(function (ctx) {
         BASE_URL: "elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal",
         HOST_URL: "http://localhost:8080/#/",
         VERCEL_URL: "https://mita.vercel.app/#/",
-        TENANT: "mitaoficial"
+        TENANT: "banbancalcados"
       },
       target: {
         browser: ["es2019", "edge88", "firefox78", "chrome87", "safari13.1"],
@@ -104,9 +104,9 @@ module.exports = configure(function (ctx) {
       port: 8080,
       // proxy: {
       //   "/projeto": {
-      //     target: "https://mitaoficial.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal",
+      //     target: "https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal",
       //     changeOrigin: true,
-      //     // rewrite: (path) => path.replace(/^\https://mitaoficial.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/, "")
+      //     // rewrite: (path) => path.replace(/^\https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/, "")
       //   }
       // },
       open: false

@@ -5,6 +5,7 @@ import { ref, onBeforeMount } from "vue";
 const slide = ref(0);
 const itsLoading = ref(true);
 const autoplay = ref(true);
+const icon = ref("/icons/icon_banban");
 
 const bannersCarousel = ref([
   {
@@ -59,14 +60,39 @@ div.banner
     v-else-if="!itsLoading"
   )
     q-carousel.cursor-pointer.col(
-      animated
       v-model="slide"
+      animated
       infinite
       swipeable
+      navigation
+      arrows
       :autoplay="autoplay"
       transition-prev="slide-right"
       transition-next="slide-left"
     )
+      template(
+          v-slot:navigation-icon="{ active, btnProps, onClick }"
+        )
+          q-btn(
+            v-if="active"
+            size="md"
+            :icon="btnProps.icon"
+            color="orange"
+            flat
+            round
+            dense
+            @click="onClick"
+          )
+          q-btn(
+            v-else
+            size="sm"
+            :icon="btnProps.icon"
+            color="white"
+            flat
+            round
+            dense
+            @click="onClick"
+          )
       template(
         v-for="(banner, index) in bannersCarousel"
         :key="index"
