@@ -32,78 +32,149 @@ const envioemail = async () => {
 </script>
 
 <template lang="pug">
-div.container.col.q-pt-md
-  div.row.email.fit.col-10.q-gutter-sm.q-pa-sm
-    div.texto.col-3.q-pl-sm
-      span.titulo(style="color: #000;font-size: 24px;font-weight: 400;") Cadastre-se em nossa Lista Vip
-      span.subtexto(style="color: #000;font-size: 18px;font-weight: 300;") Fique por dentro de tudo que acontece e receba novidades e ofertas exclusivas!
-    q-input.nomeinput.col-2(
+div.container
+  div.interno
+    div.texto
+      p.titulo Cadastre seu e-mail
+      span.secundario e
+      span.negrito  fique por dentro
+      span.secundario  de todas as nossas
+      span.negrito  ofertas
+      span.secundario  e
+      span.negrito  novidades
+      span.secundario  exclusivas
+    q-input.input(
       standout
       v-model="nome"
       label="Digite seu nome"
       bg-color="white"
       color="black"
-      label-color="black"
-      text="black"
+      label-color="orange"
       outlined
     )
-    q-input.emailinput.col-3(
+    q-input.input(
       standout
       v-model="email"
       label="Digite seu e-mail"
       bg-color="white"
       color="black"
-      label-color="black"
+      label-color="orange"
       outlined
       v-validate="'required|email'"
     )
-    q-btn.col-2.botao.q-pa-md(
-      color="black"
-      label="Cadastrar"
+    q-btn.botao.q-py-md(
+      color="orange"
+      label="Enviar"
       @click="envioemail"
     )
 </template>
 
 <style scoped>
-.container{
-  display: none;
+* {
+ font-family: Outfit;
 }
-*{
-  color: black;
-}
-.texto{
-  text-align:left;
-  display: flex;
-  flex-direction: column;
-}
-.email{
+.container {
   display:flex;
-  flex-wrap:nowrap;
-  justify-content:center;
-  position: relative;
+  flex-direction: column;
   box-sizing: border-box;
+  justify-content: center;
+  position: relative;
+  height: 170px;
+  width: 100%;
+  background-color: #000;
+}
+.interno {
+  width: 85%;
+  margin: 0 auto;
+  flex-direction: row;
+  display: flex;
   align-items: center;
 }
-@media screen and (max-width: 1024px) {
-.email{
-  display: flex;
-  flex-direction: column;
+.texto {
+  width: 30%;
+  text-align: left;
 }
-.texto{
-  padding: 0;
+.input {
+  width: 25%;
+  padding-left: 5px;
+  padding-right: 20px;
 }
-.email>div{
-  width: 84%;
-}
-.nomeinput{
-  width: 84%;
-}
-.emailinput{
-  width: 84%;
-}
-.botao{
-  width: 84%;
-}
+.botao {
+  width: 20%;
 }
 
+.titulo {
+  color: #FFF;
+  font-family: Outfit;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.secundario {
+  color: #FFF;
+  font-family: Outfit;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 22px;
+}
+.negrito {
+  color: #FFF;
+  font-family: Outfit;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: 22px;
+}
+@media screen and (max-width: 1024px) {
+.container {
+  height: 322px;
+}
+.interno {
+  flex-direction: column;
+}
+.texto {
+  width: 85%;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.input {
+  width: 85%;
+  padding: 0;
+  margin-bottom: 10px;
+}
+.botao {
+  width: 85%;
+}
+}
+@media screen and (max-width: 768px) {
+.titulo {
+  color: #FFF;
+  text-align: center;
+  font-family: Outfit;
+  font-size: 22px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.secundario {
+  color: #FFF;
+  text-align: center;
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 112.5% */
+}
+.negrito {
+  color: #FFF;
+  text-align: center;
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 18px; /* 112.5% */
+}
+}
 </style>

@@ -71,7 +71,6 @@ div.container
         q-carousel-slide.slide(
           :name="index"
           :img-src="banner.fotoWebp"
-          style="width: 100%; display: block;"
         )
 </template>
 
@@ -84,13 +83,17 @@ div.container
   width: 100%;
   margin-bottom:20px;
   margin-top: 20px;
-  height: 100px;
-  aspect-ratio: auto 1920/100;
+  height: 90px;
+  aspect-ratio: auto 1920/90;
 }
 .carousel {
   width: 85%;
   margin: 0 auto;
   height: auto;
   cursor: pointer;
+}
+.slide {
+  max-width: 100%;
+  display: block;
 }
 </style>
