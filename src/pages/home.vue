@@ -2,7 +2,6 @@
 q-page-container
   bannerfull
   bannerregua
-  carouselprodutos
   carouselcategorias
   newsletter
   bannerregua
