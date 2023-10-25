@@ -109,67 +109,12 @@ div#fullscreen.container
               name="fa-brands fa-tiktok"
               color="orange"
             )
-        template(
-          v-if="infosLinks.socialNetwork.facebook"
-        )
-          a(
-            target="_blank"
-            :href="infosLinks.socialNetwork.facebook"
-          )
-            q-icon(
-              size="md"
-              name="fa-brands fa-square-facebook"
-            )
-        template(
-          v-if="infosLinks.socialNetwork.instagram"
-        )
-          a(
-            target="_blank"
-            :href="infosLinks.socialNetwork.instagram"
-          )
-            q-icon(
-              size="md"
-              name="fa-brands fa-instagram"
-            )
-        template(
-          v-if="infosLinks.socialNetwork.linkedin"
-        )
-          a(
-            target="_blank"
-            :href="infosLinks.socialNetwork.linkedin"
-          )
-            q-icon(
-              size="md"
-              name="fa-brands fa-linkedin"
-            )
-        template(
-          v-if="infosLinks.socialNetwork.twitter"
-        )
-          a(
-            target="_blank"
-            :href="infosLinks.socialNetwork.twitter"
-          )
-            q-icon(
-              size="md"
-              name="fa-brands fa-x-twitter"
-            )
-        template(
-          v-if="infosLinks.socialNetwork.youtube"
-        )
-          a(
-            target="_blank"
-            :href="infosLinks.socialNetwork.youtube"
-          )
-            q-icon(
-              size="md"
-              name="fa-brands fa-square-youtube"
-            )
 div#mobile.container
   div.menu
     q-expansion-item(
       expand-separator
       label="Institucional"
-      label-class="text-bold"
+      header-style="color: #000;font-family: Outfit;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;text-transform: capitalize; text-align:left"
     )
       q-card
         q-card-section
@@ -178,10 +123,12 @@ div#mobile.container
           p.secundario Política de Entrega
         q-card-section
           p.secundario Privacidade e Segurança
+        q-card-section
           p.secundario Trocas e Devoluções
     q-expansion-item(
       expand-separator
       label="Minha Conta"
+      header-style="color: #000;font-family: Outfit;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;text-transform: capitalize;"
     )
       q-card
         q-card-section
@@ -193,6 +140,7 @@ div#mobile.container
     q-expansion-item(
       expand-separator
       label="Contato"
+      header-style="color: #000;font-family: Outfit;font-size: 16px;font-style: normal;font-weight: 600;line-height: normal;text-transform: capitalize;"
     )
       q-card
         q-card-section
@@ -243,15 +191,16 @@ div#mobile.container
               name="fa-brands fa-tiktok"
               color="orange"
             )
-div.justify-center.text-center.row.q-pt-sm(style="color: #939598;text-align: center;font-family: Outfit;font-size: 13px;font-style: normal;font-weight: 400;line-height:20px;background-color:#F4F4F4")
-  p BanBan Calçados.
-  p(v-if="infosLinks.street") &nbsp; | {{ infosLinks.street }}
-  p(v-if="infosLinks.number") , {{ infosLinks.number }}
-  p(v-if="infosLinks.district") , {{ infosLinks.district }}
-  p(v-if="infosLinks.city") , {{ infosLinks.city }}
-  p(v-if="infosLinks.state") , {{ infosLinks.state }}
-  p(v-if="infosLinks.zipcode") &nbsp; | CEP: &nbsp; {{ infosLinks.zipcode }}
-  p(v-if="infosLinks.cnpj") &nbsp; | CNPJ: &nbsp; {{ infosLinks.cnpj }}
+div.container
+  div.endereco
+    span BanBan Calçados.
+    span(v-if="infosLinks.street") &nbsp; | {{ infosLinks.   street }}
+    span(v-if="infosLinks.number") , {{ infosLinks.number }}
+    span(v-if="infosLinks.district") , {{ infosLinks.district }}
+    span(v-if="infosLinks.city") , {{ infosLinks.city }}
+    span(v-if="infosLinks.state") , {{ infosLinks.state }}
+    span(v-if="infosLinks.zipcode") &nbsp; | CEP: &nbsp; {{    infosLinks.zipcode }}
+    span(v-if="infosLinks.cnpj") &nbsp; | CNPJ: &nbsp; {{    infosLinks.cnpj }}
 </template>
 
 <style scoped>
@@ -263,7 +212,7 @@ div.justify-center.text-center.row.q-pt-sm(style="color: #939598;text-align: cen
   position: relative;
   width: 100%;
   background-color: #F4F4F4;
-  padding-top: 10px;
+  padding-top: 20px;
 }
 .interno {
   width: 85%;
@@ -300,13 +249,31 @@ div.justify-center.text-center.row.q-pt-sm(style="color: #939598;text-align: cen
   line-height: 24px;
   cursor: pointer;
 }
+.endereco {
+  color: #939598;
+  text-align: center;
+  font-family: Outfit;
+  font-size:   13px;
+  font-style: normal;
+  font-weight: 400;
+  line-height:20px;
+  background-color:#F4F4F4;
+  flex-direction: row;
+  justify-content: center;
+  margin: 0 auto
+}
 @media screen and (max-width: 1024px) {
   #fullscreen {
     display: none;
   }
-.coluna {
+ .coluna {
   width: 100%;
+  padding-top: 10px ;
 }
+.endereco {
+    text-align: left;
+    width: 85%;
+  }
 }
 @media screen and (min-width: 1024px) {
   #mobile {

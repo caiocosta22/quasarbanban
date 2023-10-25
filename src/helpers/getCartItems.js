@@ -8,7 +8,7 @@ async function getCartItems () {
   LocalStorage.set("quantidadeCarrinho", quantidadeCarrinho);
   try {
     if (cartId) {
-      const cart = await axios.post(`https://sualoja.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/cartService/getCart/${cartId}/-1`);
+      const cart = await axios.post(`https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/cartService/getCart/${cartId}/-1`);
       cartItems = cart.data || cart.response.data;
       if (cartItems !== "Nenhum carrinho válido encontrado") {
         quantidadeCarrinho = cartItems.items?.length;

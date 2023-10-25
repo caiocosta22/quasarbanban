@@ -38,7 +38,7 @@ function formatCurrency (value) {
 
 async function searchBestSellers () {
   try {
-    const data = await axios.get("https://sualoja.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/secaoEcommerceService/getAllSessions?plataforma=SITE").then(e => e.data);
+    const data = await axios.get("https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/secaoEcommerceService/getAllSessions?plataforma=SITE").then(e => e.data);
     if (data.length) {
       const bestSellers = data.filter(sellers => sellers.chave === "SESSAO_3");
       itemsOfApi.value = bestSellers;

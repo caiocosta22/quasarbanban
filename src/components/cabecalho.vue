@@ -15,7 +15,7 @@ const drawer = ref(false);
 
 const quantidadeCarrinho = ref($q.localStorage.getItem("quantidadeCarrinho") || 0);
 // const cartId = $q.localStorage.getItem("cartIdBackend");
-// const linkcarrinho = `https://sualoja.elevarone.com.br/checkout?idCart=${cartId}`;
+// const linkcarrinho = `https://banbancalcados.elevarone.com.br/checkout?idCart=${cartId}`;
 
 const props = defineProps({
   dynamicStyle: {
@@ -32,12 +32,12 @@ function redirectToSearchPage () {
 }
 
 setInterval(async () => {
-  await getCartItems();
+  // await getCartItems();
 }, 10000);
 
 onBeforeMount(async () => {
   await Promise.all([
-    getCartItems()
+    // getCartItems()
   ]);
 });
 </script>
