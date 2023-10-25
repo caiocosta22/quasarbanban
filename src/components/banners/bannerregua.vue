@@ -50,7 +50,7 @@ div.container
   template(
     v-if="itsLoading"
   )
-    q-skeleton(
+    q-skeleton.col(
       heigth="120px"
     )
   template(

@@ -80,26 +80,69 @@ onBeforeMount(async () => {
 div.q-py-lg
   .sessao.justify-center Escolha por Categoria
 .container
-  Carousel(
-      v-bind="settings"
-      :breakpoints="breakpoints"
-      v-show="!itsLoading"
-      style="width: 85%;"
-    )
-    Slide(
-      v-for="(categoria, index) in categoriasCarousel"
-      :key="index"
-    )
-      div.column.justify-center(
-        @click="openCategoryPage(categoria)"
-      )
-        img.cursor-pointer(
-          :name="index"
-          :src="categoria.fotoUrl"
+  template(
+    v-if="itsLoading"
+  )
+    div.q-gutter-sm.row.col-10(style="width:85%; margin: 0 auto;")
+      div.some.col
+        q-skeleton.col(
+          type="circle"
+          width="90%"
+          height="100%"
         )
-        span.titulo {{ categoria.descricao }}
-    template(#addons)
-      Navigation
+      div.some.col
+        q-skeleton.col(
+          type="circle"
+          width="90%"
+          height="100%"
+        )
+      div.some.col
+        q-skeleton.col(
+          type="circle"
+          width="90%"
+          height="100%"
+        )
+      div.col
+        q-skeleton.col(
+          type="circle"
+          width="90%"
+          height="100%"
+        )
+      div.col
+        q-skeleton.col(
+          type="circle"
+          width="90%"
+          height="100%"
+        )
+      div.col
+        q-skeleton.col(
+          type="circle"
+          width="90%"
+          height="100%"
+        )
+  template(
+    v-else-if="!itsLoading"
+  )
+    Carousel(
+        v-bind="settings"
+        :breakpoints="breakpoints"
+        v-show="!itsLoading"
+        style="width: 85%;"
+      )
+      Slide(
+        v-for="(categoria, index) in categoriasCarousel"
+        :key="index"
+      )
+        div.column.justify-center(
+          @click="openCategoryPage(categoria)"
+        )
+          img.cursor-pointer(
+            :name="index"
+            :src="categoria.fotoUrl"
+          )
+          span.titulo {{ categoria.descricao }}
+      template(#addons)
+        Navigation
 </template>
 
 <style scoped>
@@ -109,7 +152,7 @@ div.q-py-lg
   box-sizing: content-box;
 }
 .carousel__slide {
-  max-height: 230px;
+  height: 230px;
   overflow: hidden;
 }
 
@@ -134,6 +177,7 @@ div.q-py-lg
   position: relative;
   width: 100%;
   margin-bottom:20px;
+  height: 230px;
 }
 .sessao{
   color: var(--Cor-2, #000);
@@ -152,5 +196,10 @@ div.q-py-lg
   font-style: normal;
   font-weight: 600;
   line-height: normal;
+}
+@media screen and (max-width: 768px) {
+.some {
+  display: none;
+}
 }
 </style>
