@@ -5,6 +5,7 @@ q-page-container
   carouselprodutos
   carouselcategorias
   newsletter
+  bannerregua
 </template>
 
 <script setup>

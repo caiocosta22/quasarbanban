@@ -57,10 +57,11 @@ div.container
     v-else-if="!itsLoading"
   )
     q-carousel.carousel(
-      animated
       v-model="slide"
+      animated
       infinite
       swipeable
+      autoplay="true"
       transition-prev="slide-right"
       transition-next="slide-left"
     )
