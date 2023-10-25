@@ -135,17 +135,17 @@ div.container
   flex-direction: column;
 }
 .texto {
-  width: 85%;
+  width: 100%;
   text-align: center;
   margin-bottom: 10px;
 }
 .input {
-  width: 85%;
+  width: 100%;
   padding: 0;
   margin-bottom: 10px;
 }
 .botao {
-  width: 85%;
+  width: 100%;
 }
 }
 @media screen and (max-width: 768px) {
