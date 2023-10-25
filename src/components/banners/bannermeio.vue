@@ -65,7 +65,7 @@ div.container
         q-img.foto(
           src="/images/Promocao2.jpeg"
         )
-      div
+      div.some
         q-img.foto(
           src="/images/Promocao3.jpeg"
         )
@@ -102,5 +102,10 @@ div.container
   display: block;
   max-height: 480px;
   cursor: pointer;
+}
+@media screen and (max-width: 1024px) {
+.some {
+  display: none;
+}
 }
 </style>
