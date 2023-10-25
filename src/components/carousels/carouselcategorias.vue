@@ -179,15 +179,6 @@ div.q-py-lg
   margin-bottom:20px;
   height: 230px;
 }
-.sessao{
-  color: var(--Cor-2, #000);
-  text-align: center;
-  font-family: Outfit;
-  font-size: 30px;
-  font-style: normal;
-  font-weight: 600;
-  line-height: normal;
-}
 .titulo{
   color: #333;
   text-align: center;
