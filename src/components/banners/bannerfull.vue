@@ -52,8 +52,9 @@ div.banner
   template(
     v-if="itsLoading"
   )
-    q-skeleton(
+    q-skeleton.col(
       heigth="100%"
+      width="100%"
     )
   template(
     v-else-if="!itsLoading"

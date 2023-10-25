@@ -31,23 +31,22 @@ const categoriasCarousel = ref([
 ]);
 
 const settings = ref({
-  itemsToShow: 1,
-  snapAlign: "center",
+  snapAlign: "start",
   wrapAround: true
 });
 
 const breakpoints = ref({
   368: {
-    itemsToShow: 2.0,
-    snapAlign: "start"
+    itemsToShow: 3.0
   },
   768: {
-    itemsToShow: 3.0,
-    snapAlign: "start"
+    itemsToShow: 6.0
   },
-  1200: {
-    itemsToShow: 6.0,
-    snapAlign: "start"
+  1024: {
+    itemsToShow: 6.0
+  },
+  1280: {
+    itemsToShow: 6.0
   }
 });
 const itsLoading = ref(true);
@@ -78,29 +77,27 @@ onBeforeMount(async () => {
 </script>
 
 <template lang="pug">
-div.row.col.justify-center.q-py-lg
-  div.col-10.row.justify-center
-    .sessao.justify-center.text-black Escolha por Categoria
-.container.row.col.q-pt-sm.q-mb-md
-  Carousel.col-10.q-ml-sm(
+div.q-py-lg
+  .sessao.justify-center Escolha por Categoria
+.container
+  Carousel(
       v-bind="settings"
       :breakpoints="breakpoints"
       v-show="!itsLoading"
+      style="width: 85%;"
     )
-    Slide.flex.q-pr-sm(
+    Slide(
       v-for="(categoria, index) in categoriasCarousel"
       :key="index"
     )
-      div.full-width.full-height.column.justify-center(
+      div.column.justify-center(
         @click="openCategoryPage(categoria)"
       )
-        q-img.cursor-pointer(
+        img.cursor-pointer(
           :name="index"
           :src="categoria.fotoUrl"
-          style="display: block; max-width: 100%; ;"
         )
-        div.row.col.q-pt-md.justify-center(style="font-size:14px")
-          span.text-black.text-center {{ categoria.descricao }}
+        span.titulo {{ categoria.descricao }}
     template(#addons)
       Navigation
 </template>
@@ -111,19 +108,47 @@ div.row.col.justify-center.q-py-lg
 .carousel__next {
   box-sizing: content-box;
 }
+.carousel__slide {
+  max-height: 230px;
+  overflow: hidden;
+}
+
+.carousel__slide img {
+  height: 80%;
+  width: 80%;
+  margin: 0 auto;
+}
+.carousel__slide span {
+  height: 20%;
+}
+
+.carousel__slide .text-black.text-center {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 .container{
   display:flex;
   flex-wrap:nowrap;
   justify-content: center;
   position: relative;
   width: 100%;
-  margin-bottom:20px
+  margin-bottom:20px;
 }
 .sessao{
   color: var(--Cor-2, #000);
   text-align: center;
   font-family: Outfit;
   font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+}
+.titulo{
+  color: #333;
+  text-align: center;
+  font-family: Outfit;
+  font-size: 18px;
   font-style: normal;
   font-weight: 600;
   line-height: normal;
