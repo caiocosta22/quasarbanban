@@ -18,20 +18,6 @@ const categoriesBase = ref([
     ]
   }
 ]);
-const menuprincipal = ref([
-  {
-    categoria1: "MASCULINO",
-    categoria2: "FEMININO"
-  }
-]);
-const menusecundario = ref([
-  {
-    name: "CATEGORIA",
-    children: [
-      { name: "SUBCATEGORIA" }
-    ]
-  }
-]);
 
 const props = defineProps({
   dynamicStyle: {
@@ -75,31 +61,14 @@ q-toolbar(
   style="background-color: white;"
 )
   div.container
-    q-btn(
-      color="white"
-      label="+TODAS AS CATEGORIAS"
-      label-color="black"
-      style="box-shadow:none; color:black"
-    )
-      q-menu.itemmenu.cursor-pointer(
-        label="Scale"
-        transition-show="scale"
-        transition-hide="scale"
-        filled
-        v-model="menuprincipal"
+      p.itemmenu + TODAS AS CATEGORIAS
+      template(
+        v-for="categorie in categoriesBase"
+        :key="categorie.name"
       )
-        q-list(
-          style="min-width: 100px"
-        )
-          q-item-section(
-            v-for="categorie in categoriesBase"
-            :key="categorie.name"
-          )
-            p.itemmenu.cursor-pointer.row(
-              @click="openCategoryPage(categorie)"
-              style=" font-size: 14px;"
-              :color="cor"
-            ) {{ categorie.name }}
+        p.itemmenu.cursor-pointer.row(
+          @click="openCategoryPage(categorie)"
+        ) {{ categorie.name }}
 </template>
 <style scoped>
 .container {
@@ -107,6 +76,8 @@ q-toolbar(
   flex-direction: row;
   width: 85%;
   margin: 0 auto;
+  justify-content: space-between;
+  align-items: center;
 }
 .itemmenu {
   color: #000;
