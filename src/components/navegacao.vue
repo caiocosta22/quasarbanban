@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 import axios from "axios";
 
 const router = useRouter();
-
+const menu = ref(null);
 const itsLoading = ref(true);
 const categoriesBase = ref([
   {
@@ -56,19 +56,19 @@ onBeforeMount(async () => {
 </script>
 
 <template lang="pug">
-q-toolbar(
+q-toolbar#navegacao(
   v-show="!itsLoading"
   style="background-color: white;"
 )
   div.container
-      p.itemmenu + TODAS AS CATEGORIAS
-      template(
-        v-for="categorie in categoriesBase"
-        :key="categorie.name"
-      )
-        p.itemmenu.cursor-pointer.row(
-          @click="openCategoryPage(categorie)"
-        ) {{ categorie.name }}
+    p.itemmenu.row + TODAS AS CATEGORIAS
+    template(
+      v-for="categorie in categoriesBase"
+      :key="categorie.name"
+    )
+      p.itemmenu.row(
+        @click="openCategoryPage(categorie)"
+      ) {{ categorie.name }}
 </template>
 <style scoped>
 .container {
@@ -88,5 +88,12 @@ q-toolbar(
   font-weight: 600;
   line-height: normal;
   text-transform: uppercase;
+  margin: 0 auto;
+  cursor: pointer;
+}
+@media screen and (max-width: 1024px) {
+  #navegacao {
+    display:none
+  }
 }
 </style>
