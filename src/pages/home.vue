@@ -2,6 +2,7 @@
 q-page-container
   bannerfull
   bannerregua
+  carouselprodutos
   carouselcategorias
   bannermeio
   bannermarca
@@ -19,6 +20,7 @@ import newsletter from "src/components/newsletter.vue";
 import bannermeio from "src/components/banners/bannermeio.vue";
 import bannermarca from "src/components/banners/bannermarca.vue";
 import bannerinstagram from "src/components/banners/bannerinstagram.vue";
+import carouselprodutos from "src/components/carousels/carouselprodutos.vue";
 </script>
 
 <style scoped>

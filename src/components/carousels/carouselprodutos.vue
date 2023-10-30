@@ -9,8 +9,6 @@ const router = useRouter();
 
 const itemsOfApi = ref([]);
 const settings = ref({
-  itemsToShow: 1,
-  snapAlign: "center",
   wrapAround: true
 });
 const breakpoints = ref({
@@ -25,6 +23,10 @@ const breakpoints = ref({
   1200: {
     itemsToShow: 4.0,
     snapAlign: "start"
+  },
+  1300: {
+    itemsToShow: 4,
+    snapAlign: "start"
   }
 });
 
@@ -36,17 +38,27 @@ function formatCurrency (value) {
   });
 }
 
+function formatPercentage (value) {
+  return value.toLocaleString("en-us", {
+    maximumFractionDigits: 0
+  });
+}
+
 async function searchBestSellers () {
   try {
     const data = await axios.get("https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/secaoEcommerceService/getAllSessions?plataforma=SITE").then(e => e.data);
     if (data.length) {
-      const bestSellers = data.filter(sellers => sellers.chave === "SESSAO_3");
+      const bestSellers = data.filter(sellers => sellers.chave === "SESSAO_1");
       itemsOfApi.value = bestSellers;
     }
   } catch (e) {
     console.error(e);
   }
 }
+
+onBeforeMount(async () => {
+  await searchBestSellers();
+});
 
 function openProductPage (product) {
   if (product.slug) {
@@ -61,9 +73,8 @@ onBeforeMount(async () => {
 </script>
 
 <template lang="pug">
-div.row.col.justify-center.q-pt-md(style="align-items:center")
-  div.col-10.row.justify-start.q-pt-sm
-    template(
+div.q-py-lg
+  template(
       v-for="(item, index) in itemsOfApi"
       :key="index"
     )
@@ -75,7 +86,7 @@ div.row.col.justify-center.q-pt-md(style="align-items:center")
             v-for="subsec in item.subsecoesEcommerce"
             :key="subsec"
           )
-            .sessao.justify-start.text-black {{ subsec.titulo }}
+            .sessao.justify-center {{ subsec.titulo }}
 .container.row.col
   Carousel.col-10.q-ml-sm(v-bind="settings" :breakpoints="breakpoints")
     template(
