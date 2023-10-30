@@ -83,11 +83,24 @@ q-toolbar#navegacao(
         q-list(style="min-width: 180px")
           template(v-for="categorie in categoriesBase" :key="categorie.name")
             q-item(clickable)
-              q-item-section.text-left(style="font-size: 14px; font-style: normal; font-weight: 600;") {{ categorie.name }}
+              q-item-section.text-left.itemmenu {{ categorie.name }}
+              template(
+                v-if="categorie.children.length > 0"
+              )
+                q-item-section(
+                  side
+                )
+                  q-icon(
+                    name="keyboard_arrow_right"
+                  )
               template(v-if="categorie.children.length > 0")
-                q-list
-                  q-item(v-for="subCategory in categorie.children" :key="subCategory.name" clickable)
-                    q-item-section.text-left(style="font-size: 14px; font-style: normal; font-weight: 600;") {{ subCategory.name }}
+                q-menu(
+                  anchor="top end"
+                  self="top start"
+                )
+                  q-list
+                    q-item(v-for="subCategory in categorie.children" :key="subCategory. name" clickable)
+                      q-item-section.text-left.itemmenu {{ subCategory.name }}
     template(
       v-for="categorie in categoriesBase"
       :key="categorie.name"
@@ -107,7 +120,7 @@ q-toolbar#navegacao(
 }
 .itemmenu {
   color: #000;
-  text-align: center;
+  text-align: left;
   font-family: Outfit;
   font-size: 14px;
   font-style: normal;
