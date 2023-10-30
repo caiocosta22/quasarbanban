@@ -4,7 +4,6 @@ import { useRouter } from "vue-router";
 import axios from "axios";
 
 const router = useRouter();
-const menu = ref(null);
 const itsLoading = ref(true);
 const categoriesBase = ref([
   {
@@ -26,12 +25,30 @@ const props = defineProps({
   }
 });
 
+function mapCategories (subCategories) {
+  if (!subCategories || subCategories.length === 0) {
+    return [];
+  }
+  return subCategories.map(category => {
+    return {
+      ...category,
+      name: category.descricao,
+      children: mapCategories(category.subCategoria)
+    };
+  });
+}
+
 async function searchCategories () {
   try {
     const data = await axios.get("https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/categoriaAutoRelacionada/getAllCategorias").then(e => e.data);
     if (data.length) {
       categoriesBase.value = data.map(row => {
-        return { ...row, name: row.descricao, children: [...row.subCategoria], foto: row.fotoUrl };
+        return {
+          ...row,
+          name: row.descricao,
+          children: mapCategories(row.subCategoria),
+          foto: row.fotoUrl
+        };
       });
     }
   } catch (e) {
@@ -62,6 +79,15 @@ q-toolbar#navegacao(
 )
   div.container
     p.itemmenu.row + TODAS AS CATEGORIAS
+      q-menu
+        q-list(style="min-width: 180px")
+          template(v-for="categorie in categoriesBase" :key="categorie.name")
+            q-item(clickable)
+              q-item-section.text-left(style="font-size: 14px; font-style: normal; font-weight: 600;") {{ categorie.name }}
+              template(v-if="categorie.children.length > 0")
+                q-list
+                  q-item(v-for="subCategory in categorie.children" :key="subCategory.name" clickable)
+                    q-item-section.text-left(style="font-size: 14px; font-style: normal; font-weight: 600;") {{ subCategory.name }}
     template(
       v-for="categorie in categoriesBase"
       :key="categorie.name"
