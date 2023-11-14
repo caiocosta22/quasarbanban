@@ -44,26 +44,22 @@ function formatPercentage (value) {
   });
 }
 
-async function searchBestSellers () {
-  try {
-    const data = await axios.get("https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/secaoEcommerceService/getAllSessions?plataforma=SITE").then(e => e.data);
-    if (data.length) {
-      const bestSellers = data.filter(sellers => sellers.chave === "SESSAO_1");
-      itemsOfApi.value = bestSellers;
-    }
-  } catch (e) {
-    console.error(e);
-  }
-}
-
-onBeforeMount(async () => {
-  await searchBestSellers();
-});
-
 function openProductPage (product) {
   if (product.slug) {
     const url = "/produtos/" + product.slug;
     router.push(url);
+  }
+}
+
+async function searchBestSellers () {
+  try {
+    const data = await axios.get("https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/secaoEcommerceService/getAllSessions?plataforma=SITE").then(e => e.data);
+    if (data.length) {
+      const bestSellers = data.filter(sellers => sellers.chave === "SESSAO_2");
+      itemsOfApi.value = bestSellers;
+    }
+  } catch (e) {
+    console.error(e);
   }
 }
 
@@ -87,13 +83,19 @@ div.q-py-lg
             :key="subsec"
           )
             .sessao.justify-center {{ subsec.titulo }}
-.container.row.col
-  Carousel.col-10.q-ml-sm(v-bind="settings" :breakpoints="breakpoints")
+div.container
+  Carousel(
+    v-bind="settings"
+    :breakpoints="breakpoints"
+    style="width: 85%; margin: 0 auto"
+  )
     template(
       v-for="(item, index) in itemsOfApi"
       :key="index"
     )
-      template(v-if="item.orientacao === 'horizontal'")
+      template(
+        v-if="item.orientacao === 'horizontal'"
+      )
         template(
           v-if="item.subsecoesEcommerce"
         )
@@ -104,36 +106,53 @@ div.q-py-lg
             template(
               v-if="subsec.produtos"
             )
-              Slide.flex.q-pr-sm(
+              Slide(
                 v-for="produto in subsec.produtos"
                 :key="produto"
               )
-                div.full-width.full-height.column.justify-center.cursor-pointer(
+                div.cursor-pointer.column.q-pl-sm.flex(
                   @click="openProductPage(produto)"
+                  style="heigth: 100%; width: 250px"
                 )
-                  q-img.cursor-pointer(
-                    :src="produto.fotosServico[0].foto"
-                    style="display: block; max-width: 100%; ;"
+                  div(
+                    style="height: 80%"
                   )
+                    q-img.cursor-pointer(
+                      :src="produto.fotosServico[0].foto"
+                      spinner="white"
+                      style="width: 250px; margin: 0 auto; min-height: 250px;"
+                    )
+                      template(
+                        v-if="produto.promocao"
+                      )
+                        div.tag {{ formatPercentage(produto.  precoPromocional / produto.valor * 10) }}%  OFF!
+                  div.q-pb-lg.column(
+                    style="heigth: 20%"
+                  )
+                    p.text-black(
+                      style="font-size:16px"
+                    ) {{ produto.titulo }}
                     template(
                       v-if="produto.promocao"
                     )
-                      div.tag {{ formatPercentage(produto.precoPromocional / produto.valor * 10) }}% OFF!
-                  div.row.justify-between.col.q-pt-sm(style="font-size:14px")
-                    div.row(style="width:50%; display:flex; text-align:left")
-                      span.text-black {{ produto.titulo }}
+                      p.text-black(
+                        style="font-size: 15px;   text-decoration:line-through; margin-bottom: 5px;"
+                      ) {{  formatCurrency(produto.valor) }}
+                      p.text-bold(
+                        style="font-size: 20px; margin-bottom:0"
+                      ) {{ formatCurrency(produto.  precoPromocional) }}
+                      span.text-black(
+                        style="font-size: 15px"
+                      ) {{ produto.coligada.numeroParcelas }} x de {{ formatCurrency(produto.valor /   produto.coligada.numeroParcelas) }} sem juros
                     template(
-                      v-if="produto.promocao"
+                      v-if="!produto.promocao"
                     )
-                      div.column(style="width:50%; display:flex; text-align:right")
-                        span.text-black(style="font-size: 14px; text-decoration: line-through") {{ formatCurrency(produto.valor) }}
-                        span.text-black(style="font-size: 14px;") {{ formatCurrency(produto.precoPromocional) }}
-                        span.text-black(style="font-size: 14px") ou {{ produto.coligada.numeroParcelas }}x de {{ formatCurrency(produto.valor / produto.coligada.numeroParcelas) }}
-                    template(
-                      v-else
-                    )
-                      div.column(style="width:50%; display:flex; text-align:right")
-                        span.text-black(style="font-size: 14px") {{ formatCurrency(produto.valor) }}
+                      p.text-bold(
+                        style="font-size: 20px; margin-bottom: 0;"
+                      )  {{ formatCurrency(produto.valor) }}
+                      p.text-black(
+                        style="font-size: 15px"
+                      ) {{ produto.coligada.numeroParcelas }} x de {{ formatCurrency(produto.valor /   produto.coligada.numeroParcelas) }} sem juros
     template(#addons)
       Navigation
 </template>
@@ -153,13 +172,13 @@ div.q-py-lg
 .carousel__next {
   box-sizing: content-box;
 }
+.carousel__slide p {
+  height: 10%
+}
 .container{
-  display:flex;
-  flex-wrap:nowrap;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  margin-bottom:20px;
+  flex-direction: column;
+  overflow: hidden;
+  display: flex;
 }
 .tag{
   color: #FFF;
