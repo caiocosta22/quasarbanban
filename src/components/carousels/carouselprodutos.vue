@@ -6,7 +6,6 @@ import axios from "axios";
 import "vue3-carousel/dist/carousel.css";
 
 const router = useRouter();
-
 const itemsOfApi = ref([]);
 const settings = ref({
   wrapAround: true
@@ -55,14 +54,14 @@ async function searchBestSellers () {
   try {
     const data = await axios.get("https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/secaoEcommerceService/getAllSessions?plataforma=SITE").then(e => e.data);
     if (data.length) {
-      const bestSellers = data.filter(sellers => sellers.chave === "SESSAO_2");
+      const bestSellers = data.filter(sellers => sellers.chave === "SESSAO_1");
       itemsOfApi.value = bestSellers;
     }
   } catch (e) {
     console.error(e);
   }
 }
-
+console.log(itemsOfApi);
 onBeforeMount(async () => {
   await searchBestSellers();
 });
@@ -117,15 +116,14 @@ div.container
                   div(
                     style="height: 80%"
                   )
-                    q-img.cursor-pointer(
-                      :src="produto.fotosServico[0].foto"
-                      spinner="white"
-                      style="width: 250px; margin: 0 auto; min-height: 250px;"
+                    template(
+                      v-if="produto.fotosServico.length>=1"
                     )
-                      template(
-                        v-if="produto.promocao"
+                      q-img.cursor-pointer(
+                        :src="produto.fotosServico[0].foto"
+                        spinner="white"
+                        style="min-width: 200px; max-width: 250px; margin: 0 auto; height: 250px;"
                       )
-                        div.tag {{ formatPercentage(produto.  precoPromocional / produto.valor * 10) }}%  OFF!
                   div.q-pb-lg.column(
                     style="heigth: 20%"
                   )
