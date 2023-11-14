@@ -69,6 +69,11 @@ function redirectToSearchPage () {
   }
 }
 
+function redirectToHomePage () {
+  const url = "/";
+  router.push(url);
+}
+
 setInterval(async () => {
   // await getCartItems();
 }, 10000);
@@ -88,6 +93,8 @@ div.container
       q-img.imagem(
         src="/images/logo.png"
         spinner-colow="white"
+        @click="redirectToHomePage"
+        style="cursor:pointer"
       )
     div.containerinput
       q-input(
