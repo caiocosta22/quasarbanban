@@ -70,8 +70,7 @@ function redirectToSearchPage () {
 }
 
 function redirectToHomePage () {
-  const url = "/";
-  router.push(url);
+  router.push("/");
 }
 
 setInterval(async () => {

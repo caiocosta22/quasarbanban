@@ -1,17 +1,15 @@
 <script setup>
 import { ref, computed, onMounted, onBeforeUnmount } from "vue";
-import { useQuasar, LocalStorage } from "quasar";
-import axios from "axios";
+import { useQuasar } from "quasar";
+import { Splide, SplideSlide } from "@splidejs/vue-splide";
+import { Carousel, Slide } from "vue3-carousel";
 import InnerImageZoom from "vue-inner-image-zoom";
 import "vue-inner-image-zoom/lib/vue-inner-image-zoom.css";
-import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/vue-splide/css";
-import { Carousel, Slide } from "vue3-carousel";
 import "vue3-carousel/dist/carousel.css";
+import axios from "axios";
 
 const $q = useQuasar();
-const cartId = LocalStorage.getItem("cartIdBackend") || -1;
-const idClient = LocalStorage.getItem("idclient");
 
 const props = defineProps({
   product: {
@@ -45,7 +43,6 @@ const breakpoints = ref({
 });
 const gutterClass = ref("");
 const usarSkeleton = ref(false);
-const qtdProduct = ref(1);
 const cep = ref();
 const dadosFrete = ref([]);
 const text1 = ref("");
@@ -128,7 +125,6 @@ async function getFretes (dados) {
     };
     dadosFrete.value = await axios.post("https://elevarcommerce.com.br/freteapi/frete/calcularFretePequenos", json, {
       headers: {
-        // Overwrite Axios's automatically set Content-Type
         "Content-Type": "application/json"
       }
     }).then(e => e.data);
