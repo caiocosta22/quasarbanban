@@ -10,7 +10,6 @@
 
 const { configure } = require("quasar/wrappers");
 const vuePugPlugin = require("vue-pug-plugin");
-require("dotenv").config();
 
 module.exports = configure(function (ctx) {
   return {
@@ -48,7 +47,7 @@ module.exports = configure(function (ctx) {
       // 'line-awesome',
       // 'roboto-font-latin-ext', // this or either 'roboto-font', NEVER both!
 
-      "roboto-font", // optional, you are not bound to it
+      // "roboto-font", // optional, you are not bound to it
       "material-icons" // optional, you are not bound to it
     ],
 
@@ -65,7 +64,7 @@ module.exports = configure(function (ctx) {
         node: "node16"
       },
 
-      vueRouterMode: "hash", // available values: 'hash', 'history'
+      vueRouterMode: "history", // available values: 'hash', 'history'
       uglifyOptions: {
         compress: { drop_console: true }
       },
@@ -109,7 +108,7 @@ module.exports = configure(function (ctx) {
       //     // rewrite: (path) => path.replace(/^\https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/, "")
       //   }
       // },
-      open: false
+      open: true
     },
 
     // https://v2.quasar.dev/quasar-cli-vite/quasar-config-js#framework
