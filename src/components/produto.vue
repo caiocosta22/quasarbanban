@@ -45,11 +45,12 @@ const options = ref(
     arrows: false,
     navigation: false,
     height: "680px",
-    perPage: 4,
+    perPage: 3,
+    pagination: false,
     breakpoints: {
-      1738: { perPage: 4, height: "600px" },
-      1500: { perPage: 4, height: "500px" },
-      1344: { perPage: 4, height: "437px" }
+      1738: { perPage: 3, height: "600px" },
+      1500: { perPage: 3, height: "500px" },
+      1344: { perPage: 3, height: "437px" }
     }
   }
 );
