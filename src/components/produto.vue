@@ -2,9 +2,14 @@
 import { ref } from "vue";
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/vue-splide/css";
+import axios from "axios";
+
 const produtos = ref([
   {
     titulo: "Produto teste",
+    coligadas: {
+      numeroparcelas: 10
+    },
     miniaturas: [
       {
         foto: "/images/miniaturas/1.png"
@@ -38,23 +43,81 @@ const produtos = ref([
     ]
   }
 ]);
+
 const options = ref(
   {
     direction: "ttb",
     slidesPerView: 1,
     arrows: false,
     navigation: false,
-    height: "680px",
-    perPage: 3,
+    height: "660px",
+    perPage: 4,
     pagination: false,
     breakpoints: {
-      1738: { perPage: 3, height: "600px" },
-      1500: { perPage: 3, height: "500px" },
-      1344: { perPage: 3, height: "437px" }
+      1738: { perPage: 4, height: "600px" },
+      1500: { perPage: 4, height: "500px" },
+      1344: { perPage: 4, height: "437px" }
     }
   }
 );
-console.log(produtos.value[0].miniaturas[0].foto);
+
+const cep = ref();
+const dadosFrete = ref([]);
+const usarSkeleton = ref(false);
+
+function formatCurrency (value) {
+  return value.toLocaleString("pt-BR", {
+    style: "currency",
+    currency: "BRL",
+    minimumFractionDigits: 2
+  });
+}
+async function calcFrete () {
+  try {
+    if (cep.value.length > 7) {
+      const dados = await axios.get(`https://viacep.com.br/ws/${cep.value}/json/`).then(e => e.data);
+      await getFretes(dados);
+    }
+  } catch (e) {
+    console.error("Erro ao calcular frete: ", e);
+  }
+}
+
+async function getFretes (dados) {
+  try {
+    usarSkeleton.value = true;
+    const json = {
+      valorTotal: null,
+      produtos: [
+        {
+          altura: 2,
+          largura: 2,
+          comprimento: 2,
+          peso: 2,
+          quantity: 1,
+          price: 161.42,
+          cepOrigem: "60425813",
+          cepDestino: dados.cep
+        }
+      ],
+      cliente: {
+        uf: dados.uf,
+        cidade: dados.localidade,
+        tenant: process.env.TENANT
+      }
+    };
+    dadosFrete.value = await axios.post("https://elevarcommerce.com.br/freteapi/frete/calcularFretePequenos", json, {
+      headers: {
+        // Overwrite Axios's automatically set Content-Type
+        "Content-Type": "application/json"
+      }
+    }).then(e => e.data);
+    usarSkeleton.value = false;
+  } catch (e) {
+    console.error(e);
+  }
+}
+
 </script>
 
 <template lang="pug">
@@ -68,17 +131,176 @@ div.container
           v-for="miniatura in produtos[0].miniaturas"
           :key="miniatura"
         )
-          q-img(
+          q-img.foto(
             :src="miniatura.foto"
           )
+    div.principal
+      template(
+        v-if="produtos[0].foto"
+      )
+        div.fotoprincipal(
+          style="width: 95%; display: block; margin-left: 50px;"
+        )
+          q-img.foto(
+            :src="produtos[0].foto"
+          )
+    div.detalhes
+      div.conteudo.column(
+        style="width: 95%; display: block; margin-left: 50px"
+      )
+        p.titulo {{ produtos[0].titulo }}
+        template(
+          v-if="produtos[0].promocao"
+        )
+          p.antigo De: {{ formatCurrency(produtos[0].valor) }}
+          p.novo Por: {{ formatCurrency(produtos[0].valorpromocao) }}
+          p.parcela Ou 10x de {{ formatCurrency(produtos[0].valorpromocao / produtos[0].coligadas.numeroparcelas) }}
+        template(
+          v-if="!produtos[0].promocao"
+        )
+          p.novo Por: {{ formatCurrency(produtos[0].valor) }}
+          p.parcela Ou 10x de {{ formatCurrency(produtos[0].valor / produtos[0].coligadas.numeroparcelas) }}
+        p.descsimples {{  produtos[0].descricaobreve }}
+        div.column(style="margin-bottom: 15px;")
+          p.opcoes Escolha uma cor:
+          q-btn(
+            color="black"
+            square
+          )
+        div.column(style="margin-bottom: 15px;")
+          p.opcoes Escolha um tamanho:
+          q-btn(
+            color="black"
+            square
+          )
+        div.column(style="margin-bottom: 15px;")
+          p.opcoes Quantidade:
+          div.row
+            q-btn(
+              color="black"
+            )
+            q-btn(
+              color="black"
+            )
+        div.column
+          p.opcoes Calcule o Frete:
+          div.row.q-gutter-md(style="align-items: center;")
+            q-icon(
+              name="fa-solid fa-truck-fast"
+              color="black"
+              size="lg"
+            )
+            q-input(
+              @update:model-value="calcFrete()"
+              max-length="8"
+              color="black"
+              outlined
+              placeholder="00000000"
+              v-model="cep"
+              debounce="100"
+            )
+            q-btn(
+              color="black"
+              size="lg"
+            )
+              p(style="margin: 0; text-decoration: none; text-transform: none;") Calcular
+        div(
+          v-if="!usarSkeleton && dadosFrete.length"
+        )
+          q-btn.q-my-sm(
+            v-for="frete in dadosFrete"
+            style="width: 100%; vertical-align: baseline;"
+            :key="frete"
+            outlined
+          )
+            p.q-ma-none {{ frete.name }}
+            p.q-my-none.q-px-md receba em até {{ frete.prazoEntrega }} {{ frete.prazoEntrega === 1 ? "dia útil" : "dias úteis"  }}
+            p.q-ma-none.text-bold {{ formatCurrency(frete.valor) }}
+        div(
+          v-if="usarSkeleton"
+        )
+          q-skeleton(
+            v-for="index in 3"
+            :key="index"
+          )
+
 </template>
 
 <style scoped>
+
 .interno{
   width: 85%;
-  margin: 0 auto
+  margin: 0 auto;
+  flex-direction:row;
+  max-height: 650px;
+  display: flex;
+  overflow:hidden
 }
 .miniaturas{
   width: 10%;
+}
+.principal {
+  width: 50%;
+}
+.detalhes {
+  width: 40%;
+}
+.foto {
+  max-width: 100%;
+  display: block;
+  cursor: pointer
+}
+.titulo {
+  color: #333;
+  font-family: Outfit;
+  font-size: 30px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin-bottom: 5px;
+}
+.descsimples {
+  color: var(--Cor-Titulos, #000);
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 20px;
+}
+.antigo {
+  color: #AEAEAE;
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+  text-decoration: line-through;
+  margin: 0
+}
+.novo {
+  color: var(--Cor-2, #000);
+  font-family: Outfit;
+  font-size: 25px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 15px;
+}
+.parcela {
+  color: #000;
+  font-family: Outfit;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+  margin-bottom: 15px;
+}
+.opcoes {
+  color: var(--Cor-2, #000);
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
 }
 </style>
