@@ -29,6 +29,7 @@ const produtos = ref([
     promocao: true,
     valorpromocao: 100,
     descricaobreve: "A sandália com salto alto tipo bloco e meia pata da Bebecê apresenta um estilo clássico e elegante.",
+    descricaodetalhada: "A sandália com salto alto tipo bloco e meia pata da Bebecê apresenta um estilo clássico e elegante, além de proporcionar maior conforto e estabilidade a cada passo. Para o ajuste ficar ainda perfeito no pé, o modelo possui fechamento em fivela de metal, além de um detalhe em vinil transparente para dar um toque moderno ao visual do calçado. Perfeita para você arrasar nos looks! Nome: Sandália Bebecê Salto Grosso Feminina - Ref.: T8445-023 Gênero: Feminino Departamento BS: Calçados Indicado para: Dia a Dia Marca: Bebecê",
     variacoes: [
       {
         id: 1,
@@ -223,13 +224,16 @@ div.container
             v-for="index in 3"
             :key="index"
           )
-
+div.column(style="width:85%; margin: 0 auto; margin-bottom: 10px; text-align:left")
+  p.descricaotitulo(style="margin-bottom:5px") Descrição do Produto
+  span.descricao {{ produtos[0].descricaodetalhada }}
 </template>
 
 <style scoped>
 .container{
   margin-top: 10px;
   margin-bottom: 50px;
+  flex-direction: column;
 }
 
 .interno{
@@ -256,55 +260,49 @@ div.container
 }
 .titulo {
   color: #333;
-  font-family: Outfit;
   font-size: 30px;
-  font-style: normal;
   font-weight: 600;
-  line-height: normal;
   margin-bottom: 5px;
 }
 .descsimples {
-  color: var(--Cor-Titulos, #000);
-  font-family: Outfit;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
   line-height: 20px;
 }
 .antigo {
   color: #AEAEAE;
-  font-family: Outfit;
   font-size: 16px;
-  font-style: normal;
   font-weight: 400;
-  line-height: normal;
   text-decoration: line-through;
   margin: 0
 }
 .novo {
-  color: var(--Cor-2, #000);
-  font-family: Outfit;
   font-size: 25px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   margin-bottom: 15px;
 }
 .parcela {
-  color: #000;
-  font-family: Outfit;
   font-size: 14px;
-  font-style: normal;
   font-weight: 700;
-  line-height: normal;
   margin-bottom: 15px;
 }
 .opcoes {
+  font-size: 16px;
+  font-weight: 700;
+}
+.descricaotitulo {
+  font-size: 30px;
+  font-weight: 600;
+}
+.descricao {
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 20px; /* 125% */
+}
+* {
   color: var(--Cor-2, #000);
   font-family: Outfit;
-  font-size: 16px;
   font-style: normal;
-  font-weight: 700;
   line-height: normal;
 }
 </style>
