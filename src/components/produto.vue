@@ -184,10 +184,13 @@ div.container
           )
         div.column(style="margin-bottom: 15px;")
           p.opcoes Escolha um tamanho:
-          q-btn(
-            color="black"
-            square
-          )
+          div.row.q-gutter-md.q-py-sm(style="align-items:center")
+            template(
+              v-for="tamanhos in produtos[0].variacoes"
+              :key="tamanhos"
+            )
+              div(style="border-style:solid; border-width: 2px; color:rgba(0,0,0,0.8); padding: 5px 5px 5px 5px;cursor:pointer")
+                p(style="margin:0") {{ tamanhos.tamanho }}
         div.column(style="margin-bottom: 15px;")
           p.opcoes Quantidade:
           div.row.q-gutter-md(style="align-items:center")
