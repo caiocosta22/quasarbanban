@@ -40,7 +40,22 @@ const produtos = ref([
       {
         id: 2,
         cor: "#000000",
+        tamanho: 32
+      },
+      {
+        id: 3,
+        cor: "#FF0000",
         tamanho: 34
+      },
+      {
+        id: 4,
+        cor: "#FF0000",
+        tamanho: 36
+      },
+      {
+        id: 5,
+        cor: "#FF0000",
+        tamanho: 38
       }
     ]
   }
