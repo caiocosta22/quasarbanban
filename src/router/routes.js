@@ -14,8 +14,7 @@ const routes = [
     component: () => import("layouts/padrao.vue"),
     children: [
       {
-        path: ":produto",
-        name: "produto",
+        path: "",
         component: () => import("pages/produtos.vue")
       }
     ]
