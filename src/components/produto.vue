@@ -227,6 +227,10 @@ div.container
 </template>
 
 <style scoped>
+.container{
+  margin-top: 10px;
+  margin-bottom: 50px;
+}
 
 .interno{
   width: 85%;

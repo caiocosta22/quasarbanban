@@ -75,7 +75,7 @@ onBeforeMount(async () => {
 <template lang="pug">
 q-toolbar#navegacao(
   v-show="!itsLoading"
-  style="background-color: white;"
+  style="background-color: white; border-color: rgba(0,0,0,0.1); border-style: solid; border-width: 1px;"
 )
   div.container
     p.itemmenu.row + TODAS AS CATEGORIAS
