@@ -44,17 +44,17 @@ const produtos = ref([
       },
       {
         id: 3,
-        cor: "#FF0000",
+        cor: "#6A5ACD",
         tamanho: 34
       },
       {
         id: 4,
-        cor: "#FF0000",
+        cor: "#87CEFA",
         tamanho: 36
       },
       {
         id: 5,
-        cor: "#FF0000",
+        cor: "#7FFFD4",
         tamanho: 38
       }
     ]
@@ -102,6 +102,7 @@ function rmvQtd () {
     contador.value--;
   }
 }
+
 async function calcFrete () {
   try {
     if (cep.value.length > 7) {
@@ -193,18 +194,23 @@ div.container
         p.descsimples {{  produtos[0].descricaobreve }}
         div.column(style="margin-bottom: 15px;")
           p.opcoes Escolha uma cor:
-          q-btn(
-            color="black"
-            square
-          )
-        div.column(style="margin-bottom: 15px;")
+          div.row.q-gutter-md.q-py-sm(style="align-items:center")
+            template(
+              v-for="variacoes in produtos[0].variacoes"
+              :key="variacoes"
+            )
+              q-btn(
+                size="md"
+                :style="{ backgroundColor: variacoes.cor }"
+                unelevated
+              )
           p.opcoes Escolha um tamanho:
           div.row.q-gutter-md.q-py-sm(style="align-items:center")
             template(
               v-for="tamanhos in produtos[0].variacoes"
               :key="tamanhos"
             )
-              div(style="border-style:solid; border-width: 2px; color:rgba(0,0,0,0.8); padding: 5px 5px 5px 5px;cursor:pointer")
+              q-btn(style="border-style:solid; border-width: 2px; color:rgba(0,0,0,0.2); padding: 6px 6px 6px 6px;cursor:pointer; box-shadow:none" unelevated)
                 p(style="margin:0") {{ tamanhos.tamanho }}
         div.column(style="margin-bottom: 15px;")
           p.opcoes Quantidade:
@@ -233,7 +239,7 @@ div.container
           p.opcoes Calcule o Frete:
           div.row.q-gutter-md(style="align-items: center;")
             q-icon(
-              name="fa-solid fa-truck-fast"
+              name="fa-solid fa-truck"
               color="black"
               size="lg"
             )
