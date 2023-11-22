@@ -47,9 +47,9 @@ const options = ref(
     height: "680px",
     perPage: 4,
     breakpoints: {
-      1738: { perPage: 4 },
-      1500: { perPage: 4 },
-      1344: { perPage: 4 }
+      1738: { perPage: 4, height: "600px" },
+      1500: { perPage: 4, height: "500px" },
+      1344: { perPage: 4, height: "437px" }
     }
   }
 );
