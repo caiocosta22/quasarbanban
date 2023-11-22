@@ -259,7 +259,7 @@ div.column(style="width:85%; margin: 0 auto; margin-bottom: 10px; text-align:lef
 
 <style scoped>
 .container{
-  margin-top: 10px;
+  margin-top: 20px;
   margin-bottom: 50px;
   flex-direction: column;
 }
