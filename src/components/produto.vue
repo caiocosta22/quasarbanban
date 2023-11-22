@@ -1,6 +1,8 @@
 <script setup>
 import { ref } from "vue";
-const produto = ref([
+import { Splide, SplideSlide } from "@splidejs/vue-splide";
+import "@splidejs/vue-splide/css";
+const produtos = ref([
   {
     titulo: "Produto teste",
     miniaturas: [
@@ -36,12 +38,46 @@ const produto = ref([
     ]
   }
 ]);
+const options = ref(
+  {
+    direction: "ttb",
+    slidesPerView: 1,
+    arrows: false,
+    navigation: false,
+    height: "680px",
+    perPage: 4,
+    breakpoints: {
+      1738: { perPage: 4 },
+      1500: { perPage: 4 },
+      1344: { perPage: 4 }
+    }
+  }
+);
+console.log(produtos.value[0].miniaturas[0].foto);
 </script>
 
 <template lang="pug">
 div.container
-  p(style="font-size: 40px;") AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA
+  div.interno
+    div.miniaturas
+      Splide(
+        :options="options"
+      )
+        SplideSlide(
+          v-for="miniatura in produtos[0].miniaturas"
+          :key="miniatura"
+        )
+          q-img(
+            :src="miniatura.foto"
+          )
 </template>
 
 <style scoped>
+.interno{
+  width: 85%;
+  margin: 0 auto
+}
+.miniaturas{
+  width: 10%;
+}
 </style>
