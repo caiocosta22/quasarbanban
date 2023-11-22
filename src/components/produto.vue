@@ -10,6 +10,7 @@ const produtos = ref([
     coligadas: {
       numeroparcelas: 10
     },
+    qtdEstoque: 5,
     miniaturas: [
       {
         foto: "/images/miniaturas/1.png"
@@ -65,6 +66,7 @@ const options = ref(
 const cep = ref();
 const dadosFrete = ref([]);
 const usarSkeleton = ref(false);
+const contador = ref(1);
 
 function formatCurrency (value) {
   return value.toLocaleString("pt-BR", {
@@ -72,6 +74,18 @@ function formatCurrency (value) {
     currency: "BRL",
     minimumFractionDigits: 2
   });
+}
+
+function addQtd () {
+  if (contador.value >= 1 && contador.value < produtos.value[0].qtdEstoque) {
+    contador.value++;
+  }
+}
+
+function rmvQtd () {
+  if (contador.value > 1) {
+    contador.value--;
+  }
 }
 async function calcFrete () {
   try {
@@ -176,13 +190,27 @@ div.container
           )
         div.column(style="margin-bottom: 15px;")
           p.opcoes Quantidade:
-          div.row
+          div.row.q-gutter-md(style="align-items:center")
+            div.row(style="width:25%;text-align: center; align-items: center; border-style: solid; border-width: 1px; border-radius: 5px; border-color: rgba(0,0,0,0.4); justify-content: space-between; padding: 10px 10px 10px 10px")
+              q-icon(
+                name="fa-solid fa-minus"
+                color="black"
+                size="sm"
+                style="cursor:pointer"
+                @click="rmvQtd"
+              )
+              p(style="font-size:16px; text-align: center; margin: 0") {{ contador }}
+              q-icon(
+                name="fa-solid fa-plus"
+                color="black"
+                size="sm"
+                style="cursor:pointer"
+                @click="addQtd"
+              )
             q-btn(
               color="black"
             )
-            q-btn(
-              color="black"
-            )
+              p(style="margin: 0; text-decoration: none; text-transform: none; color: white") Adicionar à sacola
         div.column
           p.opcoes Calcule o Frete:
           div.row.q-gutter-md(style="align-items: center;")
@@ -204,7 +232,7 @@ div.container
               color="black"
               size="lg"
             )
-              p(style="margin: 0; text-decoration: none; text-transform: none;") Calcular
+              p(style="margin: 0; text-decoration: none; text-transform: none; color: white") Calcular
         div(
           v-if="!usarSkeleton && dadosFrete.length"
         )
@@ -289,6 +317,7 @@ div.column(style="width:85%; margin: 0 auto; margin-bottom: 10px; text-align:lef
 .opcoes {
   font-size: 16px;
   font-weight: 700;
+  margin-bottom: 5px;
 }
 .descricaotitulo {
   font-size: 30px;
@@ -299,7 +328,13 @@ div.column(style="width:85%; margin: 0 auto; margin-bottom: 10px; text-align:lef
   font-weight: 400;
   line-height: 20px; /* 125% */
 }
-* {
+p {
+  color: var(--Cor-2, #000);
+  font-family: Outfit;
+  font-style: normal;
+  line-height: normal;
+}
+span {
   color: var(--Cor-2, #000);
   font-family: Outfit;
   font-style: normal;
