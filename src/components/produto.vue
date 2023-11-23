@@ -83,6 +83,7 @@ const dadosFrete = ref([]);
 const usarSkeleton = ref(false);
 const contador = ref(1);
 const corAtiva = ref(null);
+const tamanhoAtivo = ref(null);
 
 function formatCurrency (value) {
   return value.toLocaleString("pt-BR", {
@@ -94,6 +95,10 @@ function formatCurrency (value) {
 
 function selecionarCor (id) {
   corAtiva.value = id;
+}
+
+function selecionarTamanho (id) {
+  tamanhoAtivo.value = id;
 }
 
 function addQtd () {
@@ -217,12 +222,19 @@ div.container
               v-for="tamanhos in produtos[0].variacoes"
               :key="tamanhos"
             )
-              q-btn(style="border-style:solid; border-width: 2px; color:rgba(0,0,0,0.2); padding: 6px 6px 6px 6px;cursor:pointer; box-shadow:none" unelevated)
+              q-btn(
+                  style="color:rgba(0,0,0,0.2); padding: 6px 6px 6px 6px;cursor:pointer; box-shadow:none"
+                  unelevated
+                  :class="{ 'border-black': tamanhoAtivo === tamanhos.id }"
+                  @click="selecionarTamanho(tamanhos.id)"
+                  push
+                  square
+                )
                 p(style="margin:0") {{ tamanhos.tamanho }}
         div.column(style="margin-bottom: 15px;")
           p.opcoes Quantidade:
           div.row.q-gutter-md(style="align-items:center")
-            div.row(style="width:25%;text-align: center; align-items: center; border-style: solid; border-width: 1px; border-radius: 5px; border-color: rgba(0,0,0,0.4); justify-content: space-between; padding: 10px 10px 10px 10px")
+            div.row(style="width:25%;text-align: center; align-items: center; justify-content: space-between; padding: 10px 10px 10px 10px")
               q-icon(
                 name="fa-solid fa-minus"
                 color="black"
