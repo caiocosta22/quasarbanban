@@ -234,7 +234,7 @@ div.container
         div.column(style="margin-bottom: 15px;")
           p.opcoes Quantidade:
           div.row.q-gutter-md(style="align-items:center")
-            div.row(style="width:25%;text-align: center; align-items: center; justify-content: space-between; padding: 10px 10px 10px 10px")
+            div.row(style="width:25%;text-align: center; align-items: center; justify-content: space-between; padding: 10px 10px 10px 10px; border-style: solid; border-width: 1px; border-radius: 5px; border-color: rgba(0,0,0,0.4);")
               q-icon(
                 name="fa-solid fa-minus"
                 color="black"
