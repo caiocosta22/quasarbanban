@@ -82,6 +82,7 @@ const cep = ref();
 const dadosFrete = ref([]);
 const usarSkeleton = ref(false);
 const contador = ref(1);
+const corAtiva = ref(null);
 
 function formatCurrency (value) {
   return value.toLocaleString("pt-BR", {
@@ -89,6 +90,10 @@ function formatCurrency (value) {
     currency: "BRL",
     minimumFractionDigits: 2
   });
+}
+
+function selecionarCor (id) {
+  corAtiva.value = id;
 }
 
 function addQtd () {
@@ -203,6 +208,8 @@ div.container
                 size="md"
                 :style="{ backgroundColor: variacoes.cor }"
                 unelevated
+                :class="{ 'border-black': corAtiva === variacoes.id }"
+                @click="selecionarCor(variacoes.id)"
               )
           p.opcoes Escolha um tamanho:
           div.row.q-gutter-md.q-py-sm(style="align-items:center")
@@ -304,6 +311,10 @@ div.column(style="width:85%; margin: 0 auto; margin-bottom: 10px; text-align:lef
 }
 .detalhes {
   width: 40%;
+}
+
+.border-black {
+  border: 3px solid #cacaca;
 }
 .foto {
   max-width: 100%;
