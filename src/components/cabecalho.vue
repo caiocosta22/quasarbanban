@@ -273,7 +273,7 @@ div>a {
   font-family: Outfit;
   font-size: 14px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
   padding-left: 3px
 }

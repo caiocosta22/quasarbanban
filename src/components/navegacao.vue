@@ -124,7 +124,7 @@ q-toolbar#navegacao(
   font-family: Outfit;
   font-size: 14px;
   font-style: normal;
-  font-weight: 600;
+  font-weight: 400;
   line-height: normal;
   text-transform: uppercase;
   margin: 0 auto;
