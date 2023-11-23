@@ -74,7 +74,8 @@ const options = ref(
       1738: { perPage: 4, height: "600px" },
       1500: { perPage: 4, height: "500px" },
       1344: { perPage: 4, height: "460px" },
-      1080: { perPage: 4, height: "420px" }
+      1080: { perPage: 4, height: "420px" },
+      1024: { perPage: 4, direction: "ltr", height: "180px" }
     }
   }
 );
@@ -180,16 +181,12 @@ div.container
       template(
         v-if="produtos[0].foto"
       )
-        div.fotoprincipal(
-          style="width: 95%; display: block; margin-left: 50px;"
-        )
-          q-img.foto(
+        div.fotoprincipal
+          q-img(
             :src="produtos[0].foto"
           )
     div.detalhes
-      div.conteudo.column(
-        style="width: 100%; display: block;margin-left:50px ;padding-right:50px"
-      )
+      div.conteudo.column
         p.titulo {{ produtos[0].titulo }}
         template(
           v-if="produtos[0].promocao"
@@ -258,14 +255,13 @@ div.container
               p(style="margin: 0; text-decoration: none; text-transform: none; color: white") Adicionar à sacola
         div.column
           p.opcoes Calcule o Frete:
-          div.row.q-gutter-md(style="align-items: center; flex-wrap:nowrap")
-            q-icon(
+          div.row.q-gutter-md(style="align-items: center; flex-wrap:nowrap;")
+            q-icon.caminhao(
               name="fa-solid fa-truck"
               color="black"
               size="lg"
-              style="width:10%"
             )
-            q-input(
+            q-input.input(
               @update:model-value="calcFrete()"
               max-length="8"
               color="black"
@@ -273,7 +269,6 @@ div.container
               placeholder="00000000"
               v-model="cep"
               debounce="100"
-              style="width:40%"
             )
             q-btn(
               color="black"
@@ -338,6 +333,23 @@ div.column(style="width:85%; margin: 0 auto; margin-bottom: 10px; text-align:lef
   display: block;
   cursor: pointer
 }
+.fotoprincipal {
+  width: 95%;
+  display: block;
+  margin-left: 50px;
+}
+.conteudo {
+  width: 100%;
+  display: block;
+  margin-left:50px ;
+  padding-right:50px
+}
+.input {
+  width: 40%
+}
+.caminhao {
+  width: 10%;
+}
 .titulo {
   color: #333;
   font-size: 30px;
@@ -378,7 +390,7 @@ div.column(style="width:85%; margin: 0 auto; margin-bottom: 10px; text-align:lef
 .descricao {
   font-size: 16px;
   font-weight: 400;
-  line-height: 20px; /* 125% */
+  line-height: 20px;
 }
 p {
   color: var(--Cor-2, #000);
@@ -391,5 +403,41 @@ span {
   font-family: Outfit;
   font-style: normal;
   line-height: normal;
+}
+@media screen and (max-width: 1024px) {
+  .interno {
+    flex-direction: column;
+    max-height: 1920px;
+  }
+  .miniaturas {
+    width: 100%;
+    margin-bottom: 15px;
+  }
+  .principal {
+    width: 100%;
+  }
+  .fotoprincipal {
+    width: 100%;
+    margin-left: 0px;
+    padding-right: 0px;
+    margin-bottom:15px
+  }
+  .conteudo{
+    width: 100%;
+    margin-left: 0px;
+    padding-right: 0px;
+  }
+  .principal {
+  width: 100%;
+  }
+  .detalhes {
+  width: 100%;
+  }
+  .input {
+    width: 45%
+  }
+  .caminhao {
+    width: 8%;
+  }
 }
 </style>
