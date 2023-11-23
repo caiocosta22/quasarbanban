@@ -278,7 +278,7 @@ div.container
             q-btn(
               color="black"
               size="lg"
-              style="width:50%"
+              style="width:45%"
             )
               p(style="margin: 0; text-decoration: none; text-transform: none; color: white") Calcular
         div(
@@ -350,10 +350,12 @@ div.column(style="width:85%; margin: 0 auto; margin-bottom: 10px; text-align:lef
   padding-right:50px
 }
 .input {
-  width: 40%
+  width: 45%
 }
 .caminhao {
-  width: 10%;
+  width: 5%;
+  margin-left:30px;
+  margin-right:5px
 }
 .titulo {
   color: #333;
@@ -443,14 +445,12 @@ span {
   width: 100%;
   order:3
   }
-  .input {
-    width: 45%
-  }
   .caminhao {
-    width: 8%;
+    margin-left: 25px;
   }
   .fotomob{
     padding-right: 5px;
   }
 }
+
 </style>
