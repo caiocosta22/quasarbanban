@@ -75,7 +75,11 @@ const options = ref(
       1500: { perPage: 4, height: "500px" },
       1344: { perPage: 4, height: "460px" },
       1080: { perPage: 4, height: "420px" },
-      1024: { perPage: 4, direction: "ltr", height: "180px" }
+      1024: { perPage: 4, direction: "ltr", height: "180px" },
+      768: { perPage: 4, direction: "ltr", height: "150px" },
+      668: { perPage: 4, direction: "ltr", height: "130px" },
+      568: { perPage: 4, direction: "ltr", height: "100px" },
+      420: { perPage: 2, direction: "ltr", height: "150px" }
     }
   }
 );
