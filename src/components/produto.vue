@@ -173,6 +173,7 @@ div.container
         SplideSlide(
           v-for="miniatura in produtos[0].miniaturas"
           :key="miniatura"
+          class="fotomob"
         )
           q-img.foto(
             :src="miniatura.foto"
@@ -410,7 +411,7 @@ span {
     max-height: 1920px;
   }
   .miniaturas {
-    width: 100%;
+    width: 101%;
     margin-bottom: 15px;
   }
   .principal {
@@ -438,6 +439,9 @@ span {
   }
   .caminhao {
     width: 8%;
+  }
+  .fotomob{
+    padding-right: 5px;
   }
 }
 </style>
