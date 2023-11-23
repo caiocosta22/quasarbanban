@@ -412,8 +412,9 @@ span {
 @media screen and (max-width: 1024px) {
   .interno {
     flex-direction: column;
-    max-height: 1920px;
+    max-height: none;
   }
+
   .miniaturas {
     width: 101%;
     margin-bottom: 15px;
