@@ -413,14 +413,17 @@ span {
   .interno {
     flex-direction: column;
     max-height: none;
+    order:1
   }
 
   .miniaturas {
     width: 101%;
     margin-bottom: 15px;
+    order:2
   }
   .principal {
     width: 100%;
+    order:1
   }
   .fotoprincipal {
     width: 100%;
@@ -438,6 +441,7 @@ span {
   }
   .detalhes {
   width: 100%;
+  order:3
   }
   .input {
     width: 45%
