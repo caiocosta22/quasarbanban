@@ -73,7 +73,8 @@ const options = ref(
     breakpoints: {
       1738: { perPage: 4, height: "600px" },
       1500: { perPage: 4, height: "500px" },
-      1344: { perPage: 4, height: "437px" }
+      1344: { perPage: 4, height: "460px" },
+      1080: { perPage: 4, height: "420px" }
     }
   }
 );
@@ -187,7 +188,7 @@ div.container
           )
     div.detalhes
       div.conteudo.column(
-        style="width: 95%; display: block; margin-left: 50px"
+        style="width: 100%; display: block;margin-left:50px ;padding-right:50px"
       )
         p.titulo {{ produtos[0].titulo }}
         template(
@@ -233,12 +234,12 @@ div.container
                 p(style="margin:0") {{ tamanhos.tamanho }}
         div.column(style="margin-bottom: 15px;")
           p.opcoes Quantidade:
-          div.row.q-gutter-md(style="align-items:center")
-            div.row(style="width:25%;text-align: center; align-items: center; justify-content: space-between; padding: 10px 10px 10px 10px; border-style: solid; border-width: 1px; border-radius: 5px; border-color: rgba(0,0,0,0.4);")
+          div.row.q-gutter-md(style="align-items:center; flex-wrap: nowrap;")
+            div.row(style="width:30%;text-align: center; align-items: center; justify-content: space-between; padding: 20px 10px 20px 10px; border-style: solid; border-width: 1px; border-radius: 5px; border-color: rgba(0,0,0,0.4);")
               q-icon(
                 name="fa-solid fa-minus"
                 color="black"
-                size="sm"
+                size="xs"
                 style="cursor:pointer"
                 @click="rmvQtd"
               )
@@ -246,21 +247,23 @@ div.container
               q-icon(
                 name="fa-solid fa-plus"
                 color="black"
-                size="sm"
+                size="xs"
                 style="cursor:pointer"
                 @click="addQtd"
               )
             q-btn(
               color="black"
+              style="width:70%; padding:20px 0px 20px 0px"
             )
               p(style="margin: 0; text-decoration: none; text-transform: none; color: white") Adicionar à sacola
         div.column
           p.opcoes Calcule o Frete:
-          div.row.q-gutter-md(style="align-items: center;")
+          div.row.q-gutter-md(style="align-items: center; flex-wrap:nowrap")
             q-icon(
               name="fa-solid fa-truck"
               color="black"
               size="lg"
+              style="width:10%"
             )
             q-input(
               @update:model-value="calcFrete()"
@@ -270,10 +273,12 @@ div.container
               placeholder="00000000"
               v-model="cep"
               debounce="100"
+              style="width:40%"
             )
             q-btn(
               color="black"
               size="lg"
+              style="width:50%"
             )
               p(style="margin: 0; text-decoration: none; text-transform: none; color: white") Calcular
         div(
