@@ -155,16 +155,7 @@ div.container
       Navigation
 </template>
 
-<style scoped>
-.sessao{
-  color: #000;
-  text-align: center;
-  font-family: Catamaran;
-  font-size: 35px;
-  font-style: normal;
-  font-weight: 100;
-  line-height: normal;
-}
+<style scoped>s
 
 .carousel__prev,
 .carousel__next {

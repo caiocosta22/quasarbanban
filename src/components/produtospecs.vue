@@ -1,8 +1,16 @@
 <script setup>
-import { ref } from "vue";
+import { ref, computed } from "vue";
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/vue-splide/css";
 import axios from "axios";
+
+const props = defineProps({
+  product: {
+    type: Object,
+    required: true,
+    default: () => {}
+  }
+});
 
 const produtos = ref([
   {
@@ -84,6 +92,9 @@ const options = ref(
   }
 );
 
+const produto = computed(() => { return props.product; });
+const preçoInicial = ref(produto.value.valor);
+console.log(preçoInicial);
 const cep = ref();
 const dadosFrete = ref([]);
 const usarSkeleton = ref(false);
