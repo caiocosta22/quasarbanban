@@ -92,9 +92,9 @@ const options = ref(
   }
 );
 
-const produto = computed(() => { return props.product; });
-const preçoInicial = ref(produto.value.valor);
-console.log(preçoInicial);
+// const produto = computed(() => { return props.product; });
+// const preçoInicial = ref(produto.value.valor);
+// console.log(preçoInicial);
 const cep = ref();
 const dadosFrete = ref([]);
 const usarSkeleton = ref(false);
