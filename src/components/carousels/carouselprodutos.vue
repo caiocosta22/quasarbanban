@@ -1,45 +1,30 @@
 <script setup>
 import { ref, onBeforeMount } from "vue";
-import { Carousel, Navigation, Slide } from "vue3-carousel";
+import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import { useRouter } from "vue-router";
 import axios from "axios";
-import "vue3-carousel/dist/carousel.css";
+import "@splidejs/vue-splide/css";
 
 const router = useRouter();
 const itemsOfApi = ref([]);
-const settings = ref({
-  wrapAround: true
-});
-const breakpoints = ref({
-  368: {
-    itemsToShow: 2.0,
-    snapAlign: "start"
-  },
-  768: {
-    itemsToShow: 2.0,
-    snapAlign: "start"
-  },
-  1200: {
-    itemsToShow: 4.0,
-    snapAlign: "start"
-  },
-  1300: {
-    itemsToShow: 4,
-    snapAlign: "start"
+
+const options = ref(
+  {
+    direction: "ltr",
+    slidesPerView: 4,
+    arrows: true,
+    navigation: true,
+    height: "250px",
+    perPage: 4,
+    pagination: true
   }
-});
+);
 
 function formatCurrency (value) {
   return value.toLocaleString("pt-BR", {
     style: "currency",
     currency: "BRL",
     minimumFractionDigits: 2
-  });
-}
-
-function formatPercentage (value) {
-  return value.toLocaleString("en-us", {
-    maximumFractionDigits: 0
   });
 }
 
@@ -61,7 +46,7 @@ async function searchBestSellers () {
     console.error(e);
   }
 }
-console.log(itemsOfApi);
+
 onBeforeMount(async () => {
   await searchBestSellers();
 });
@@ -83,38 +68,34 @@ div.q-py-lg
           )
             .sessao.justify-center {{ subsec.titulo }}
 div.container
-  Carousel(
-    v-bind="settings"
-    :breakpoints="breakpoints"
-    style="width: 85%; margin: 0 auto"
-  )
-    template(
-      v-for="(item, index) in itemsOfApi"
-      :key="index"
+  div.interno
+    Splide(
+      :options="options"
     )
       template(
-        v-if="item.orientacao === 'horizontal'"
+        v-for="(item, index) in itemsOfApi"
+        :key="index"
       )
         template(
-          v-if="item.subsecoesEcommerce"
+          v-if="item.orientacao === 'horizontal'"
         )
           template(
-            v-for="subsec in item.subsecoesEcommerce"
-            :key="subsec"
+            v-if="item.subsecoesEcommerce"
           )
             template(
-              v-if="subsec.produtos"
+              v-for="subsec in item.subsecoesEcommerce"
+              :key="subsec"
             )
-              Slide(
-                v-for="produto in subsec.produtos"
-                :key="produto"
+              template(
+                v-if="subsec.produtos"
               )
-                div.cursor-pointer.column.q-pl-sm.flex(
-                  @click="openProductPage(produto)"
-                  style="heigth: 100%; width: 250px"
+                SplideSlide(
+                  v-for="produto in subsec.produtos"
+                  :key="produto"
+                  class="foto"
                 )
                   div(
-                    style="height: 80%"
+                    @click="openProductPage(produto)"
                   )
                     template(
                       v-if="produto.fotosServico.length>=1"
@@ -122,52 +103,50 @@ div.container
                       q-img.cursor-pointer(
                         :src="produto.fotosServico[0].foto"
                         spinner="white"
-                        style="min-width: 200px; max-width: 250px; margin: 0 auto; height: 250px;"
                       )
-                  div.q-pb-lg.column(
-                    style="heigth: 20%"
-                  )
-                    p.text-black(
-                      style="font-size:16px"
-                    ) {{ produto.titulo }}
-                    template(
-                      v-if="produto.promocao"
-                    )
+                    div.column
                       p.text-black(
-                        style="font-size: 15px;   text-decoration:line-through; margin-bottom: 5px;"
-                      ) {{  formatCurrency(produto.valor) }}
-                      p.text-bold(
-                        style="font-size: 20px; margin-bottom:0"
-                      ) {{ formatCurrency(produto.  precoPromocional) }}
-                      span.text-black(
-                        style="font-size: 15px"
-                      ) {{ produto.coligada.numeroParcelas }} x de {{ formatCurrency(produto.valor /   produto.coligada.numeroParcelas) }} sem juros
-                    template(
-                      v-if="!produto.promocao"
-                    )
-                      p.text-bold(
-                        style="font-size: 20px; margin-bottom: 0;"
-                      )  {{ formatCurrency(produto.valor) }}
-                      p.text-black(
-                        style="font-size: 15px"
-                      ) {{ produto.coligada.numeroParcelas }} x de {{ formatCurrency(produto.valor /   produto.coligada.numeroParcelas) }} sem juros
-    template(#addons)
-      Navigation
+                        style="font-size:16px"
+                      ) {{ produto.titulo }}
+                      template(
+                        v-if="produto.promocao"
+                      )
+                        p.text-black(
+                          style="font-size: 15px;     text-decoration:line-through; margin-bottom: 5px;"
+                        ) {{  formatCurrency(produto.valor) }}
+                        p.text-bold(
+                          style="font-size: 20px; margin-bottom:0"
+                        ) {{ formatCurrency(produto.  precoPromocional) }}
+                        span.text-black(
+                          style="font-size: 15px"
+                        ) {{ produto.coligada.numeroParcelas }} x de {{   formatCurrency(produto.valor /   produto.coligada.  numeroParcelas) }} sem juros
+                      template(
+                        v-if="!produto.promocao"
+                      )
+                        p.text-bold(
+                          style="font-size: 20px; margin-bottom: 0;"
+                        )  {{ formatCurrency(produto.valor) }}
+                        p.text-black(
+                          style="font-size: 15px"
+                        ) {{ produto.coligada.numeroParcelas }} x de {{   formatCurrency(produto.valor /   produto.coligada.  numeroParcelas) }} sem juros
 </template>
 
 <style scoped>s
-
-.carousel__prev,
-.carousel__next {
-  box-sizing: content-box;
-}
-.carousel__slide p {
-  height: 10%
-}
 .container{
   flex-direction: column;
   overflow: hidden;
   display: flex;
+  width: 100%;
+}
+.interno{
+  width: 85%;
+  margin: 0 auto;
+  flex-direction:row;
+  display: flex;
+  overflow: hidden
+}
+.foto{
+    padding-right: 5px;
 }
 .tag{
   color: #FFF;
