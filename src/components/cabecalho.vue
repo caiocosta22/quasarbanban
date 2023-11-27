@@ -49,8 +49,8 @@ const props = defineProps({
 async function searchCategories () {
   try {
     const categorias = await axios.get("https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/categoriaAutoRelacionada/getAllCategorias").then(e => e.data);
-    const categoriascomFoto = categorias.filter(categoria => categoria.fotoUrl);
-    if (categorias.length) categoriasCarousel.value = categoriascomFoto;
+    const categoriascomDescricao = categorias.filter(categoria => categoria.descricao);
+    if (categorias.length) categoriasCarousel.value = categoriascomDescricao;
   } catch (e) {
     console.error(e);
   }
@@ -173,15 +173,15 @@ div.container
           )
         q-separator
         template(
-          v-for="categorie in categoriesBase"
-          :key="categorie.name"
+          v-for="categorie in categoriasCarousel"
+          :key="categorie.descricao"
         )
           q-item(
-            clickable :active="categorie.name === 'Outbox'" v-ripple
+            clickable :active="categorie.descricao === 'Outbox'" v-ripple
             style="color:black;"
             @click="openCategoryPage(categorie)"
           )
-            q-item-section {{ categorie.name }}
+            q-item-section {{ categorie.descricao }}
           q-separator
     q-dialog(
       v-model="prompt"
