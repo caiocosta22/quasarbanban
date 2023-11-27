@@ -271,8 +271,9 @@ div.container
   padding-top: 10px ;
 }
 .endereco {
-    text-align: left;
+    text-align: center;
     width: 85%;
+    margin-bottom:25px
   }
 }
 @media screen and (min-width: 1024px) {
