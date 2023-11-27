@@ -56,25 +56,50 @@ div
   template(
     v-else-if="!itsLoading"
   )
-    q-carousel.cursor-pointer(
-      animated
-      v-model="slide"
-      infinite
-      swipeable
-      :autoplay="2500"
-      transition-prev="slide-right"
-      transition-next="slide-left"
-      style="max-height: 32px;"
-    )
-      template(
-        v-for="(banner, index) in bannersAnuncio"
-        :key="index"
-      )
-        q-carousel-slide.slide(
-          :name="index"
-          :img-src="banner.fotoWebp"
-          style="height: 32px; width: 100%; margin: 0 auto"
+    template(
+          v-if="$q.platform.is.desktop"
         )
+      q-carousel.cursor-pointer(
+        animated
+        v-model="slide"
+        infinite
+        swipeable
+        :autoplay="2500"
+        transition-prev="slide-right"
+        transition-next="slide-left"
+        style="max-height: 32px;"
+      )
+        template(
+          v-for="(banner, index) in bannersAnuncio"
+          :key="index"
+        )
+          q-carousel-slide.slide(
+            :name="index"
+            :img-src="banner.fotoWebp"
+            style="height: 32px; width: 100%; margin: 0 auto"
+          )
+    template(
+      v-if="$q.platform.is.mobile"
+    )
+      q-carousel.cursor-pointer(
+        animated
+        v-model="slide"
+        infinite
+        swipeable
+        :autoplay="2500"
+        transition-prev="slide-right"
+        transition-next="slide-left"
+        style="max-height: 64px;"
+      )
+        template(
+          v-for="(banner, index) in bannersAnuncio"
+          :key="index"
+        )
+          q-carousel-slide.slide(
+            :name="index"
+            :img-src="banner.fotoWebp"
+            style="height: 64px; width: 100%; margin: 0 auto"
+          )
 </template>
 
 <style scoped>
