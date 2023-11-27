@@ -54,7 +54,7 @@ template(
       v-if="itsLoading"
     )
       q-skeleton.col(
-        heigth="120px"
+        heigth="256px"
       )
     template(
       v-else-if="!itsLoading"
