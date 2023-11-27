@@ -48,33 +48,91 @@ onBeforeMount(async () => {
 </script>
 
 <template lang="pug">
-div.banner
-  template(
-    v-if="itsLoading"
-  )
-    q-skeleton.col(
-      heigth="100%"
-      width="100%"
+template(
+  v-if="$q.platform.is.desktop"
+)
+  div.banner
+    template(
+      v-if="itsLoading"
     )
-  template(
-    v-else-if="!itsLoading"
-  )
-    q-carousel.cursor-pointer.col(
-      v-model="slide"
-      animated
-      infinite
-      swipeable
-      navigation
-      :autoplay="autoplay"
-      transition-prev="slide-right"
-      transition-next="slide-left"
+      q-skeleton.col(
+        heigth="100%"
+        width="100%"
+      )
+    template(
+      v-else-if="!itsLoading"
     )
-      template(
+        q-carousel.cursor-pointer.col(
+          v-model="slide"
+          animated
+          infinite
+          swipeable
+          navigation
+          :autoplay="autoplay"
+          transition-prev="slide-right"
+          transition-next="slide-left"
+        )
+          template(
+              v-slot:navigation-icon="{ active, btnProps, onClick }"
+            )
+              q-btn(
+                v-if="active"
+                size="md"
+                :icon="btnProps.icon"
+                color="orange"
+                flat
+                round
+                dense
+                @click="onClick"
+              )
+              q-btn(
+                v-else
+                size="sm"
+                :icon="btnProps.icon"
+                color="white"
+                flat
+                round
+                dense
+                @click="onClick"
+              )
+          template(
+            v-for="(banner, index) in bannersCarousel"
+            :key="index"
+          )
+            q-carousel-slide.slide.col(
+              :name="index"
+              :img-src="banner.fotoWebp"
+            )
+template(
+  v-if="$q.platform.is.mobile"
+)
+  div.bannermobile
+    template(
+      v-if="itsLoading"
+    )
+      q-skeleton.col(
+        heigth="100%"
+        width="100%"
+      )
+    template(
+      v-else-if="!itsLoading"
+    )
+      q-carousel.cursor-pointer.col(
+        v-model="slide"
+        animated
+        infinite
+        swipeable
+        navigation
+        :autoplay="autoplay"
+        transition-prev="slide-right"
+        transition-next="slide-left"
+      )
+        template(
           v-slot:navigation-icon="{ active, btnProps, onClick }"
         )
           q-btn(
             v-if="active"
-            size="md"
+            size="lg"
             :icon="btnProps.icon"
             color="orange"
             flat
@@ -84,7 +142,7 @@ div.banner
           )
           q-btn(
             v-else
-            size="sm"
+            size="md"
             :icon="btnProps.icon"
             color="white"
             flat
@@ -92,14 +150,14 @@ div.banner
             dense
             @click="onClick"
           )
-      template(
-        v-for="(banner, index) in bannersCarousel"
-        :key="index"
-      )
-        q-carousel-slide.slide.col(
-          :name="index"
-          :img-src="banner.fotoWebp"
+        template(
+          v-for="(banner, index) in bannersCarousel"
+          :key="index"
         )
+          q-carousel-slide.slide.col(
+            :name="index"
+            :img-src="banner.fotoWebp"
+          )
 </template>
 
 <style scoped>
@@ -113,8 +171,18 @@ div.banner
   height: auto;
   width:100%;
 }
+.bannermobile{
+  display:flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  justify-content: center;
+  aspect-ratio: auto 1024/768;
+  position: relative;
+  height: auto;
+  width: 100%;
+}
 .slide{
   max-width: 100%;
-  display:block;
+  display: block;
 }
 </style>
