@@ -104,7 +104,7 @@ template(
         )
           q-carousel-slide.slide(
             :name="index"
-            :img-src="banner.fotoWebp"
+            img-src="/images/regua.jpeg"
           )
 </template>
 
@@ -126,8 +126,6 @@ template(
   justify-content: center;
   position: relative;
   width: 100%;
-  margin-bottom:20px;
-  margin-top: 20px;
   height: 256px;
   aspect-ratio: auto 1024/256;
 }

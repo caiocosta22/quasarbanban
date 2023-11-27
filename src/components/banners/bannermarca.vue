@@ -56,7 +56,7 @@ template(
       v-if="itsLoading"
     )
       q-skeleton.col(
-        heigth="120px"
+        heigth="256px"
       )
     template(
       v-else-if="!itsLoading"
@@ -106,7 +106,7 @@ template(
         )
           q-carousel-slide.slide(
             :name="index"
-            :img-src="banner.fotoWebp"
+            img-src="/images/marca.jpeg"
           )
 </template>
 
@@ -128,8 +128,6 @@ template(
   justify-content: center;
   position: relative;
   width: 100%;
-  margin-bottom: 20px;
-  margin-top: 20px;
   height: 256px;
   aspect-ratio: auto 1024/256;
 }
@@ -142,5 +140,15 @@ template(
 .slide {
   max-width: 100%;
   display: block;
+}
+.sessao{
+  color: var(--Cor-2, #000);
+  text-align: center;
+  font-family: Outfit;
+  font-size: 38px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  margin: 0
 }
 </style>

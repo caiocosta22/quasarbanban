@@ -225,7 +225,8 @@ div.container
   flex-direction: column;
   text-align: center;
   justify-content: center;
-  align-items: center
+  align-items: center;
+  margin-bottom:10px
 }
 .menu {
   width: 85%;
@@ -274,7 +275,7 @@ div.container
   padding-top: 10px ;
 }
 .endereco {
-    text-align: left;
+    text-align: center;
     width: 85%;
   }
 }

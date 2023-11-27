@@ -84,7 +84,7 @@ div.container
   box-sizing: border-box;
   justify-content: center;
   position: relative;
-  height: 200px;
+  height: 280px;
   width: 100%;
   background-color: #000;
 }
@@ -94,6 +94,7 @@ div.container
   flex-direction: row;
   display: flex;
   align-items: center;
+  padding: 20px 0px 20px 0px;
 }
 .texto {
   width: 30%;
