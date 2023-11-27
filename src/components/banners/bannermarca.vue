@@ -46,35 +46,68 @@ onBeforeMount(async () => {
 </script>
 
 <template lang = "pug">
-div.q-py-lg
+div.q-pt-lg
   .sessao.justify-center Escolha por Marca
-div.container
-  template(
-    v-if="itsLoading"
-  )
-    q-skeleton.col(
-      heigth="120px"
+template(
+  v-if="$q.platform.is.desktop"
+)
+  div.container
+    template(
+      v-if="itsLoading"
     )
-  template(
-    v-else-if="!itsLoading"
-  )
-    q-carousel.carousel(
-      v-model="slide"
-      animated
-      infinite
-      swipeable
-      autoplay="true"
-      transition-prev="slide-right"
-      transition-next="slide-left"
-    )
-      template(
-        v-for="(banner, index) in bannersAnuncio"
-        :key="index"
+      q-skeleton.col(
+        heigth="120px"
       )
-        q-carousel-slide.slide(
-          :name="index"
-          :img-src="banner.fotoWebp"
+    template(
+      v-else-if="!itsLoading"
+    )
+      q-carousel.carousel(
+        v-model="slide"
+        animated
+        infinite
+        swipeable
+        autoplay="true"
+        transition-prev="slide-right"
+        transition-next="slide-left"
+      )
+        template(
+          v-for="(banner, index) in bannersAnuncio"
+          :key="index"
         )
+          q-carousel-slide.slide(
+            :name="index"
+            :img-src="banner.fotoWebp"
+          )
+template(
+  v-if="$q.platform.is.mobile"
+)
+  div.containermob
+    template(
+      v-if="itsLoading"
+    )
+      q-skeleton.col(
+        heigth="256px"
+      )
+    template(
+      v-else-if="!itsLoading"
+    )
+      q-carousel.carousel(
+        v-model="slide"
+        animated
+        infinite
+        swipeable
+        autoplay="true"
+        transition-prev="slide-right"
+        transition-next="slide-left"
+      )
+        template(
+          v-for="(banner, index) in bannersAnuncio"
+          :key="index"
+        )
+          q-carousel-slide.slide(
+            :name="index"
+            :img-src="banner.fotoWebp"
+          )
 </template>
 
 <style scoped>
@@ -88,6 +121,17 @@ div.container
   margin-top: 20px;
   height: 90px;
   aspect-ratio: auto 1920/90;
+}
+.containermob {
+  display:flex;
+  flex-wrap:nowrap;
+  justify-content: center;
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+  margin-top: 20px;
+  height: 256px;
+  aspect-ratio: auto 1024/256;
 }
 .carousel {
   width: 85%;
