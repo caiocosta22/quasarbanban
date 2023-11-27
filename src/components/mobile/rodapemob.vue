@@ -256,10 +256,10 @@ div.container
   color: #939598;
   text-align: center;
   font-family: Outfit;
-  font-size:   13px;
+  font-size: 32px;
   font-style: normal;
   font-weight: 400;
-  line-height:20px;
+  line-height:40px;
   background-color:#F4F4F4;
   flex-direction: row;
   justify-content: center;
