@@ -185,4 +185,9 @@ template(
   max-width: 100%;
   display: block;
 }
+@media screen and (max-width: 1024px) {
+  .banner {
+    aspect-ratio: auto 1024/586;
+  }
+}
 </style>
