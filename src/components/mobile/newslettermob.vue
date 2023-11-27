@@ -71,7 +71,7 @@ div.container
       color="orange"
       @click="envioemail"
     )
-      p(style="margin: 0; font-size:30px") ENVIAR
+      p(style="margin: 0; font-size:30px;") ENVIAR
 </template>
 
 <style scoped>
@@ -84,7 +84,6 @@ div.container
   box-sizing: border-box;
   justify-content: center;
   position: relative;
-  height: 280px;
   width: 100%;
   background-color: #000;
 }
@@ -116,7 +115,6 @@ div.container
   font-style: normal;
   font-weight: 600;
   line-height: normal;
-  line-height:25px
 }
 .secundario {
   color: #FFF;
@@ -135,21 +133,19 @@ div.container
   line-height:20px
 }
 @media screen and (max-width: 1024px) {
-.container {
-  height: 322px;
-}
 .interno {
   flex-direction: column;
 }
 .texto {
   width: 100%;
   text-align: center;
-  margin-bottom: 10px;
+  margin-bottom: 20px;
 }
 .input {
   width: 100%;
   padding: 0;
-  margin-bottom: 10px;
+  margin-bottom: 15px;
+  margin-top: 0px;
 }
 .botao {
   width: 100%;
