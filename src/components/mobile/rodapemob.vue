@@ -277,6 +277,7 @@ div.container
 .endereco {
     text-align: center;
     width: 85%;
+    margin-bottom: 35px;
   }
 }
 @media screen and (min-width: 1024px) {
