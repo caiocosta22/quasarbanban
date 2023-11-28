@@ -4,7 +4,7 @@ import { useRouter } from "vue-router";
 import { useQuasar } from "quasar";
 
 import getCartItems from "src/helpers/getCartItems";
-import axios from "src/boot/axios";
+import axios from "axios";
 
 const $q = useQuasar();
 const router = useRouter();
