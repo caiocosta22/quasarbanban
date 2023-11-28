@@ -170,16 +170,7 @@ template(
   position: relative;
   height: auto;
   width:100%;
-}
-.bannermobile{
-  display:flex;
-  flex-direction: column;
-  box-sizing: border-box;
-  justify-content: center;
-  aspect-ratio: auto 1080/960;
-  position: relative;
-  height: auto;
-  width: 100%;
+  margin-bottom: 15px;
 }
 .slide{
   max-width: 100%;

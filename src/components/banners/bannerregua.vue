@@ -1,29 +1,30 @@
 <script setup>
-import { ref, onBeforeMount } from "vue";
+import { ref, onBeforeMount, watchEffect } from "vue";
 import axios from "axios";
 
 const slide = ref(0);
 const itsLoading = ref(true);
+const bannerImage = ref("");
 
 const bannersAnuncio = ref([
   {
     fotoWebp: "https://cs210033fff90d2f7ac.blob.core.windows.net/banbancalcados/banner/2023-10-04T15:44:04.670_110.webp",
     id: 0,
-    image: "",
+    image: "/images/regua.jpeg",
     ordem: 0,
     posicionamento: "anuncio"
   },
   {
     fotoWebp: "https://cs210033fff90d2f7ac.blob.core.windows.net/banbancalcados/banner/2023-10-04T15:44:04.670_110.webp",
     id: 0,
-    image: "",
+    image: "/images/regua.jpeg",
     ordem: 0,
     posicionamento: "anuncio"
   },
   {
     fotoWebp: "https://cs210033fff90d2f7ac.blob.core.windows.net/banbancalcados/banner/2023-10-04T15:44:04.670_110.webp",
     id: 0,
-    image: "",
+    image: "/images/regua.jpeg",
     ordem: 0,
     posicionamento: "anuncio"
   }
@@ -35,13 +36,29 @@ async function searchTopBanners () {
     if (banners.length) bannersAnuncio.value = banners.filter(banner => banner.posicionamento === "regua");
   } catch (e) {
     console.error(e);
+  } finally {
+    bannersAnuncio.value.image = "/images/regua.jpeg";
   }
 }
+
+watchEffect(() => {
+  const mediaQuery = window.matchMedia("(max-width: 1024px)");
+  bannerImage.value = mediaQuery.matches ? "image" : "fotoWebp";
+});
 
 onBeforeMount(async () => {
   itsLoading.value = true;
   await searchTopBanners();
+  bannersAnuncio.value.forEach(banner => {
+    banner.activeImage = window.innerWidth <= 1024 ? banner.image : banner.fotoWebp;
+  });
   itsLoading.value = false;
+  // Atualizar as imagens do banner quando a resolução da tela mudar
+  window.addEventListener("resize", () => {
+    bannersAnuncio.value.forEach(banner => {
+      banner.activeImage = window.innerWidth <= 1024 ? banner.image : banner.fotoWebp;
+    });
+  });
 });
 
 </script>
@@ -72,7 +89,7 @@ div.container
       )
         q-carousel-slide.slide(
           :name="index"
-          :img-src="banner.fotoWebp"
+          :img-src="banner.activeImage"
         )
 </template>
 
@@ -84,7 +101,6 @@ div.container
   position: relative;
   width: 100%;
   margin: 0;
-  height: 90px;
   aspect-ratio: auto 1920/90;
 }
 .carousel {
