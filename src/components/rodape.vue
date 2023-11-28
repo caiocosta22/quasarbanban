@@ -217,6 +217,7 @@ div.container
   width: 100%;
   background-color: #F4F4F4;
   padding-top: 20px;
+  margin-top: 15px;
 }
 .interno {
   width: 85%;
