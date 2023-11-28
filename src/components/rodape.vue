@@ -149,8 +149,12 @@ div#mobile.container
           p.secundario (85)99634-3864
         q-card-section
           p.secundario Atendimento:<br>Segunda à sexta, de 9h as  17h.
-    div.coluna
-      p.principal Permaneça conectado
+    div.coluna(
+      style="text-align: center; align-items: center;"
+    )
+      p.principal(
+        style="margin: 0 0 5px;"
+      ) Permaneça conectado
       div.row.q-gutter-sm
         template(
           v-if="iconsmockados"
@@ -160,7 +164,7 @@ div#mobile.container
             href="https://www.instagram.com/banbancalcados/"
           )
             q-icon(
-              size="md"
+              size="lg"
               name="fa-brands fa-square-instagram"
               color="orange"
             )
@@ -169,7 +173,7 @@ div#mobile.container
             href="https://www.facebook.com/banbancalcadosperfil/"
           )
             q-icon(
-              size="md"
+              size="lg"
               name="fa-brands fa-square-facebook"
               color="orange"
             )
@@ -178,7 +182,7 @@ div#mobile.container
             href="https://www.youtube.com/user/banbancalcados"
           )
             q-icon(
-              size="md"
+              size="lg"
               name="fa-brands fa-square-youtube"
               color="orange"
             )
@@ -187,7 +191,7 @@ div#mobile.container
             href="https://www.tiktok.com/@banbancalcadosof"
           )
             q-icon(
-              size="md"
+              size="lg"
               name="fa-brands fa-tiktok"
               color="orange"
             )
