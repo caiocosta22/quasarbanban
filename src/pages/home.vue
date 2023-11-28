@@ -14,7 +14,6 @@ q-page-container
     v-if="$q.platform.is.mobile"
   )
     newslettermob
-  bannerinstagram
   bannerregua
 </template>
 
@@ -26,7 +25,6 @@ import carouselcategorias from "src/components/carousels/carouselcategorias.vue"
 import newsletter from "src/components/newsletter.vue";
 import bannermeio from "src/components/banners/bannermeio.vue";
 import bannermarca from "src/components/banners/bannermarca.vue";
-import bannerinstagram from "src/components/banners/bannerinstagram.vue";
 import carouselprodutos from "src/components/carousels/carouselprodutos.vue";
 // mobile
 import newslettermob from "src/components/mobile/newslettermob.vue";
