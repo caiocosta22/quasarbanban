@@ -12,7 +12,7 @@ const router = useRouter();
 const pesquisa = ref("");
 const prompt = ref(false);
 const drawer = ref(false);
-const categoriasCarousel = ref([
+const categoriesBase = ref([
   {
     descricao: "CARTEIRAS",
     fotoUrl: "https://cs210033fff90d2f7ac.blob.core.windows.net/banbancalcados/categoria-autorelacionada-servico/3368imagem2023-09-28T11:56:50.209.png",
@@ -46,16 +46,6 @@ const props = defineProps({
   }
 });
 
-async function searchCategories () {
-  try {
-    const categorias = await axios.get("https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/categoriaAutoRelacionada/getAllCategorias").then(e => e.data);
-    const categoriascomDescricao = categorias.filter(categoria => categoria.descricao);
-    if (categorias.length) categoriasCarousel.value = categoriascomDescricao;
-  } catch (e) {
-    console.error(e);
-  }
-}
-
 function openCategoryPage (categoria) {
   if (categoria.id) {
     const url = "/categorias/" + categoria.id;
@@ -72,6 +62,37 @@ function redirectToSearchPage () {
 
 function redirectToHomePage () {
   router.push("/");
+}
+
+function mapCategories (subCategories) {
+  if (!subCategories || subCategories.length === 0) {
+    return [];
+  }
+  return subCategories.map(category => {
+    return {
+      ...category,
+      name: category.descricao,
+      children: mapCategories(category.subCategoria)
+    };
+  });
+}
+
+async function searchCategories () {
+  try {
+    const data = await axios.get("https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/categoriaAutoRelacionada/getAllCategorias").then(e => e.data);
+    if (data.length) {
+      categoriesBase.value = data.map(row => {
+        return {
+          ...row,
+          name: row.descricao,
+          children: mapCategories(row.subCategoria),
+          foto: row.fotoUrl
+        };
+      });
+    }
+  } catch (e) {
+    console.error(e);
+  }
 }
 
 setInterval(async () => {
@@ -175,7 +196,7 @@ div.container
           )
         q-separator
         template(
-          v-for="categorie in categoriasCarousel"
+          v-for="categorie in categoriesBase"
           :key="categorie.descricao"
         )
           q-item(
