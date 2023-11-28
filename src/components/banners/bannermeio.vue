@@ -55,19 +55,22 @@ div.container
   template(
     v-else-if="!itsLoading"
   )
-    div.interno.q-gutter-sm
-      div
-        q-img.foto(
-        src="/images/Promocao1.jpeg"
-        )
-      div
-        q-img.foto(
-          src="/images/Promocao2.jpeg"
-        )
-      div.some
-        q-img.foto(
-          src="/images/Promocao3.jpeg"
-        )
+    div.interno
+      div.grid.q-px-sm
+        div.q-mr-sm
+          q-img.foto(
+            src="/images/Promocao1.jpeg"
+          )
+        div.q-mr-sm
+          q-img.foto(
+            src="/images/Promocao2.jpeg"
+            style="padding-bottom: 3px;"
+          )
+        div.q-mr-sm
+          q-img.foto(
+            src="/images/Promocao3.jpeg"
+            style="padding-bottom: 3px;"
+          )
 </template>
 
 <style scoped>
@@ -83,12 +86,11 @@ div.container
 .interno {
   width: 85%;
   margin: 0 auto;
-  flex-direction: row;
-  display: flex;
   align-items: center;
 }
-.interno > div {
-  flex: 1 1 420px;
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
 }
 .carousel {
   width: 85%;
@@ -99,12 +101,14 @@ div.container
 .foto {
   max-width: 100%;
   display: block;
-  max-height: 480px;
   cursor: pointer;
 }
 @media screen and (max-width: 1024px) {
-.some {
-  display: none;
-}
+  .grid{
+    grid-template-columns: 1fr
+  }
+  .foto{
+    margin-bottom: 15px;
+  }
 }
 </style>
