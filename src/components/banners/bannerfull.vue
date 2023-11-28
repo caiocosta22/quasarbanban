@@ -132,7 +132,7 @@ template(
         )
           q-btn(
             v-if="active"
-            size="lg"
+            size="md"
             :icon="btnProps.icon"
             color="orange"
             flat
@@ -142,7 +142,7 @@ template(
           )
           q-btn(
             v-else
-            size="md"
+            size="sm"
             :icon="btnProps.icon"
             color="white"
             flat
@@ -176,7 +176,7 @@ template(
   flex-direction: column;
   box-sizing: border-box;
   justify-content: center;
-  aspect-ratio: auto 1024/768;
+  aspect-ratio: auto 1080/960;
   position: relative;
   height: auto;
   width: 100%;
