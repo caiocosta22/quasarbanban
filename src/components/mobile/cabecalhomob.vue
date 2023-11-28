@@ -134,7 +134,7 @@ div.container
   q-drawer(
     behavior="mobile"
     v-model="drawer"
-    :width="365"
+    :width="420"
     :breakpoint="1025"
     bordered
     side="right"
@@ -147,11 +147,14 @@ div.container
           style="color:black"
           @click="prompt = true"
         )
-          q-item-section BUSCA
+          q-item-section
+            p(
+              style="color:black; font-size:38px; margin: 0; padding: 15px 0 15px"
+            ) BUSCA
           q-icon(
             name="search"
-            size="sm"
-            style="padding-top:4px"
+            size="xl"
+            style="padding: 15px 0 15px"
           )
         q-separator
         template(
@@ -165,32 +168,32 @@ div.container
           )
             q-item-section
               p(
-                style="color:black; font-size:38px; margin: 0; padding: 10px 0 10px"
+                style="color:black; font-size:38px; margin: 0; padding: 15px 0 15px"
               ) {{ categorie.descricao }}
           q-separator
     q-dialog(
       v-model="prompt"
     )
-      q-card(
-        style="min-width:350px"
+      q-card.q-pa-md(
+        style="min-width:420px; min-height: 320px;"
       )
-        q-card-section.row.items-center
-          div.h6 O que está buscando?
-          q-space
+        q-card-section.row
+          div.h6
+            p(style="font-size:38px") O que está buscando?
           q-btn(
             icon="close"
             flat
-            round
-            dense
             v-close-popup
+            size="xl"
           )
-        q-card-section.q-pt-none
+        q-card-section.column(
+          style="margin-top: 50px;"
+        )
           q-input(
-            dense
             v-model="pesquisa"
-            autofocus @keyup.enter="prompt = false"
+            autofocus
+            @keyup.enter="prompt = false"
             color="black"
-            label-color="black"
             placeholder="Digite aqui"
             @keypress.enter="redirectToSearchPage()"
             type="search"
@@ -201,16 +204,10 @@ div.container
           text-black
         )
           q-btn(
-            label="Cancelar"
-            v-close-popup
-            color="black"
-            size="sm"
-          )
-          q-btn(
             label="Pesquisar"
             v-close-popup
             color="black"
-            size="sm"
+            size="xl"
             @click="redirectToSearchPage()"
           )
 </template>
@@ -274,11 +271,6 @@ div>a {
 @media screen and (max-width: 1024px) {
   .texto{
     display:none
-  }
-}
-@media screen and (min-width: 768px) and (max-width: 1024px) {
-  #minibusca {
-    display: none;
   }
 }
 @media screen and (max-width: 768px) {
