@@ -71,7 +71,7 @@ function openCategoryPage (categoria) {
 onBeforeMount(async () => {
   itsLoading.value = true;
   await searchCategories();
-  itsLoading.value = false;
+  itsLoading.value = true;
 });
 
 </script>
@@ -83,43 +83,14 @@ div.q-py-lg
   template(
     v-if="itsLoading"
   )
-    div.q-gutter-sm.row.col-10(style="width:85%; margin: 0 auto;")
-      div.some.col
-        q-skeleton.col(
-          type="circle"
-          width="90%"
-          height="100%"
-        )
-      div.some.col
-        q-skeleton.col(
-          type="circle"
-          width="90%"
-          height="100%"
-        )
-      div.some.col
-        q-skeleton.col(
-          type="circle"
-          width="90%"
-          height="100%"
-        )
-      div.col
-        q-skeleton.col(
-          type="circle"
-          width="90%"
-          height="100%"
-        )
-      div.col
-        q-skeleton.col(
-          type="circle"
-          width="90%"
-          height="100%"
-        )
-      div.col
-        q-skeleton.col(
-          type="circle"
-          width="90%"
-          height="100%"
-        )
+    div.row(
+      style="width: 84%;"
+    )
+      q-skeleton.col(
+        type="square"
+        width="100%"
+        height="100%"
+      )
   template(
     v-else-if="!itsLoading"
   )
