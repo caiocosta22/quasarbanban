@@ -82,6 +82,7 @@ div.container
   height: 170px;
   width: 100%;
   background-color: #000;
+  margin-bottom: 15px;
 }
 .interno {
   width: 85%;
