@@ -6,14 +6,7 @@ q-page-container
   carouselcategorias
   bannermeio
   bannermarca
-  template(
-    v-if="$q.platform.is.desktop"
-  )
-    newsletter
-  template(
-    v-if="$q.platform.is.mobile"
-  )
-    newslettermob
+  newsletter
   bannerregua
 </template>
 
@@ -26,8 +19,6 @@ import newsletter from "src/components/newsletter.vue";
 import bannermeio from "src/components/banners/bannermeio.vue";
 import bannermarca from "src/components/banners/bannermarca.vue";
 import carouselprodutos from "src/components/carousels/carouselprodutos.vue";
-// mobile
-import newslettermob from "src/components/mobile/newslettermob.vue";
 </script>
 
 <style scoped>
