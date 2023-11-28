@@ -62,6 +62,7 @@ function openCategoryPage (categoria) {
     router.push(url);
   }
 }
+
 function redirectToSearchPage () {
   if (pesquisa.value) {
     const url = "/pesquisa/" + pesquisa.value;
@@ -83,6 +84,7 @@ onBeforeMount(async () => {
     searchCategories()
   ]);
 });
+
 </script>
 
 <template lang="pug">

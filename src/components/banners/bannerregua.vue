@@ -43,69 +43,37 @@ onBeforeMount(async () => {
   await searchTopBanners();
   itsLoading.value = false;
 });
+
 </script>
 
 <template lang = "pug">
-template(
-  v-if="$q.platform.is.desktop"
-)
-  div.container
-    template(
-      v-if="itsLoading"
+div.container
+  template(
+    v-if="itsLoading"
+  )
+    q-skeleton.col(
+      heigth="256px"
     )
-      q-skeleton.col(
-        heigth="256px"
-      )
-    template(
-      v-else-if="!itsLoading"
+  template(
+    v-else-if="!itsLoading"
+  )
+    q-carousel.carousel(
+      v-model="slide"
+      animated
+      infinite
+      swipeable
+      autoplay="true"
+      transition-prev="slide-right"
+      transition-next="slide-left"
     )
-      q-carousel.carousel(
-        v-model="slide"
-        animated
-        infinite
-        swipeable
-        autoplay="true"
-        transition-prev="slide-right"
-        transition-next="slide-left"
+      template(
+        v-for="(banner, index) in bannersAnuncio"
+        :key="index"
       )
-        template(
-          v-for="(banner, index) in bannersAnuncio"
-          :key="index"
+        q-carousel-slide.slide(
+          :name="index"
+          :img-src="banner.fotoWebp"
         )
-          q-carousel-slide.slide(
-            :name="index"
-            :img-src="banner.fotoWebp"
-          )
-template(
-  v-if="$q.platform.is.mobile"
-)
-  div.containermob
-    template(
-      v-if="itsLoading"
-    )
-      q-skeleton.col(
-        heigth="256px"
-      )
-    template(
-      v-else-if="!itsLoading"
-    )
-      q-carousel.carousel(
-        v-model="slide"
-        animated
-        infinite
-        swipeable
-        autoplay="true"
-        transition-prev="slide-right"
-        transition-next="slide-left"
-      )
-        template(
-          v-for="(banner, index) in bannersAnuncio"
-          :key="index"
-        )
-          q-carousel-slide.slide(
-            :name="index"
-            img-src="/images/regua.jpeg"
-          )
 </template>
 
 <style scoped>
@@ -115,19 +83,9 @@ template(
   justify-content: center;
   position: relative;
   width: 100%;
-  margin-bottom:20px;
-  margin-top: 20px;
+  margin: 0;
   height: 90px;
   aspect-ratio: auto 1920/90;
-}
-.containermob {
-  display:flex;
-  flex-wrap:nowrap;
-  justify-content: center;
-  position: relative;
-  width: 100%;
-  height: 256px;
-  aspect-ratio: auto 1024/256;
 }
 .carousel {
   width: 85%;
