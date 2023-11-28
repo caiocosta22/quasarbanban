@@ -113,4 +113,9 @@ div.container
   max-width: 100%;
   display: block;
 }
+@media screen and (max-width: 1024px) {
+  .container{
+    aspect-ratio: auto 1920/180;
+  }
+}
 </style>
