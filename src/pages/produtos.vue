@@ -6,7 +6,7 @@ import { ref } from "vue";
 // const route = useRoute();
 // const router = useRouter();
 // const $q = useQuasar();
-const itsLoading = ref(true);
+const itsLoading = ref(false);
 //
 // const product = ref({});
 //
