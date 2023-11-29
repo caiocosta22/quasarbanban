@@ -1,15 +1,17 @@
 <script setup>
-// import { onMounted, ref } from "vue";
+import { ref } from "vue";
 // import { useQuasar } from "quasar";
 // import { useRoute, useRouter } from "vue-router";
 // import axios from "axios";
 // const route = useRoute();
 // const router = useRouter();
 // const $q = useQuasar();
+const itsLoading = ref(true);
 //
 // const product = ref({});
 //
 import produtospecs from "src/components/produtospecs.vue";
+import produtosloading from "src/components/loadings/produtosloading.vue";
 //
 // async function searchProductById (productId) {
 //   try {
@@ -29,7 +31,14 @@ import produtospecs from "src/components/produtospecs.vue";
 
 <template lang="pug">
 q-page-container
-  produtospecs
+  template(
+    v-if="itsLoading"
+  )
+    produtosloading
+  template(
+    v-if="!itsLoading"
+  )
+    produtospecs
 </template>
 
 <style scoped>
