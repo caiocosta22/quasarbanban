@@ -1,5 +1,5 @@
 <script setup>
-import { ref, onBeforeMount } from "vue";
+import { ref, onBeforeMount, onMounted } from "vue";
 import axios from "axios";
 
 const itsLoading = ref(true);
@@ -42,6 +42,25 @@ onBeforeMount(async () => {
   await searchTopBanners();
   itsLoading.value = false;
 });
+
+onMounted(async () => {
+  itsLoading.value = true;
+  await searchTopBanners();
+  itsLoading.value = false;
+
+  // Adiciona o script ao DOM
+  const script = document.createElement("script");
+  script.src = "https://static.elfsight.com/platform/platform.js";
+  script.setAttribute("data-use-service-core", "");
+  script.defer = true;
+  script.onload = initializeElfSightWidget;
+  document.head.appendChild(script);
+});
+
+function initializeElfSightWidget () {
+  // Inicializa o widget ElfSight
+  window.script.init();
+};
 </script>
 
 <template lang = "pug">
@@ -49,46 +68,15 @@ div.q-py-lg.justify-center
   p.sessao.justify-center Siga-nos no Instagram
   span.subtitulo @banbancalcados
 div.container
-  template(
-    v-if="itsLoading"
-  )
-    q-skeleton.col(
-      heigth="120px"
+  div.interno
+    iframe(
+      src="https://e11e53be2c4d4a588623fcc0b95134c4.elf.site"
+      width="100%"
+      class="insta-widget"
+      frameborder="0"
+      scrolling="no"
+      height="410px"
     )
-  template(
-    v-else-if="!itsLoading"
-  )
-    div.interno.q-gutter-sm
-      div
-        a(href="https://www.instagram.com/banbancalcados/")
-          q-img.foto(
-          src="/images/Instagram1.png"
-          )
-      div
-        a(href="https://www.instagram.com/banbancalcados/")
-          q-img.foto(
-            src="/images/Instagram2.png"
-          )
-      div
-        a(href="https://www.instagram.com/banbancalcados/")
-          q-img.foto(
-            src="/images/Instagram3.png"
-          )
-      div.some
-        a(href="https://www.instagram.com/banbancalcados/")
-          q-img.foto(
-          src="/images/Instagram4.png"
-          )
-      div.some
-        a(href="https://www.instagram.com/banbancalcados/")
-          q-img.foto(
-            src="/images/Instagram5.png"
-          )
-      div.some
-        a(href="https://www.instagram.com/banbancalcados/")
-          q-img.foto(
-            src="/images/Instagram6.png"
-          )
 </template>
 
 <style scoped>
@@ -107,21 +95,7 @@ div.container
   display: flex;
   align-items: center;
 }
-.interno > div {
-  flex: 1 1 250px;
-}
-.carousel {
-  width: 85%;
-  margin: 0 auto;
-  height: auto;
-  cursor: pointer;
-}
-.foto {
-  max-width: 100%;
-  display: block;
-  max-height: 250px;
-  cursor: pointer;
-}
+
 .subtitulo {
   color: var(--cor-11, #DA7C00);
   text-align: center;
