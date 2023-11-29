@@ -86,7 +86,6 @@ div.container
   justify-content: center;
   position: relative;
   width: 100%;
-  padding-bottom: 20px;
 }
 .interno {
   width: 85%;
@@ -106,10 +105,5 @@ div.container
   line-height: normal;
   display: flex;
   justify-content: center;
-}
-@media screen and (max-width: 1024px) {
-.some {
-  display: none;
-}
 }
 </style>
