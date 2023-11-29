@@ -113,4 +113,9 @@ div.q-pt-lg
     aspect-ratio: auto 1920/180;
   }
 }
+@media screen and (min-width: 1024px) {
+  .container{
+    margin: 25px 0 25px 0
+  }
+}
 </style>
