@@ -69,7 +69,7 @@ div.container
         div.q-mr-sm
           q-img.foto(
             src="/images/Promocao3.jpeg"
-            style="padding-bottom: 3px;"
+            style="padding-bottom: 5px;"
           )
 </template>
 
@@ -103,7 +103,7 @@ div.container
   display: block;
   cursor: pointer;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 820px) {
   .grid{
     grid-template-columns: 1fr
   }
