@@ -169,9 +169,11 @@ div.container.q-pa-md
         )   Já tem uma conta? Faça login!
         div.q-pt-sm
           q-btn(
-            label="REGISTRAR"
+            label="Registrar"
             type="submit"
-            color="black"
+            color="yellow"
+            text-color="black"
+            push
             @click="envioregistro()"
             @keypress.enter="envioregistro()"
             style="width: 100px;"

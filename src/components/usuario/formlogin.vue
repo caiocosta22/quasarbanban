@@ -110,12 +110,14 @@ div.container
                 type="submit"
                 color="yellow"
                 text-color="black"
+                push
                 @click="envioLogin()"
             )
             q-btn.botaoregistro(
                 label="Registre-se"
                 color="yellow"
                 text-color="black"
+                push
                 class="q-ml-sm"
                 @click="redirectToRegisterPage()"
             )

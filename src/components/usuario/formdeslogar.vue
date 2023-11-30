@@ -34,13 +34,15 @@ div.container
     )
       q-btn(
         label="Deslogar"
-        color="black"
+        color="yellow"
+        text-color="black"
         push
         @click="clearLocalStorage()"
       )
       q-btn(
         label="Pagina Inicial"
-        color="black"
+        color="yellow"
+        text-color="black"
         push
         @click="redirectToHomePage"
       )
