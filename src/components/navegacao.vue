@@ -74,7 +74,7 @@ onBeforeMount(async () => {
 
 <template lang="pug">
 q-toolbar#navegacao(
-  v-show="!itsLoading"
+  v-if="!itsLoading"
   style="background-color: white; border-color: rgba(0,0,0,0.1); border-style: solid; border-width: 1px;"
 )
   div.container
@@ -108,6 +108,12 @@ q-toolbar#navegacao(
       p.itemmenu.row(
         @click="openCategoryPage(categorie)"
       ) {{ categorie.name }}
+div#navegacao(
+  v-if="itsLoading"
+)
+  q-skeleton(
+    style="min-height: 50px; width: 100%; border-radius: 0;"
+  )
 </template>
 <style scoped>
 .container {
