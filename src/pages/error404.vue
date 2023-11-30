@@ -1,5 +1,5 @@
 <template>
-  <div class="fullscreen text-white text-center q-pa-md flex flex-center" style="background-color: yellow;">
+  <div class="fullscreen text-white text-center q-pa-md flex flex-center" style="background-color: rgba(255,255,5,0.9);">
     <div>
       <div>
         <img src="/images/logo.png">
