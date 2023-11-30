@@ -13,10 +13,17 @@ const options = ref(
     direction: "ltr",
     slidesPerView: 4,
     arrows: true,
+    height: "500px",
     navigation: true,
-    height: "400px",
     perPage: 4,
-    pagination: true
+    pagination: true,
+    breakpoints: {
+      1680: { height: "450px" },
+      1580: { height: "430px" },
+      1480: { height: "420px" },
+      1380: { height: "400px" },
+      1280: { height: "380px" }
+    }
   }
 );
 
@@ -96,30 +103,36 @@ div.container
             :key = "index"
           )
             template(
-              v-if = "item.orientacao === 'horizontal'"
+              v-if="item.subsecoesEcommerce"
             )
               template(
-                v-if = "item.subsecoesEcommerce"
+                v-for = "subsec in item.subsecoesEcommerce"
+                :key = "subsec"
               )
                 template(
-                  v-for = "subsec in item.subsecoesEcommerce"
-                  :key = "subsec"
+                  v-if = "subsec.produtos"
                 )
-                  template(
-                    v-if = "subsec.produtos"
+                  SplideSlide.foto(
+                    v-for = "produto in subsec.produtos"
+                    :key = "produto"
                   )
-                    SplideSlide(
-                      v-for = "produto in subsec.produtos"
-                      :key = "produto"
-                      class = "foto"
+                    div.produto(
+                      @click = "openProductPage(produto) "
                     )
-                      div(
-                        @click = "openProductPage(produto) "
+                      template(
+                        v-if = "produto.fotosServico.length>=1"
                       )
-                        q-img.cursor-pointer(
-                          :src = "produto.fotosServico[0].foto"
-                          spinner = "white"
-                        )
+                        div.produtofoto
+                          img.cursor-pointer(
+                            :src = "produto.fotosServico[0].foto"
+                            spinner = "black"
+                            style = "display: block; max-width: 100%;"
+                          )
+                        div.produtodetalhes
+                          p.titulo {{ produto.titulo }}
+                          p.valor {{ formatCurrency(produto.valor) }}
+                          p.parcelas {{ produto.coligada. numeroParcelas }} x de {{ formatCurrency(produto. valor / produto. coligada. numeroParcelas) }} sem juros
+
 </template>
 
 <style scoped>
@@ -136,21 +149,63 @@ div.container
   display: flex;
   overflow: hidden
 }
+.produto {
+  height: 100%;
+  width: 100%;
+}
+.produtofoto {
+  height: 80%;
+}
+.produtodetalhes {
+  height: 20%;
+}
 .foto{
   padding-right: 5px;
 }
 .tag{
   color: #FFF;
-  font-family: Catamaran;
   font-size: 12px;
-  font-style: normal;
   font-weight: 300;
-  line-height: normal;
-  top:10px;
+  top:  10px;
   left: 10px;
   height: 10px;
   align-items: center;
   display: flex;
 }
-
+* {
+  text-align: center;
+  font-style: normal;
+  color: var(--Cor-2, #000);
+  font-family: Outfit;
+  line-height: normal;
+}
+.titulo {
+  color: var(--Gray-2, #4F4F4F);
+  font-size: 16px;
+  font-weight: 500;
+  line-height: 19px;
+  margin-top: 5px;
+  margin-bottom: 15px;
+}
+.valor {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 2px;
+  margin-top: 0;
+}
+.parcelas {
+  color: var(--Gray-2, #4F4F4F);
+  font-size: 15px;
+  font-weight: 500;
+  margin-top: 0;
+  margin-bottom: 10px;
+}
+@media screen and (max-width: 1400px) {
+  .produtofoto {
+    height: 70%;
+  }
+  .produtodetalhes {
+    height: 30%;
+  }
+}
 </style>
