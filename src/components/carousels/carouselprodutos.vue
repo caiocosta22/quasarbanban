@@ -11,12 +11,18 @@ const itsLoading = ref(true);
 const options = ref(
   {
     direction: "ltr",
+    type: "loop",
+    drag: "free",
     slidesPerView: 4,
     arrows: true,
     height: "500px",
     navigation: false,
     perPage: 4,
     pagination: false,
+    wrapAround: true,
+    gap: "10px",
+    rewind: true,
+    rewindSpeed: 1000,
     breakpoints: {
       1980: { height: "580px" },
       1880: { height: "550px" },
@@ -126,7 +132,7 @@ div.container
                 template(
                   v-if = "subsec.produtos"
                 )
-                  SplideSlide.foto(
+                  SplideSlide(
                     v-for = "produto in subsec.produtos"
                     :key = "produto"
                   )
@@ -175,9 +181,6 @@ div.container
 .produtodetalhes {
   height: 30%;
   display: inline-block;
-}
-.foto{
-  padding-right: 5px;
 }
 .tag{
   color: #FFF;
