@@ -84,7 +84,7 @@ div.q-py-lg
     v-if="itsLoading"
   )
     div.row(
-      style="width: 84%;"
+      style="width: 85%;"
     )
       q-skeleton.col(
         type="square"

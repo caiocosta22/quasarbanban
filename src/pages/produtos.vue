@@ -5,6 +5,7 @@ import { useRoute, useRouter } from "vue-router";
 import axios from "axios";
 import produtospecs from "src/components/produtospecs.vue";
 import produtosloading from "src/components/loadings/produtosloading.vue";
+import carouselloadings from "src/components/loadings/carouselloadings.vue";
 
 const route = useRoute();
 const router = useRouter();
@@ -34,10 +35,13 @@ onMounted(async () => {
 
 <template lang="pug">
 q-page-container
-  produtospecs(
+  template(
     v-if="itsLoading"
-    :product="product"
   )
+    produtospecs(
+      :product="product"
+    )
+    carouselloadings
   produtosloading(
     v-else
   )

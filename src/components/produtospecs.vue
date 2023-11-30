@@ -310,7 +310,7 @@ div.container
             v-for="index in 3"
             :key="index"
           )
-div.column(style="width:85%; margin: 0 auto; margin-bottom: 10px; text-align:left")
+div.column(style="width:85%; margin: 0 auto; margin-bottom: 15px; text-align:left")
   p.descricaotitulo(style="margin-bottom:5px") Descrição do Produto
   span.descricao {{ produto.descricaoLonga }}
 </template>
