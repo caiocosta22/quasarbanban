@@ -32,7 +32,7 @@ div.container
 }
 .skeleprod {
   width: 25%;
-  margin-right: 10px;
+  margin-right: 15px;
   min-height: 400px;
 }
 @media screen and (max-width: 1024px) {
@@ -54,10 +54,12 @@ div.container
   min-height: 250px;
 }
 }
+
 @media screen and (min-width: 480px) {
-.skelemini {
-  display: none;
+  .skelemini {
+    display: none;
+  }
 }
-}
+
 }
 </style>
