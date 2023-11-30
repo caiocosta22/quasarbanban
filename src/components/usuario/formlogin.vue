@@ -56,7 +56,7 @@ function redirectToRegisterPage () {
 
 onMounted(() => {
   if (loginSalvo && senhaSalva) {
-    router.push("/login/usuario");
+    router.push("/login/perfil");
     $q.notify({
       color: "black",
       textColor: "white",
