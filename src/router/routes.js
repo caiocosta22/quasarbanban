@@ -20,6 +20,16 @@ const routes = [
     ]
   },
   {
+    path: "/categorias",
+    component: () => import("layouts/padrao.vue"),
+    children: [
+      {
+        path: "",
+        component: () => import("pages/categorias.vue")
+      }
+    ]
+  },
+  {
     path: "/login",
     component: () => import("layouts/padrao.vue"),
     children: [
