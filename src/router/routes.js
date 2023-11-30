@@ -42,6 +42,10 @@ const routes = [
         component: () => import("pages/registro.vue")
       }
     ]
+  },
+  {
+    path: "/:catchAll(.*)*",
+    component: () => import("pages/error404.vue")
   }
 ];
 
