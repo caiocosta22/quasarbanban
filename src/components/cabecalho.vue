@@ -60,6 +60,10 @@ function redirectToSearchPage () {
   }
 }
 
+function redirectToLoginPage () {
+  router.push("/login");
+}
+
 function redirectToHomePage () {
   router.push("/");
 }
@@ -138,7 +142,7 @@ div.container
             style="transition: 1s; cursor:pointer"
           )
     div
-      a
+      a(@click="redirectToLoginPage")
         q-icon.cursor-pointer(
           color="black"
           size="xs"

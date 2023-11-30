@@ -18,6 +18,26 @@ const routes = [
         component: () => import("pages/produtos.vue")
       }
     ]
+  },
+  {
+    path: "/login",
+    component: () => import("layouts/padrao.vue"),
+    children: [
+      {
+        path: "",
+        component: () => import("pages/login.vue")
+      }
+    ]
+  },
+  {
+    path: "/registro",
+    component: () => import("layouts/padrao.vue"),
+    children: [
+      {
+        path: "",
+        component: () => import("pages/registro.vue")
+      }
+    ]
   }
 ];
 
