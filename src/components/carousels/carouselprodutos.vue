@@ -14,15 +14,29 @@ const options = ref(
     slidesPerView: 4,
     arrows: true,
     height: "500px",
-    navigation: true,
+    navigation: false,
     perPage: 4,
-    pagination: true,
+    pagination: false,
     breakpoints: {
-      1680: { height: "450px" },
-      1580: { height: "430px" },
-      1480: { height: "420px" },
-      1380: { height: "400px" },
-      1280: { height: "380px" }
+      1980: { height: "580px" },
+      1880: { height: "550px" },
+      1780: { height: "520px" },
+      1680: { height: "490px" },
+      1580: { height: "460px" },
+      1480: { height: "440px" },
+      1380: { height: "420px" },
+      1280: { height: "400px" },
+      1180: { height: "380px" },
+      1080: { height: "350px" },
+      980: { height: "340px" },
+      880: { height: "320px" },
+      780: { height: "470px", perPage: 2 },
+      680: { height: "405px", perPage: 2 },
+      580: { height: "335px", perPage: 2 },
+      480: { height: "365px", perPage: 2 },
+      440: { height: "325px", perPage: 2 },
+      400: { height: "460px", perPage: 1 },
+      350: { height: "420px", perPage: 1 }
     }
   }
 );
@@ -129,7 +143,7 @@ div.container
                             style = "display: block; max-width: 100%;"
                           )
                         div.produtodetalhes
-                          p.titulo {{ produto.titulo }}
+                          p.titulo TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE
                           p.valor {{ formatCurrency(produto.valor) }}
                           p.parcelas {{ produto.coligada. numeroParcelas }} x de {{ formatCurrency(produto. valor / produto. coligada. numeroParcelas) }} sem juros
 
@@ -152,12 +166,15 @@ div.container
 .produto {
   height: 100%;
   width: 100%;
+  display: inline-block;
 }
 .produtofoto {
-  height: 80%;
+  height: 70%;
+  display: inline-block;
 }
 .produtodetalhes {
-  height: 20%;
+  height: 30%;
+  display: inline-block;
 }
 .foto{
   padding-right: 5px;
@@ -202,10 +219,53 @@ div.container
 }
 @media screen and (max-width: 1400px) {
   .produtofoto {
-    height: 70%;
-  }
-  .produtodetalhes {
-    height: 30%;
-  }
+  height: 70%;
+  display: inline-block;
+}
+.produtodetalhes {
+  height: 30%;
+  display: inline-block;
+}
+}
+@media screen and (max-width: 980px) {
+  .produtofoto {
+  height: 60%;
+  display: inline-block;
+}
+.produtodetalhes {
+  height: 40%;
+  display: inline-block;
+}
+}
+@media screen and (max-width: 780px) {
+  .produtofoto {
+  height: 70%;
+  display: block;
+}
+.produtodetalhes {
+  height: 30%;
+  display: block;
+}
+}
+@media screen and (max-width: 480px) {
+.produtofoto {
+  height: 60%;
+}
+.produtodetalhes {
+  height: 40%;
+  display: inline-block;
+}
+.titulo {
+  margin-bottom: 5px;
+}
+}
+@media screen and (max-width: 400px) {
+.produtofoto {
+  height: 70%;
+}
+.produtodetalhes {
+  height: 30%;
+  display: inline-block;
+}
 }
 </style>
