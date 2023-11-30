@@ -198,7 +198,7 @@ div#mobile.container
 div.container(
   style="margin-top: 0;"
 )
-  div.endereco
+  div.endereco.q-pb-sm
     span BanBan Calçados.
     span(v-if="infosLinks.street") &nbsp; | {{ infosLinks.   street }}
     span(v-if="infosLinks.number") , {{ infosLinks.number }}
