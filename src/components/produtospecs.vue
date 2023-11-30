@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref } from "vue";
 import { Splide, SplideSlide } from "@splidejs/vue-splide";
 import "@splidejs/vue-splide/css";
 import axios from "axios";
@@ -12,6 +12,8 @@ const props = defineProps({
   }
 });
 
+const produto = props.product;
+console.log("SAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA", produto);
 const produtos = ref([
   {
     titulo: "Produto teste",
@@ -92,9 +94,6 @@ const options = ref(
   }
 );
 
-// const produto = computed(() => { return props.product; });
-// const preçoInicial = ref(produto.value.valor);
-// console.log(preçoInicial);
 const cep = ref();
 const dadosFrete = ref([]);
 const usarSkeleton = ref(false);
@@ -186,7 +185,7 @@ div.container
         :options="options"
       )
         SplideSlide(
-          v-for="miniatura in produtos[0].miniaturas"
+          v-for="miniatura in produto.fotosServico"
           :key="miniatura"
           class="fotomob"
         )
@@ -195,27 +194,27 @@ div.container
           )
     div.principal
       template(
-        v-if="produtos[0].foto"
+        v-if="produto.fotosServico.length"
       )
         div.fotoprincipal
           q-img(
-            :src="produtos[0].foto"
+            :src="produto.fotosServico[0].foto"
           )
     div.detalhes
       div.conteudo.column
-        p.titulo {{ produtos[0].titulo }}
+        p.titulo {{ produto.titulo }}
         template(
-          v-if="produtos[0].promocao"
+          v-if="produto.promocao"
         )
-          p.antigo De: {{ formatCurrency(produtos[0].valor) }}
-          p.novo Por: {{ formatCurrency(produtos[0].valorpromocao) }}
-          p.parcela Ou 10x de {{ formatCurrency(produtos[0].valorpromocao / produtos[0].coligadas.numeroparcelas) }}
+          p.antigo De: {{ formatCurrency(produto.valor) }}
+          p.novo Por: {{ formatCurrency(produto.valorpromocao) }}
+          p.parcela Ou 10x de {{ formatCurrency(produto.valorpromocao / produto.coligadas.numeroparcelas) }}
         template(
-          v-if="!produtos[0].promocao"
+          v-if="!produto.promocao"
         )
-          p.novo Por: {{ formatCurrency(produtos[0].valor) }}
-          p.parcela Ou 10x de {{ formatCurrency(produtos[0].valor / produtos[0].coligadas.numeroparcelas) }}
-        p.descsimples {{  produtos[0].descricaobreve }}
+          p.novo Por: {{ formatCurrency(produto.valor) }}
+          p.parcela Ou {{ produto.coligada.numeroParcelas }}x de {{ formatCurrency(produto.valor / produto.coligada.numeroParcelas) }}
+        p.descsimples {{  produto.descricao }}
         div.column(style="margin-bottom: 15px;")
           p.opcoes Escolha uma cor:
           div.row.q-gutter-md.q-py-sm(style="align-items:center")
@@ -233,7 +232,7 @@ div.container
           p.opcoes Escolha um tamanho:
           div.row.q-gutter-md.q-py-sm(style="align-items:center")
             template(
-              v-for="tamanhos in produtos[0].variacoes"
+              v-for="tamanhos in produto.gradeSecundaria.itensGrade"
               :key="tamanhos"
             )
               q-btn(
@@ -244,7 +243,7 @@ div.container
                   push
                   square
                 )
-                p(style="margin:0") {{ tamanhos.tamanho }}
+                p(style="margin:0") {{ tamanhos.valorVisualizacao }}
         div.column(style="margin-bottom: 15px;")
           p.opcoes Quantidade:
           div.row.q-gutter-md(style="align-items:center; flex-wrap: nowrap;")
