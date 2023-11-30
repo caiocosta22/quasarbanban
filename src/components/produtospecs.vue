@@ -312,7 +312,7 @@ div.container
           )
 div.column(style="width:85%; margin: 0 auto; margin-bottom: 10px; text-align:left")
   p.descricaotitulo(style="margin-bottom:5px") Descrição do Produto
-  span.descricao {{ produtos[0].descricaodetalhada }}
+  span.descricao {{ produto.descricaoLonga }}
 </template>
 
 <style scoped>
