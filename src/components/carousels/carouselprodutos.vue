@@ -14,7 +14,7 @@ const options = ref(
     slidesPerView: 4,
     arrows: true,
     navigation: true,
-    height: "250px",
+    height: "400px",
     perPage: 4,
     pagination: true
   }
@@ -39,7 +39,7 @@ async function searchBestSellers () {
   try {
     const data = await axios.get("https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/secaoEcommerceService/getAllSessions?plataforma=SITE").then(e => e.data);
     if (data.length) {
-      const bestSellers = data.filter(sellers => sellers.chave === "SESSAO_1");
+      const bestSellers = data.filter(sellers => sellers.chave === "SESSAO_3");
       itemsOfApi.value = bestSellers;
     }
   } catch (e) {
@@ -48,7 +48,9 @@ async function searchBestSellers () {
 }
 
 onBeforeMount(async () => {
+  itsLoading.value = true;
   await searchBestSellers();
+  itsLoading.value = false;
 });
 </script>
 
@@ -81,71 +83,46 @@ div.container
           height="100%"
         )
     template(
-      v-if="!itsLoading"
+      v-if = "!itsLoading"
     )
-      Splide(
-        :options="options"
+      div(
+        style = "width:100%"
       )
-        template(
-          v-for="(item, index) in itemsOfApi"
-          :key="index"
+        Splide(
+          :options = "options"
         )
           template(
-            v-if="item.orientacao === 'horizontal'"
+            v-for = "(item, index) in itemsOfApi"
+            :key = "index"
           )
             template(
-              v-if="item.subsecoesEcommerce"
+              v-if = "item.orientacao === 'horizontal'"
             )
               template(
-                v-for="subsec in item.  subsecoesEcommerce"
-                :key="subsec"
+                v-if = "item.subsecoesEcommerce"
               )
                 template(
-                  v-if="subsec.produtos"
+                  v-for = "subsec in item.subsecoesEcommerce"
+                  :key = "subsec"
                 )
-                  SplideSlide(
-                    v-for="produto in subsec.produtos"
-                    :key="produto"
-                    class="foto"
+                  template(
+                    v-if = "subsec.produtos"
                   )
-                    div(
-                      @click="openProductPage(produto)  "
+                    SplideSlide(
+                      v-for = "produto in subsec.produtos"
+                      :key = "produto"
+                      class = "foto"
                     )
-                      template(
-                        v-if="produto.fotosServico. length>=1"
+                      div(
+                        @click = "openProductPage(produto) "
                       )
                         q-img.cursor-pointer(
-                          :src="produto.fotosServico  [0].foto"
-                          spinner="white"
+                          :src = "produto.fotosServico[0].foto"
+                          spinner = "white"
                         )
-                      div.column
-                        p.text-black(
-                          style="font-size:16px"
-                        ) {{ produto.titulo }}
-                        template(
-                          v-if="produto.promocao"
-                        )
-                          p.text-black(
-                            style="font-size:   15px;       text-decoration:line-throu  gh; margin-bottom: 5px;"
-                          ) {{  formatCurrency  (produto.valor) }}
-                          p.text-bold(
-                            style="font-size: 20px;   margin-bottom:0"
-                          ) {{ formatCurrency (produto.    precoPromocional) }}
-                          span.text-black(
-                            style="font-size: 15px"
-                          ) {{ produto.coligada.  numeroParcelas }} x de {{     formatCurrency(produto. valor /   produto. coligada.    numeroParcelas) }} sem juros
-                        template(
-                          v-if="!produto.promocao"
-                        )
-                          p.text-bold(
-                            style="font-size: 20px;   margin-bottom: 0;"
-                          )  {{ formatCurrency  (produto.valor) }}
-                          p.text-black(
-                            style="font-size: 15px"
-                          ) {{ produto.coligada.  numeroParcelas }} x de {{     formatCurrency(produto. valor /   produto. coligada.    numeroParcelas) }} sem juros
 </template>
 
-<style scoped>s
+<style scoped>
 .container{
   flex-direction: column;
   overflow: hidden;
@@ -160,7 +137,7 @@ div.container
   overflow: hidden
 }
 .foto{
-    padding-right: 5px;
+  padding-right: 5px;
 }
 .tag{
   color: #FFF;
