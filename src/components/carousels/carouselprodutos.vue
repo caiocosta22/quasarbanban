@@ -143,7 +143,7 @@ div.container
                             style = "display: block; max-width: 100%;"
                           )
                         div.produtodetalhes
-                          p.titulo TESTE TESTE TESTE TESTE TESTE TESTE TESTE TESTE
+                          p.titulo {{ produto.titulo }}
                           p.valor {{ formatCurrency(produto.valor) }}
                           p.parcelas {{ produto.coligada. numeroParcelas }} x de {{ formatCurrency(produto. valor / produto. coligada. numeroParcelas) }} sem juros
 
