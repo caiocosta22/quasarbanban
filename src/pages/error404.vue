@@ -1,35 +1,29 @@
-<template>
-  <div class="fullscreen text-white text-center q-pa-md flex flex-center" style="background-color: rgba(255,255,5,0.9);">
-    <div>
-      <div>
-        <img src="/images/logo.png">
-      </div>
-      <div style="font-size: 24vh; color: black">
-        404
-      </div>
+<script setup>
+</script>
 
-      <div class="text-h2" style="opacity:.4; color: black;">
-        Opa! Nada encontrado aqui.
-      </div>
-
-      <q-btn
-        class="q-mt-xl q-pa-md"
-        color="white"
-        text-color="black"
-        unelevated
-        to="/"
-        label="Página Inicial"
-        no-caps
-        push
-      />
-    </div>
-  </div>
+<template lang="pug">
+q-page-container
+  div.container
+    h1 Ops!
+    p(style="margin: 0; color: rgba(0,0,0,0.8); font-size: 20px;") Nada encontrado nesta página.
+    q-btn(
+      class="q-my-xl"
+      color="yellow"
+      text-color="black"
+      unelevated
+      to="/"
+      label="Página Inicial"
+      no-caps
+      push
+    )
 </template>
 
-<script>
-import { defineComponent } from "vue";
-
-export default defineComponent({
-  name: "ErrorNotFound"
-});
-</script>
+<style scoped>
+.container {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  flex-direction: column;
+  margin: 80px
+}
+</style>

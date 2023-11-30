@@ -45,7 +45,13 @@ const routes = [
   },
   {
     path: "/:catchAll(.*)*",
-    component: () => import("pages/error404.vue")
+    component: () => import("layouts/padrao.vue"),
+    children: [
+      {
+        path: "",
+        component: () => import("pages/error404.vue")
+      }
+    ]
   }
 ];
 
