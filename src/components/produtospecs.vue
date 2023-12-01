@@ -100,6 +100,7 @@ const usarSkeleton = ref(false);
 const contador = ref(1);
 const corAtiva = ref(null);
 const tamanhoAtivo = ref(null);
+const principalImg = ref(produto.fotosServico[0].foto);
 
 function formatCurrency (value) {
   return value.toLocaleString("pt-BR", {
@@ -191,6 +192,7 @@ div.container
         )
           q-img.foto(
             :src="miniatura.foto"
+            @click = " principalImg = miniatura.foto"
           )
     div.principal
       template(
@@ -198,7 +200,7 @@ div.container
       )
         div.fotoprincipal
           q-img(
-            :src="produto.fotosServico[0].foto"
+            :src="principalImg"
           )
     div.detalhes
       div.conteudo.column
