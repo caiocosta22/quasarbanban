@@ -99,8 +99,8 @@ const dadosFrete = ref([]);
 const usarSkeleton = ref(false);
 const contador = ref(1);
 const corAtiva = ref(null);
-const tamanhoAtivo = ref(null);
-const principalImg = ref(produto.fotosServico[0].foto);
+const tamanhoAtivo = ref(produto.variacoes[0].itemGrade2.id);
+const principalImg = ref(produto.variacoes[0].fotosServico[0].foto);
 
 function formatCurrency (value) {
   return value.toLocaleString("pt-BR", {
@@ -186,17 +186,17 @@ div.container
         :options="options"
       )
         SplideSlide(
-          v-for="miniatura in produto.fotosServico"
+          v-for="miniatura in produto.variacoes[0].fotosServico"
           :key="miniatura"
           class="fotomob"
         )
           q-img.foto(
             :src="miniatura.foto"
-            @click = " principalImg = miniatura.foto"
+            @click = "principalImg = miniatura.foto"
           )
     div.principal
       template(
-        v-if="produto.fotosServico.length"
+        v-if="produto.variacoes[0].fotosServico.length"
       )
         div.fotoprincipal
           q-img(
@@ -206,16 +206,16 @@ div.container
       div.conteudo.column
         p.titulo {{ produto.titulo }}
         template(
-          v-if="produto.promocao"
+          v-if="produto.variacoes[0].promocao"
         )
-          p.antigo De: {{ formatCurrency(produto.valor) }}
-          p.novo Por: {{ formatCurrency(produto.valorpromocao) }}
-          p.parcela Ou 10x de {{ formatCurrency(produto.valorpromocao / produto.coligadas.numeroparcelas) }}
+          p.antigo De: {{ formatCurrency(produto.variacoes[0].valor) }}
+          p.novo Por: {{ formatCurrency(produto.variacoes[0].valorpromocao) }}
+          p.parcela Ou 10x de {{ formatCurrency(produto.variacoes[0].valorpromocao / produto.coligadas.numeroparcelas) }}
         template(
           v-if="!produto.promocao"
         )
-          p.novo Por: {{ formatCurrency(produto.valor) }}
-          p.parcela Ou {{ produto.coligada.numeroParcelas }}x de {{ formatCurrency(produto.valor / produto.coligada.numeroParcelas) }}
+          p.novo Por: {{ formatCurrency(produto.variacoes[0].valor) }}
+          p.parcela Ou {{ produto.coligada.numeroParcelas }}x de {{ formatCurrency(produto.variacoes[0].valor / produto.coligada.numeroParcelas) }}
         p.descsimples {{  produto.descricao }}
         div.column(style="margin-bottom: 15px;")
           p.opcoes Escolha uma cor:
