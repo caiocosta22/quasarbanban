@@ -101,6 +101,10 @@ const contador = ref(1);
 const corAtiva = ref(null);
 const tamanhoAtivo = ref(produto.variacoes[0].itemGrade2.id);
 const principalImg = ref(produto.variacoes[0].fotosServico[0].foto);
+const variacao = ref(produto.variacoes);
+const promocao = ref(produto.promocao);
+const preco = ref(produto.valor);
+const precopromocao = ref(produto.precoPromocional);
 
 function formatCurrency (value) {
   return value.toLocaleString("pt-BR", {
@@ -116,8 +120,17 @@ function selecionarCor (id) {
 
 function selecionarTamanho (id) {
   tamanhoAtivo.value = id;
+  updateTamanhoInfo(id);
 }
 
+function updateTamanhoInfo (id) {
+  const selectedVariation = variacao.value.find(variation => variation.itemGrade2.id === id);
+  if (selectedVariation) {
+    promocao.value = selectedVariation.promocao;
+    preco.value = selectedVariation.valor;
+    precopromocao.value = selectedVariation.precoPromocional;
+  }
+}
 function addQtd () {
   if (contador.value >= 1 && contador.value < produtos.value[0].qtdEstoque) {
     contador.value++;
@@ -206,16 +219,16 @@ div.container
       div.conteudo.column
         p.titulo {{ produto.titulo }}
         template(
-          v-if="produto.variacoes[0].promocao"
+          v-if="promocao"
         )
-          p.antigo De: {{ formatCurrency(produto.variacoes[0].valor) }}
-          p.novo Por: {{ formatCurrency(produto.variacoes[0].valorpromocao) }}
-          p.parcela Ou 10x de {{ formatCurrency(produto.variacoes[0].valorpromocao / produto.coligadas.numeroparcelas) }}
+          p.antigo De: {{ formatCurrency(preco) }}
+          p.novo Por: {{ formatCurrency(precoPromocional) }}
+          p.parcela Ou 10x de {{ formatCurrency(precoPromocional / produto.coligadas.numeroparcelas) }}
         template(
           v-if="!produto.promocao"
         )
-          p.novo Por: {{ formatCurrency(produto.variacoes[0].valor) }}
-          p.parcela Ou {{ produto.coligada.numeroParcelas }}x de {{ formatCurrency(produto.variacoes[0].valor / produto.coligada.numeroParcelas) }}
+          p.novo Por: {{ formatCurrency(preco) }}
+          p.parcela Ou {{ produto.coligada.numeroParcelas }}x de {{ formatCurrency(preco / produto.coligada.numeroParcelas) }}
         p.descsimples {{  produto.descricao }}
         div.column(style="margin-bottom: 15px;")
           p.opcoes Escolha uma cor:
