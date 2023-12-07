@@ -25,7 +25,8 @@ const routes = [
     component: () => import("layouts/padrao.vue"),
     children: [
       {
-        path: "",
+        path: ":categoria",
+        name: "categoria",
         component: () => import("pages/categorias.vue")
       }
     ]

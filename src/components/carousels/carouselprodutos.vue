@@ -13,7 +13,7 @@ const options = ref(
     direction: "ltr",
     type: "loop",
     drag: "free",
-    slidesPerView: 4,
+    slidesPerView: 1,
     arrows: true,
     height: "500px",
     navigation: false,
