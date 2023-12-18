@@ -144,7 +144,7 @@ div.container
                       )
                         div.produtofoto
                           img.cursor-pointer(
-                            :src = "produto.fotosServico[0].foto"
+                            :src = "produto.fotosServico[0].urlM"
                             spinner = "black"
                             style = "display: block; max-width: 100%; max-height: 100%;"
                           )
@@ -172,15 +172,15 @@ div.container
 .produto {
   height: 100%;
   width: 100%;
-  display: inline-block;
+  display: block;
 }
 .produtofoto {
   height: 70%;
-  display: inline-block;
+  display: flex;
 }
 .produtodetalhes {
   height: 30%;
-  display: inline-block;
+  display: block;
 }
 .tag{
   color: #FFF;
@@ -223,7 +223,6 @@ div.container
 @media screen and (max-width: 1400px) {
   .produtofoto {
   height: 70%;
-  display: inline-block;
 }
 .produtodetalhes {
   height: 30%;
@@ -233,7 +232,6 @@ div.container
 @media screen and (max-width: 980px) {
   .produtofoto {
   height: 60%;
-  display: inline-block;
 }
 .produtodetalhes {
   height: 40%;
@@ -243,7 +241,6 @@ div.container
 @media screen and (max-width: 780px) {
   .produtofoto {
   height: 70%;
-  display: block;
 }
 .produtodetalhes {
   height: 30%;
