@@ -1,5 +1,5 @@
 <script setup>
-import { ref, computed } from "vue";
+import { ref, watch, computed } from "vue";
 import { useRouter } from "vue-router";
 
 const router = useRouter();
@@ -60,10 +60,15 @@ const props = defineProps({
   loading: {
     type: Boolean,
     default: true
+  },
+  bannerUrlCategorie: {
+    type: String,
+    default: () => ""
   }
 });
 
 const page = ref(1);
+
 const perPage = 10;
 
 const seeingProductsBetween = computed(() => {
@@ -116,7 +121,7 @@ function openProductPage (product) {
     router.push(url);
   }
 }
-console.log("AAAAAAAAAAAAAAAAAASAAAAAAAA", props.items);
+console.log(props.items);
 </script>
 
 <template lang="pug">
@@ -208,7 +213,7 @@ div.container
 
 .tag{
   color: #FFF;
-  font-family: Outifit;
+  font-family: Catamaran;
   font-size: 12px;
   font-style: normal;
   font-weight: 300;

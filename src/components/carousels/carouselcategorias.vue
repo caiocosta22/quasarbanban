@@ -71,7 +71,7 @@ function openCategoryPage (categoria) {
 onBeforeMount(async () => {
   itsLoading.value = true;
   await searchCategories();
-  itsLoading.value = true;
+  itsLoading.value = false;
 });
 
 </script>

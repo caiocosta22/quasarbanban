@@ -66,7 +66,7 @@ async function searchBestSellers () {
   try {
     const data = await axios.get("https://banbancalcados.elevarcommerceapi.com.br/HandoverMetasWS/webapi/handover/portal/ecommerce/secaoEcommerceService/getAllSessions?plataforma=SITE").then(e => e.data);
     if (data.length) {
-      const bestSellers = data.filter(sellers => sellers.chave === "SESSAO_1");
+      const bestSellers = data.filter(sellers => sellers.chave === "SESSAO_2");
       itemsOfApi.value = bestSellers;
     }
   } catch (e) {

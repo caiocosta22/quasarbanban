@@ -3,8 +3,9 @@ import { ref, onBeforeMount, watch } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
 
-import Produtos from "../components/tabcategorias.vue";
-import categoriasloading from "src/components/loadings/categoriasloading.vue";
+import Filtro from "../components/PaginaCategorias/Filtro.vue";
+import Produtos from "../components/PaginaCategorias/TabelaProdutos.vue";
+import categoriasloading from "../components/loadings/categoriasloading.vue";
 
 const route = useRoute();
 
@@ -82,11 +83,16 @@ onBeforeMount(async () => {
 </script>
 
 <template lang="pug">
-q-page-container
-  template(
-    v-if="itsLoading"
+q-page-container.container.q-gutter-md(style="flex-wrap:nowrap")
+  Filtro(
+    :categories="categoriesBase"
+    :pickedCategorie="route.params.categoria"
+    @atualizarPage="pickedCategories = $event"
   )
-    categoriasloading
+  template(
+      v-if="itsLoading"
+    )
+      categoriasloading
   template(
     v-if="!itsLoading"
   )
@@ -94,9 +100,14 @@ q-page-container
       @atualizarPage="page = $event"
       :items="items"
       :loading="itsLoading"
-      :bannerUrl="bannerUrlCategorie"
     )
 </template>
 
 <style scoped>
+.container{
+  display: flex;
+  flex-direction: row;
+  width: 85%;
+  margin: 0 auto;
+}
 </style>

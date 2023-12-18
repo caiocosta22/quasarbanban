@@ -1,16 +1,3 @@
-<template lang="pug">
-q-page-container
-  bannerfull
-  bannerregua
-  carouselprodutos
-  carouselcategorias
-  bannermeio
-  bannermarca
-  newsletter
-  bannerinstagram
-  bannerregua
-</template>
-
 <script setup>
 import { onMounted } from "vue";
 import { useQuasar } from "quasar";
@@ -27,6 +14,9 @@ import newsletter from "src/components/newsletter.vue";
 import bannermeio from "src/components/banners/bannermeio.vue";
 import bannermarca from "src/components/banners/bannermarca.vue";
 import carouselprodutos from "src/components/carousels/carouselprodutos.vue";
+import carouselprodutos2 from "src/components/carousels/carouselprodutos2.vue";
+import carouselprodutos3 from "src/components/carousels/carouselprodutos3.vue";
+import carouselprodutos4 from "src/components/carousels/carouselprodutos4.vue";
 import bannerinstagram from "src/components/banners/bannerinstagram.vue";
 
 onMounted(() => {
@@ -40,6 +30,22 @@ onMounted(() => {
   }
 });
 </script>
+
+<template lang="pug">
+q-page-container
+  bannerfull
+  bannerregua
+  carouselprodutos
+  carouselcategorias
+  carouselprodutos2
+  bannermeio
+  carouselprodutos3
+  bannermarca
+  carouselprodutos4
+  newsletter
+  bannerinstagram
+  bannerregua
+</template>
 
 <style scoped>
 </style>
