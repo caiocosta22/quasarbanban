@@ -213,7 +213,7 @@ div.container
 
 .tag{
   color: #FFF;
-  font-family: Catamaran;
+  font-family: Outfit;
   font-size: 12px;
   font-style: normal;
   font-weight: 300;
