@@ -4,11 +4,6 @@
 <template lang="pug">
 div.container
   div.interno
-    div.filtros
-      q-skeleton.skelefiltros(
-        v-for="index in 1"
-        :key="index"
-      )
     div.produtos
       q-skeleton.skeleprod(
         v-for="index in 20"
@@ -28,7 +23,9 @@ div.container
   margin: 0 auto;
   flex-direction: row;
   display: flex;
-  overflow: hidden
+  overflow: hidden;
+  margin-top: 20px;
+  margin-bottom: 50px;
 }
 .filtros {
   display: grid;
