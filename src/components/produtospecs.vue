@@ -360,7 +360,7 @@ div.column(style="width:85%; margin: 0 auto; margin-bottom: 15px; text-align:lef
 }
 .foto {
   max-width: 100%;
-  display: block;
+  display: flex;
   cursor: pointer
 }
 .fotoprincipal {
@@ -475,6 +475,7 @@ span {
   }
   .fotomob{
     padding-right: 5px;
+    display: flex;
   }
 }
 

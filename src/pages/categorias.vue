@@ -3,8 +3,8 @@ import { ref, onBeforeMount, watch } from "vue";
 import { useRoute } from "vue-router";
 import axios from "axios";
 
-import Filtro from "../components/PaginaCategorias/Filtro.vue";
-import Produtos from "../components/PaginaCategorias/TabelaProdutos.vue";
+import Filtro from "../components/pagecategorias/Filtro.vue";
+import Produtos from "../components/pagecategorias/TabelaProdutos.vue";
 import categoriasloading from "../components/loadings/categoriasloading.vue";
 
 const route = useRoute();
