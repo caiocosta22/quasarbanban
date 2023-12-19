@@ -133,7 +133,7 @@ div.container
         :key="item.index"
       )
         div.column.containerfoto
-          q-img.cursor-pointer.foto(
+          q-img.cursor-pointer.col.foto(
             :src="item.image"
             @click="openProductPage(item)"
           )
@@ -141,7 +141,7 @@ div.container
               v-if="item.promocao"
             )
               div.tag {{ formatPercentage(item.precoPromocional / item.valor * 10) }}% OFF!
-          div.column.col.q-pt-sm
+          div.column.q-pt-sm
             div.column(
               style="text-align:center"
             )
@@ -152,17 +152,11 @@ div.container
               v-if="item.promocao"
             )
               div.column(
-                style="text-align: center;"
+                style="text-align: center"
               )
-                span.text-black(
-                  style="font-size: 14px; text-decoration: line-through"
-                ) {{ formatCurrency (item.valor) }}
-                span.text-black(
-                  style="font-size: 14px;"
-                ) {{  formatCurrency(item.precoPromocional) }}
-                span.text-black(
-                  style="font-size: 14px"
-                ) ou {{  item.coligada.numeroParcelas }}x de {{  formatCurrency(item.valor / item.coligada. numeroParcelas) }}
+                span.valor.q-pt-sm {{ formatCurrency(item.valor) }}
+                span.valor.q-pt-sm {{  formatCurrency(item.precoPromocional) }}
+                span {{ item.coligada.numeroParcelas }}x de {{  formatCurrency(item.precoPromocional / item.coligada.numeroParcelas) }}
             template(
               v-if="!item.promocao"
             )
@@ -197,81 +191,44 @@ div.container
 </template>
 
 <style scoped>
-.grid{
-    display: grid;
-    grid-template-columns: 1fr 1fr 1fr 1fr;
-  }
-  .produtos{
-    font-size: 20px;
-  }
-.containertabela{
+.containertabela {
   display: flex;
   flex-wrap: nowrap;
   width: 100%;
   flex-direction: column;
 }
-.containerfoto{
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  gap: 15px
+}
+.containerfoto {
   max-width: 360px;
-  padding-right: 20px;
-  padding-bottom: 20px;
 }
 .foto {
   max-width: 100%;
   display: block;
 }
-.paginacao{
+.paginacao {
   display: flex;
   justify-content: space-between;
   width: 100%;
   margin: 0 auto;
 }
-.tag{
-  color: #FFF;
-  font-family: Outfit;
-  font-size: 12px;
-  font-style: normal;
-  font-weight: 300;
-  line-height: normal;
-  top:10px;
-  left: 10px;
-  height: 10px;
-  align-items: center;
-  display: flex;
-}
-.texto {
-  color:black;
-  font-size:14px;
-}
-.texto2 {
-  color:black;
-  font-size: 14px;
-}
 @media screen and (max-width: 1024px) {
-    .grid{
-      grid-template-columns: 1fr 1fr 1fr
-    }
-    .texto{
-      font-size: 18px;
-    }
+  .grid{
+    grid-template-columns: 1fr 1fr 1fr
+  }
 }
 @media screen and (max-width: 768px) {
   .grid{
-      grid-template-columns: 1fr 1fr
-    }
-    .texto{
-      font-size: 16px;
-    }
+    grid-template-columns: 1fr 1fr
+  }
 }
 @media screen and (max-width: 480px) {
   .grid{
-      grid-template-columns: 1fr 1fr
-    }
-    .texto{
-      font-size: 14px;
-    }
-    .produtos{
-      font-size: 16px;
-    }
+    grid-template-columns: 1fr 1fr
+  }
 }
 .titulo {
   color: var(--Gray-2, #4F4F4F);
@@ -301,5 +258,18 @@ div.container
   font-weight: 500;
   line-height: normal;
 }
-
+.tag{
+  color: #000;
+  background-color: #FBEA2B;
+  font-family: Outfit;
+  font-size: 14px;
+  font-style: normal;
+  font-weight: 600;
+  line-height: normal;
+  top: 10px;
+  left: 10px;
+  height: 10px;
+  align-items: center;
+  display: flex;
+}
 </style>
