@@ -132,22 +132,18 @@ div.container
         v-for="item in paginatedData"
         :key="item.index"
       )
-        div.column.containerfoto
-          q-img.cursor-pointer.col.foto(
-            :src="item.image"
-            @click="openProductPage(item)"
-          )
-            template(
-              v-if="item.promocao"
+        div.containerproduto
+          div.containerfoto
+            q-img.cursor-pointer.foto(
+              :src="item.image"
+              @click="openProductPage(item)"
             )
-              div.tag {{ formatPercentage(item.precoPromocional / item.valor * 10) }}% OFF!
-          div.column.q-pt-sm
-            div.column(
-              style="text-align:center"
-            )
-              span.titulo.q-mb-sm(
-                style="text-align:center"
-              ) {{ item.titulo }}
+              template(
+                v-if="item.promocao"
+              )
+                div.tag {{ formatPercentage(item. precoPromocional / item.valor * 10) }}% OFF!
+          div.containerdetalhes
+            span.titulo.q-mb-sm {{ item.titulo }}
             template(
               v-if="item.promocao"
             )
@@ -157,8 +153,8 @@ div.container
                 span(
                   style="text-decoration:line-through; margin:0 "
                 ) {{ formatCurrency(item.valor) }}
-                span.valor {{  formatCurrency(item.precoPromocional) }}
-                span {{ item.coligada.numeroParcelas }}x de {{  formatCurrency(item.precoPromocional / item.coligada.numeroParcelas) }}
+                span.valor {{  formatCurrency(item. precoPromocional) }}
+                span {{ item.coligada.numeroParcelas }}x de {{    formatCurrency(item.precoPromocional / item.coligada.numeroParcelas) }}
             template(
               v-if="!item.promocao"
             )
@@ -166,7 +162,7 @@ div.container
                 style="display:flex; text-align:center"
               )
                 span.valor {{ formatCurrency(item.valor) }}
-                span {{  item.coligada.numeroParcelas }}x de {{  formatCurrency(item.valor / item.coligada. numeroParcelas) }}
+                span {{  item.coligada.numeroParcelas }}x de {{   formatCurrency(item.valor / item.coligada.   numeroParcelas) }}
     div.row.paginacao.q-px-sm
       p.produtos.q-mr-md(
         style="font-weight: 400; font-size:15px; font-family: Outfit; line-height: 20px; "
@@ -204,12 +200,26 @@ div.container
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px
 }
+.containerproduto {
+  height: 100%;
+  width: 100%;
+  display: block;
+  margin-bottom: 15px;
+}
 .containerfoto {
-  max-width: 360px;
+  height: 70%;
+  display: flex;
+  margin-bottom: 15px;
+}
+.containerdetalhes {
+  height: 30%;
+  display: block;
+  text-align: center;
 }
 .foto {
-  max-width: 100%;
   display: block;
+  max-width: 100%;
+  max-height: 100%;
 }
 .paginacao {
   display: flex;
@@ -217,17 +227,17 @@ div.container
   width: 100%;
   margin: 0 auto;
 }
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1336px) {
   .grid{
     grid-template-columns: 1fr 1fr 1fr
   }
 }
-@media screen and (max-width: 768px) {
+@media screen and (max-width: 1024px) {
   .grid{
     grid-template-columns: 1fr 1fr
   }
 }
-@media screen and (max-width: 480px) {
+@media screen and (max-width: 768px) {
   .grid{
     grid-template-columns: 1fr 1fr
   }

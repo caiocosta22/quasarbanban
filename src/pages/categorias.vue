@@ -110,4 +110,9 @@ q-page-container.container.q-gutter-md(style="flex-wrap:nowrap")
   width: 85%;
   margin: 0 auto;
 }
+@media screen and (max-width: 768px) {
+  .container{
+    flex-direction: column;
+  }
+}
 </style>
