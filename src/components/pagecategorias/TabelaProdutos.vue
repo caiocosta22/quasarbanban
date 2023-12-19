@@ -145,7 +145,7 @@ div.container
             div.column(
               style="text-align:center"
             )
-              span.titulo(
+              span.titulo.q-mb-sm(
                 style="text-align:center"
               ) {{ item.titulo }}
             template(
@@ -154,8 +154,10 @@ div.container
               div.column(
                 style="text-align: center"
               )
-                span.valor.q-pt-sm {{ formatCurrency(item.valor) }}
-                span.valor.q-pt-sm {{  formatCurrency(item.precoPromocional) }}
+                span(
+                  style="text-decoration:line-through; margin:0 "
+                ) {{ formatCurrency(item.valor) }}
+                span.valor {{  formatCurrency(item.precoPromocional) }}
                 span {{ item.coligada.numeroParcelas }}x de {{  formatCurrency(item.precoPromocional / item.coligada.numeroParcelas) }}
             template(
               v-if="!item.promocao"
@@ -163,7 +165,7 @@ div.container
               div.column(
                 style="display:flex; text-align:center"
               )
-                span.valor.q-pt-sm {{ formatCurrency(item.valor) }}
+                span.valor {{ formatCurrency(item.valor) }}
                 span {{  item.coligada.numeroParcelas }}x de {{  formatCurrency(item.valor / item.coligada. numeroParcelas) }}
     div.row.paginacao.q-px-sm
       p.produtos.q-mr-md(
