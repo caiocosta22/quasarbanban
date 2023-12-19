@@ -127,28 +127,7 @@ console.log(props.items);
 <template lang="pug">
 div.container
   div.containertabela.q-pt-lg.q-pl-md
-    div.row.paginacao.q-px-sm
-      p.produtos.q-mr-md(style="font-weight: 400;") Produtos {{ seeingProductsBetween }} de {{ props.items.content.length }} resultados
-      div.row.q-gutter-sm.q-px-md
-        q-icon.cursor-pointer(
-          name="chevron_left"
-          size="1.5em"
-          style="width:8px; heigth:16px"
-          @click="backPage"
-        )
-        p(
-          v-for="item in Math.ceil(props.items.content.length / perPage)"
-          :key="item"
-          @click="() => goToPage(item)"
-          style="cursor:pointer"
-        ) {{ item }}
-        q-icon.cursor-pointer(
-          name="chevron_right"
-          size="1.5em"
-          style="width:8px; heigth:15px;"
-          @click="nextPage"
-        )
-    div.grid.q-px-sm
+    div.grid.q-px-sm.q-mb-md
       template(
         v-for="item in paginatedData"
         :key="item.index"
@@ -162,23 +141,59 @@ div.container
               v-if="item.promocao"
             )
               div.tag {{ formatPercentage(item.precoPromocional / item.valor * 10) }}% OFF!
-          div.row.justify-between.col.q-pt-sm(style="font-size:14px")
-            div.row(style="width:50%; display:flex; text-align:left")
-              span.text-black {{ item.titulo }}
+          div.column.col.q-pt-sm
+            div.column(
+              style="text-align:center"
+            )
+              span.titulo(
+                style="text-align:center"
+              ) {{ item.titulo }}
             template(
               v-if="item.promocao"
             )
               div.column(
-                style="width:50%; display:flex; text-align:right"
+                style="text-align: center;"
               )
-                span.text-black(style="font-size: 14px;   text-decoration: line-through") {{ formatCurrency (item.valor) }}
-                span.text-black(style="font-size: 14px;") {{  formatCurrency(item.precoPromocional) }}
-                span.text-black(style="font-size: 14px") ou {{  item.coligada.numeroParcelas }}x de {{  formatCurrency(item.valor / item.coligada. numeroParcelas) }}
+                span.text-black(
+                  style="font-size: 14px; text-decoration: line-through"
+                ) {{ formatCurrency (item.valor) }}
+                span.text-black(
+                  style="font-size: 14px;"
+                ) {{  formatCurrency(item.precoPromocional) }}
+                span.text-black(
+                  style="font-size: 14px"
+                ) ou {{  item.coligada.numeroParcelas }}x de {{  formatCurrency(item.valor / item.coligada. numeroParcelas) }}
             template(
               v-if="!item.promocao"
             )
-              div.column(style="width:50%; display:flex;  text-align:right")
-                span.text-black(style="font-size: 14px") {{   formatCurrency(item.valor) }}
+              div.column(
+                style="display:flex; text-align:center"
+              )
+                span.valor.q-pt-sm {{ formatCurrency(item.valor) }}
+                span {{  item.coligada.numeroParcelas }}x de {{  formatCurrency(item.valor / item.coligada. numeroParcelas) }}
+    div.row.paginacao.q-px-sm
+      p.produtos.q-mr-md(
+        style="font-weight: 400; font-size:15px; font-family: Outfit; line-height: 20px; "
+      ) Resultado {{ props.items.content.length }} produto(s) em {{ Math.ceil(props.items.content.length / perPage) }} página(s)
+      div.row.q-gutter-sm.q-px-md
+        q-btn(
+          v-for="item in Math.ceil(props.items.content.length / perPage)"
+          :key="item"
+          @click="() => goToPage(item)"
+          style="cursor:pointer; font-size: 13px; font-weight: 400;"
+        ) {{ item }}
+        q-btn(
+          size="md"
+        )
+          span(
+            style="font-size:13px; font-weight: 400; line-height: 20px; font-style: normal; text-transform: none;"
+          ) Próximo
+          q-icon.cursor-pointer(
+            name="chevron_right"
+            size="1.5em"
+            style="width:16px; heigth:32px"
+            @click="nextPage"
+          )
 </template>
 
 <style scoped>
@@ -210,7 +225,6 @@ div.container
   width: 100%;
   margin: 0 auto;
 }
-
 .tag{
   color: #FFF;
   font-family: Outfit;
@@ -258,6 +272,34 @@ div.container
     .produtos{
       font-size: 16px;
     }
+}
+.titulo {
+  color: var(--Gray-2, #4F4F4F);
+  text-align: center;
+  font-family: Outfit;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: 19px;
+  text-transform: none;
+}
+.valor {
+  color: var(--Cor-2, #000);
+  text-align: center;
+  font-family: Outfit;
+  font-size: 20px;
+  font-style: normal;
+  font-weight: 700;
+  line-height: normal;
+}
+.parcela {
+  color: var(--Gray-2, #4F4F4F);
+  text-align: center;
+  font-family: Outfit;
+  font-size: 15px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
 }
 
 </style>
