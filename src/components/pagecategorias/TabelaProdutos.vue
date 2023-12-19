@@ -202,7 +202,7 @@ div.container
 .grid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr 1fr;
-  gap: 15px
+  gap: 20px
 }
 .containerfoto {
   max-width: 360px;
