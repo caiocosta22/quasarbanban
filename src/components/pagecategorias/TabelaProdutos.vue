@@ -257,17 +257,17 @@ div.container
   color: var(--Gray-2, #4F4F4F);
   text-align: center;
   font-family: Outfit;
-  font-size: 16px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
-  line-height: 19px;
+  line-height: 10px;
   text-transform: none;
 }
 .valor {
   color: var(--Cor-2, #000);
   text-align: center;
   font-family: Outfit;
-  font-size: 20px;
+  font-size: 16px;
   font-style: normal;
   font-weight: 700;
   line-height: normal;
@@ -276,7 +276,7 @@ div.container
   color: var(--Gray-2, #4F4F4F);
   text-align: center;
   font-family: Outfit;
-  font-size: 15px;
+  font-size: 14px;
   font-style: normal;
   font-weight: 500;
   line-height: normal;
