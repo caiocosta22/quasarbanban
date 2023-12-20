@@ -176,7 +176,7 @@ div.column.filtro(
   q-separator.q-mb-md(
     color="black"
   )
-  q-scroll-area.q-mb-md(
+  q-scroll-area(
     style="height: 150px; max-width: 300px;"
     visible
     :bar-style="{ backgroundColor: '#cacaca', width:'8px', opacity: 0.2, }"
