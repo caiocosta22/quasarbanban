@@ -210,7 +210,11 @@ div.column.filtro(
 @media screen and (max-width: 768px) {
   .filtro {
     display: flex;
-    width: 100%;
+    width: 95%;
+    margin-right: 0px;
+  }
+  q-separator {
+    width: 90%;
   }
 }
 </style>
