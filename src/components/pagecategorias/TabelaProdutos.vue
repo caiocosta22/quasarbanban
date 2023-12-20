@@ -197,6 +197,7 @@ div.container
 }
 .grid {
   display: grid;
+  padding-top:20px;
   grid-template-columns: 1fr 1fr 1fr 1fr;
   gap: 20px
 }
@@ -239,7 +240,8 @@ div.container
 }
 @media screen and (max-width: 768px) {
   .grid{
-    grid-template-columns: 1fr 1fr
+    grid-template-columns: 1fr 1fr;
+    padding-top:0px;
   }
 }
 .titulo {
