@@ -151,7 +151,7 @@ div.column.filtro(
   label.text-bold(style="font-size:1.5em;;") Categorias
   q-separator.q-mb-md(color="black")
   q-scroll-area(
-    style="height: 200px; max-width: 300px;"
+    style="height: 150px; max-width: 300px;"
     visible
     :bar-style="{ backgroundColor: '#cacaca', width:'8px', opacity: 0.2, }"
     :thumb-style="{ backgroundColor: '#cacaca', width:'4px', opacity: 0.8,right: '2px' }"
@@ -177,7 +177,7 @@ div.column.filtro(
     color="black"
   )
   q-scroll-area(
-    style="height: 200px; max-width: 300px;"
+    style="height: 150px; max-width: 300px;"
     visible
     :bar-style="{ backgroundColor: '#cacaca', width:'8px', opacity: 0.2, }"
     :thumb-style="{ backgroundColor: '#cacaca', width:'4px', opacity: 0.8,right: '2px' }"
