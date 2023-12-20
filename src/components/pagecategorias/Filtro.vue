@@ -120,7 +120,7 @@ div.column.filtro(
 )
   label.text-bold(style="font-size:1.5em;;") Tamanhos
   q-separator.q-mb-md(color="black")
-  div.row.q-gutter-md.q-py-sm(style="align-items:center")
+  div.row.q-gutter-md.q-py-sm.q-mb-md(style="align-items:center")
     template(
       v-for="tamanho in tamanhos"
       :key="tamanho"
@@ -136,7 +136,7 @@ div.column.filtro(
         p(style="margin:0; color:black") {{ tamanho.tamanho }}
   label.text-bold(style="font-size:1.5em;;") Cores
   q-separator.q-mb-md(color="black")
-  div.row.q-gutter-md.q-py-sm(style="align-items:center")
+  div.row.q-gutter-md.q-py-sm.q-mb-md(style="align-items:center")
     template(
         v-for="cor in cores"
         :key="cor"
@@ -150,7 +150,7 @@ div.column.filtro(
         )
   label.text-bold(style="font-size:1.5em;;") Categorias
   q-separator.q-mb-md(color="black")
-  q-scroll-area(
+  q-scroll-area.q-mb-md(
     style="height: 150px; max-width: 300px;"
     visible
     :bar-style="{ backgroundColor: '#cacaca', width:'8px', opacity: 0.2, }"
@@ -176,7 +176,7 @@ div.column.filtro(
   q-separator.q-mb-md(
     color="black"
   )
-  q-scroll-area(
+  q-scroll-area.q-mb-md(
     style="height: 150px; max-width: 300px;"
     visible
     :bar-style="{ backgroundColor: '#cacaca', width:'8px', opacity: 0.2, }"
