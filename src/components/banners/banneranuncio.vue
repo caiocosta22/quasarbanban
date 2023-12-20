@@ -51,7 +51,7 @@ div
     v-if="itsLoading"
   )
     q-skeleton.col(
-      heigth="32px"
+      heigth="36px"
     )
   template(
     v-else-if="!itsLoading"
@@ -67,7 +67,7 @@ div
         :autoplay="2500"
         transition-prev="slide-right"
         transition-next="slide-left"
-        style="max-height: 35px;"
+        style="max-height: 36px;"
       )
         template(
           v-for="(banner, index) in bannersAnuncio"
