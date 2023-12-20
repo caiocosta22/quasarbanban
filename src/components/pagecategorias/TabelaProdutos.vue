@@ -126,7 +126,7 @@ console.log(props.items);
 
 <template lang="pug">
 div.container
-  div.containertabela.q-pt-lg.q-pl-md
+  div.containertabela
     div.grid.q-px-sm.q-mb-md
       template(
         v-for="item in paginatedData"
