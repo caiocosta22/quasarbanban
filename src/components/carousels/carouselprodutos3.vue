@@ -201,21 +201,21 @@ div.container
 }
 .titulo {
   color: var(--Gray-2, #4F4F4F);
-  font-size: 16px;
+  font-size: 14px;
   font-weight: 500;
-  line-height: 19px;
+  line-height: 16px;
   margin-top: 5px;
   margin-bottom: 15px;
 }
 .valor {
-  font-size: 20px;
+  font-size: 16px;
   font-weight: 700;
   margin-bottom: 2px;
   margin-top: 0;
 }
 .parcelas {
   color: var(--Gray-2, #4F4F4F);
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
   margin-top: 0;
   margin-bottom: 10px;
