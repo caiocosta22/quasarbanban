@@ -202,7 +202,7 @@ div.column.filtro(
 .filtro {
   display: flex;
   width: 14%;
-  margin-right: 10px;
+  margin-right: 30px;
 }
 .border-black {
   border: 3px solid #cacaca;
