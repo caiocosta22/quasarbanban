@@ -207,7 +207,7 @@ div.column.filtro(
 .border-black {
   border: 3px solid #cacaca;
 }
-@media screen and (max-width: 1150px) {
+@media screen and (max-width: 768px) {
   .filtro {
     display: flex;
     width: 100%;
