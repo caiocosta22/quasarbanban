@@ -69,11 +69,11 @@ const props = defineProps({
 
 const page = ref(1);
 
-const perPage = 10;
+const perPage = 12;
 
 const seeingProductsBetween = computed(() => {
-  const menorValorQuePossoVer = page.value === 1 ? "01" : ((page.value - 1) * 10) + 1;
-  const maiorValorQuePossoVer = page.value === 1 ? "10" : (page.value * 10) > props.items.content.length ? props.items.content.length : (page.value * 10);
+  const menorValorQuePossoVer = page.value === 1 ? "01" : ((page.value - 1) * 12) + 1;
+  const maiorValorQuePossoVer = page.value === 1 ? "12" : (page.value * 12) > props.items.content.length ? props.items.content.length : (page.value * 12);
   return `${menorValorQuePossoVer}-${maiorValorQuePossoVer}`;
 });
 
