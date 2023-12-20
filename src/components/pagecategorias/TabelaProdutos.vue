@@ -163,7 +163,7 @@ div.container
               )
                 span.valor {{ formatCurrency(item.valor) }}
                 span {{  item.coligada.numeroParcelas }}x de {{   formatCurrency(item.valor / item.coligada.   numeroParcelas) }}
-    div.row.paginacao.q-px-sm
+    div.paginacao
       p.produtos.q-mr-md(
         style="font-weight: 400; font-size:15px; font-family: Outfit; line-height: 20px; "
       ) Resultado {{ props.items.content.length }} produto(s) em {{ Math.ceil(props.items.content.length / perPage) }} página(s)
@@ -224,9 +224,12 @@ div.container
 }
 .paginacao {
   display: flex;
+  flex-direction: row;
   justify-content: space-between;
   width: 100%;
   margin: 0 auto;
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 @media screen and (max-width: 1336px) {
   .grid{
@@ -242,6 +245,12 @@ div.container
   .grid{
     grid-template-columns: 1fr 1fr;
     padding-top:0px;
+  }
+  .paginacao {
+    flex-direction: column;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
   }
 }
 .titulo {
