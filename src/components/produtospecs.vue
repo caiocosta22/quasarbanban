@@ -131,6 +131,7 @@ function updateTamanhoInfo (id) {
     precopromocao.value = selectedVariation.precoPromocional;
   }
 }
+
 function addQtd () {
   if (contador.value >= 1 && contador.value < produtos.value[0].qtdEstoque) {
     contador.value++;
